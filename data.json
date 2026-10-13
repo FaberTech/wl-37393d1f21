@@ -366,6 +366,40 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "129805",
+   "heat": 45,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89077?request_id=129805",
+   "company": "TForce Freight Canada Inc",
+   "trade": "—",
+   "market": "Surrey, BC",
+   "sales": "Sarah",
+   "tier": "2",
+   "hours": "7.9",
+   "value": "526.5",
+   "slots": "1",
+   "why": "Last-minute TForce Surrey tonight 10pm-7am; status 2 Matched; not replacement",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791925399710369",
+   "funnel": "232 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-13 14:05 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-13 14:05:43 PT",
+   "scored_at": "2026-10-13 14:05:43 PT",
+   "open_case": "withdraw"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -395,5 +429,8 @@
   "definition": "all non-deleted requests in request groups of any job ever on the Watch list (watchlist_ever_request_ids.json), slots starting Mon 00:00 PT..now: status 3/4/5 / (3/4/5 + 1/2/6 + 8); 7 excluded",
   "source": "metabase_funnel_batch",
   "groups": 282
- }
+ },
+ "funnels_updated_at": "2026-10-13 14:05:43 PT",
+ "fill_updated_at": "2026-10-13 14:05:43 PT",
+ "updated": "2026-10-13 21:05:43 UTC"
 }
