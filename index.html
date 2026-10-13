@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Watch List</title>
+<style>
+  :root {
+    --bg:#000; --card:#000; --panel:#0a0a0a; --text:#e8eaed; --muted:#9aa3b2; --line:#222;
+    --orange:#ff8a3d; --orange-soft:transparent; --rail:#ff8a3d;
+    --green:#3dd68c; --green-bg:rgba(61,214,140,.14); --red:#ff5c5c; --red-bg:rgba(255,92,92,.14);
+    --blue:#6ea8fe; --purple:#b794f6; --pink:#f472b6; --accent:#8ab4ff;
+  }
+  * { box-sizing:border-box; }
+  html, body { background:#000 !important; }
+  body {
+    margin:0;
+    font:13px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:#000;
+    color:var(--text);
+    min-height:100vh;
+  }
+  header { background:#000; border-bottom:1px solid var(--line); padding:18px 22px 14px; }
+  h1 { margin:0; font-size:30px; font-weight:750; letter-spacing:-.02em; color:#f3f4f6; display:flex; align-items:center; gap:12px; }
+  h1 .logo { height:52px; width:auto; border-radius:0; object-fit:contain; flex-shrink:0; display:block; }
+  h1 .fire { font-size:28px; line-height:1; }
+  .sub { color:var(--muted); margin-top:4px; font-size:13px; }
+  .header-row{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start; }
+  button.refresh {
+    border:1px solid var(--line); background:var(--panel); color:var(--text);
+    border-radius:10px; padding:8px 12px; font-weight:600; cursor:pointer;
+  }
+  button.refresh:hover { border-color:#3d4a63; background:#222936; }
+  button.refresh:disabled { opacity:.7; cursor:wait; }
+
+  .refresh-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  button.refresh {
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 0 rgba(255, 90, 90, 0.45);
+    animation: refreshPulse 1.6s ease-in-out infinite;
+  }
+  /* Keep pulse even while disabled so the cue never "dies" */
+  button.refresh:disabled { opacity: .85; cursor: wait; }
+  @keyframes refreshPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 90, 90, 0.0); }
+    50% { box-shadow: 0 0 0 6px rgba(255, 90, 90, 0.28); }
+  }
+  /* Permanent jumping arrow — in normal layout so KPIs never cover it */
+  .refresh-nudge {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+    animation: nudgeJump 0.85s ease-in-out infinite;
+    min-height: 58px;
+  }
+  .refresh-nudge.hidden { display: flex !important; }
+  .refresh-nudge .arrow {
+    width: 36px;
+    height: 44px;
+    color: #ff4d4d;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.55));
+  }
+  .refresh-nudge .label {
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff6b6b;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+  @keyframes nudgeJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  header { overflow: visible; padding-bottom: 8px; }
+
+  .kpis { display:grid; grid-template-columns:repeat(4,minmax(78px,.8fr)) minmax(136px,1.2fr) minmax(96px,.9fr) repeat(2,minmax(236px,2fr)); gap:7px; margin:14px 22px 0; max-width:1340px; } /* 2 fulfilment rings; fits one row at 1280px */
+  .kpi.kpi-weekly { display:flex; align-items:center; gap:9px; padding:8px 10px; min-width:0; }
+  .kpi-weekly .ring { position:relative; width:56px; height:56px; flex:0 0 56px; }
+  .kpi-weekly .ring svg { width:56px; height:56px; display:block; }
+  .kpi-weekly .ring .circle { fill:var(--green); stroke:var(--green); stroke-width:1; } /* solid filled mint disc — shape only, not a % arc */
+  .kpi-weekly .ring .pct { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:#0b1324; font-variant-numeric:tabular-nums; } /* dark navy on mint: best contrast */
+  .kpi-weekly .wk-meta { min-width:0; }
+  .fill-pending { color:var(--muted); font-size:11px; font-style:italic; }
+  .next-shift { font-size:10px; color:var(--muted); white-space:nowrap; margin-top:1px; }
+  .kpi-weekly .wk-meta .l { margin-top:0; }
+  .kpi-weekly .wk-counts { color:var(--green); font-size:10.5px; font-weight:750; margin-top:3px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .kpi-weekly .wk-asof { color:var(--muted); font-size:10px; margin-top:2px; white-space:nowrap; }
+  .kpi {
+    background:var(--card);
+    border:1px solid rgba(94,234,212,.32);
+    border-radius:12px;
+    padding:10px 12px;
+  }
+  .kpi .n { font-size:20px; font-weight:750; color:#f8fafc; }
+  .kpi .l { color:var(--muted); font-size:11px; margin-top:2px; font-weight:800; }
+  .kpi .source-break, .kpi .source-total {
+    color:var(--muted); font-size:10px; line-height:1.25; margin-top:4px;
+    font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums;
+  }
+  .kpi .source-break .sales-count, .kpi .source-total .sales-count { color:#d8b4fe; }
+  .kpi .source-break .system-count, .kpi .source-total .system-count { color:#cbd5e1; }
+  .kpi .n.hot { color:var(--orange); }
+  .kpi .n.bad { color:var(--red); }
+  .kpi.kpi-total {
+    background:#0d9488;
+    border:1px solid #14b8a6;
+  }
+  .kpi.kpi-total .n.total { color:#042f2e; font-size:16px; line-height:1.25; }
+  .kpi.kpi-total .n.total .sales-break { color:#134e4a; font-weight:650; font-size:12px; }
+  .kpi.kpi-total .l { color:#042f2e; }
+  .kpi.kpi-filled .n { color:#34d399; }
+  main { padding:16px 22px 40px; }
+  .section { background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:16px; overflow:hidden; }
+  .section-h { padding:12px 14px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center; background:#000; }
+  .section-h h2 { margin:0; font-size:15px; color:#f3f4f6; }
+  .section-h .hint { color:var(--muted); font-size:12px; }
+  .filters { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .filters input, .filters select {
+    border:1.5px solid #5b6b8a; border-radius:10px; padding:8px 12px; font-size:13px;
+    background:#1a1f2b; color:#f3f4f6;
+    box-shadow:0 0 0 1px rgba(255,255,255,.04), inset 0 1px 0 rgba(255,255,255,.06);
+    min-width:132px;
+  }
+  .filters input { min-width:220px; }
+  .filters input::placeholder { color:#8b95a8; }
+  .filters input:hover, .filters select:hover {
+    border-color:#7b8fb3; background:#222836;
+  }
+  .filters input:focus, .filters select:focus {
+    outline:none; border-color:#8ab4ff;
+    box-shadow:0 0 0 3px rgba(138,180,255,.28);
+    background:#1e2433;
+  }
+  .scroll { overflow-x:auto; width:100%; }
+  table { width:100%; border-collapse:collapse; table-layout:auto; min-width:1400px; }
+  th {
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+    color:#8b95a8; font-weight:650; padding:6px 8px; background:#000; border-bottom:1px solid var(--line);
+    white-space:nowrap;
+  }
+  td { padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:hover td { background:rgba(255,255,255,.03); }
+  tr.active td { background:transparent; }
+  tr.active td:first-child { box-shadow:none; }
+  .rank { color:var(--muted); font-weight:700; width:36px; }
+  a.req { color:var(--accent); font-weight:650; text-decoration:none; }
+  a.req:hover { text-decoration:underline; }
+  a { color:var(--accent); }
+  .badge { display:inline-flex; align-items:center; border-radius:999px; padding:2px 8px; font-size:11px; font-weight:650; }
+  .badge.matched { background:var(--green-bg); color:var(--green); }
+  .badge.open, .badge.unfulfilled { background:var(--red-bg); color:#ff8a8a; }
+  .badge.acked { background:rgba(110,168,254,.16); color:#9ec1ff; }
+  .badge.filled { background:var(--green-bg); color:var(--green); font-variant-numeric:tabular-nums; }
+  .badge.source.sales { background:rgba(216,180,254,.18); color:#d8b4fe; }
+  .badge.source.system { background:rgba(203,213,225,.12); color:#cbd5e1; }
+  .badge.source.both { background:linear-gradient(90deg, rgba(216,180,254,.28), rgba(203,213,225,.16)); color:#f5f3ff; }
+  .badge.rep {
+    max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    border: 1px solid transparent; color:#fff; font-weight:700;
+  }
+  .clip { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block; }
+  .funnel .nums { font-weight:750; font-size:13px; color:#f3f4f6; }
+  .funnel .lbl { color:var(--muted); font-size:10px; margin-top:2px; text-transform:uppercase; letter-spacing:.04em; }
+  .intervention { max-width:none; font-size:10px; }
+  .citydot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+  .city-bc { background:var(--blue); } .city-ab { background:var(--purple); } .city-tx { background:var(--orange); } .city-other { background:var(--pink); }
+  .heat-cell { text-align:center; }
+  .heat {
+    display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+    min-width:56px; padding:8px 10px; border-radius:12px; font-weight:800; font-size:20px; line-height:1;
+    border:1px solid transparent; color:#fff;
+  }
+  .heat small { font-size:9px; font-weight:700; letter-spacing:.06em; margin-top:3px; opacity:.9; color:#fff; }
+  .heat.na { background:#374151; color:#9ca3af; font-size:14px; }
+  .band { font-weight:700; font-size:12px; }
+  .band.Immediate { color:#ff7b7b; } .band.Urgent { color:#ffb074; } .band.Act { color:#8ab4ff; } .band.Watch { color:#5eead4; }
+  .value { font-weight:700; white-space:nowrap; color:#f8fafc; }
+  .muted { color:var(--muted); }
+  .tag-new, .tag-risk {
+    font-weight:800; letter-spacing:.02em;
+    animation: tagFlash 1.1s ease-in-out infinite;
+  }
+  .tag-new {
+    color:#fbbf24;
+    text-shadow:0 0 6px rgba(251,191,36,.55);
+  }
+  .tag-risk {
+    color:#fb7185;
+    text-shadow:0 0 6px rgba(251,113,133,.55);
+  }
+  @keyframes tagFlash {
+    0%, 100% { opacity:1; filter:brightness(1); }
+    50% { opacity:.35; filter:brightness(1.35); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tag-new, .tag-risk { animation:none; opacity:1; }
+  }
+  .intervention { max-width:180px; font-size:12px; color:var(--muted); }
+  footer { color:var(--muted); font-size:12px; padding:8px 22px 24px; }
+  .empty { padding:28px; text-align:center; color:var(--muted); }
+  .comments { max-width:260px; min-width:180px; font-size:12px; color:var(--text); line-height:1.25; }
+  .comments .c { display:block; margin:0 0 4px; padding:5px 7px; background:rgba(255,255,255,.03); border-radius:8px; border:1px solid var(--line); }
+  .comments .c .who { font-weight:650; color:#c5cddb; }
+  .comments .more { color:var(--muted); font-size:11px; margin-top:2px; }
+  .comments .none { color:var(--muted); }
+  .comments .team-note-wrap { margin-top:0; }
+  .comments textarea.team-note {
+    width:100%; min-height:52px; max-height:96px; height:auto;
+    resize:vertical; overflow-x:hidden; overflow-y:auto;
+    white-space:pre-wrap; word-break:break-word; box-sizing:border-box;
+    padding:6px 8px; border-radius:7px;
+    border:1.5px solid #5b6b8a; background:#1a1f2b; color:#f3f4f6;
+    font:inherit; line-height:1.35;
+  }
+  .comments textarea.team-note:focus {
+    outline:none; border-color:#8ab4ff;
+    box-shadow:0 0 0 3px rgba(138,180,255,.28); background:#1e2433;
+  }
+  .comments .team-note-bar {
+    display:flex; align-items:center; gap:8px; margin-top:3px; flex-wrap:nowrap;
+  }
+  .comments .team-note-bar .save-note {
+    appearance:none; border:0; border-radius:7px; padding:4px 10px;
+    background:#2563eb; color:#fff; font-weight:700; font-size:11px; cursor:pointer;
+    flex:0 0 auto;
+  }
+  .comments .team-note-bar .save-note:disabled { opacity:.55; cursor:default; }
+  .comments .team-note-bar .save-note.dirty { background:#ea580c; }
+  .comments .team-note-bar .note-status {
+    font-size:11px; color:var(--muted); white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis; min-width:0; flex:1 1 auto;
+  }
+  .comments .team-note-bar .note-status.ok { color:var(--green); }
+  .comments .team-note-bar .note-status.err { color:#ef4444; }
+  .tier {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:28px; padding:4px 8px; border-radius:8px; font-weight:800; font-size:14px;
+    background:rgba(183,148,246,.14); color:#d4bfff; border:1px solid rgba(183,148,246,.35);
+  }
+  .tier.na { background:rgba(255,255,255,.04); color:#6b7385; border-color:var(--line); font-size:12px; font-weight:650; }
+  .funnel { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .funnel .nums { font-weight:750; font-size:13px; color:#f3f4f6; }
+  .funnel .lbl { color:var(--muted); font-size:10px; margin-top:2px; text-transform:uppercase; letter-spacing:.04em; }
+  .funnel .slots { color:var(--muted); font-size:11px; margin-top:2px; }
+  td.timing { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  td.timing.overdue { background:#dc2626; color:#fff; font-weight:750; }
+  .fill { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .fill .nums { font-weight:750; font-size:13px; color:var(--green); }
+  .fill .lbl { color:var(--muted); font-size:10px; margin-top:2px; text-transform:uppercase; letter-spacing:.04em; }
+  th.col-tier-status, td.col-tier-status { width:1%; white-space:nowrap; padding:6px 8px; }
+  .tier-status { display:inline-flex; align-items:center; gap:8px; }
+  code { color:#c5cddb; }
+
+  .status-stack { display:inline-flex; flex-direction:column; align-items:flex-start; gap:2px; }
+  .open-kind {
+    font-size:10px; font-weight:800; letter-spacing:.02em; text-transform:lowercase;
+    padding:1px 6px; border-radius:999px; line-height:1.4;
+  }
+  .open-kind.noshow { background:rgba(239,68,68,.22); color:#fecaca; }
+  .open-kind.late-withdraw { background:rgba(249,115,22,.22); color:#fdba74; }
+  .open-kind.withdraw { background:rgba(234,179,8,.18); color:#fde68a; }
+  .open-kind.replacement { background:rgba(148,163,184,.18); color:#cbd5e1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-row">
+    <div>
+      <h1><img class="logo" src="faber-logo.png?v=2" alt="Faber"/>Watch List <span class="fire" aria-hidden="true">🔥</span></h1>
+      <div class="sub" id="subtitle">From <b>#unfilled-intervention</b> · loading…</div>
+    </div>
+    <div class="refresh-wrap" id="refreshWrap">
+      <button class="refresh" id="refreshBtn" type="button" title="Pull Slack + Metabase (heat + status + funnel) and rescore">Refresh Data</button>
+      <div class="refresh-nudge" id="refreshNudge" aria-hidden="true">
+        <svg class="arrow" viewBox="0 0 40 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- jumping arrow pointing up toward the button -->
+          <path d="M20 44 C20 44 8 30 8 20 C8 11 13 6 20 6 C27 6 32 11 32 20 C32 30 20 44 20 44 Z" fill="none" opacity="0"/>
+          <path d="M20 42 L20 10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M10 20 L20 8 L30 20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="label">Always refresh here</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="kpis" id="kpis"></div>
+<main>
+  <section class="section">
+    <div class="section-h">
+      <div class="hint" id="listHint">One ranked list by Heat · Slack threads + editable team notes</div>
+      <div class="filters">
+        <select id="sales"><option value="">All sales reps</option></select>
+        <select id="band"><option value="">All bands</option><option>Immediate</option><option>Urgent</option><option>Act</option><option>Watch</option></select>
+        <select id="tier"><option value="">All tiers</option></select>
+        <select id="status"><option value="active" selected>Active (Open + Acked)</option><option value="">All statuses</option><option>Open</option><option>Acked</option><option>Filled</option></select>
+        <select id="source"><option value="">All sources</option><option value="Sales">Slack by Sales</option><option value="System">System</option><option value="Sales/System">Slack/System</option></select>
+        <input id="q" placeholder="Filter company / city / trade / comment…"/>
+      </div>
+    </div>
+    <div class="scroll"><table><thead>
+      <tr>
+        <th>#</th><th>Heat</th><th>Tier / Status</th><th>Rep</th><th>Source</th><th>Request</th><th>Timing</th><th>Starts</th><th>Value</th><th>Funnel</th><th>Fill</th><th>Intervention</th><th>Posted</th><th>Company</th>
+        <th>City</th><th>Trade</th><th>Comments</th>
+      </tr>
+    </thead><tbody id="list"></tbody></table></div>
+  </section>
+</main>
+<footer>
+  Source: Slack by Sales (manual @score / sales posts), System (auto alerts), or <b>Slack/System</b> (merged). Status: Open → Acked (✅) → Filled (🎉 or accepts cover slots).
+  Slack <code>#unfilled-intervention</code>. Opens with a live refresh. Click Refresh Data anytime — Metabase hours/tier/status + funnel (matched/applied/accepts) + Fill (filled/total slots) + open-only filter + Heat v2.3. Jumping arrow stays on.
+</footer>
+<script>
+const API_BASE="https://festive-tux-italics.ngrok-free.dev";
+function liveNote(on){let n=document.getElementById('liveNote');
+ if(!n){n=document.createElement('div');n.id='liveNote';n.style.cssText='position:fixed;bottom:10px;left:10px;background:#0b2545;color:#c8f7dc;padding:6px 10px;border-radius:6px;font:12px sans-serif;z-index:9999;display:none';n.textContent='Live refresh unavailable, showing last synced data (updates every 10 min)';document.body.appendChild(n);}
+ n.style.display=on?'block':'none';}
+</script>
+<script>
+let JOBS=[], UPDATED='', lastFp='', FILLED_TODAY=0, WEEKLY=null, WL_WEEKLY=null;
+function weeklyKpi(w, opts={}){
+  // Weekly fulfilment (slots started Mon 00:00 PT → now) from Metabase via funnel batch.
+  // opts.kind: 'company' (wk_*) or 'watchlist' (wl_*: request groups ever on the Watch list)
+  const isWl = opts.kind==='watchlist';
+  const ok = w && Number.isFinite(Number(w.fulfilled)) && Number(w.denominator) > 0;
+  const pct = ok ? (100*Number(w.fulfilled)/Number(w.denominator)) : null;
+  // Solid filled mint disc (shape only — no dasharray/dashoffset); % is centered dark-navy text
+  const pctTxt = pct==null ? '—' : (pct>=99.95 ? '100%' : pct.toFixed(1)+'%');
+  let asof='';
+  if(w && w.as_of){
+    const m=String(w.as_of).match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})/);
+    if(m){
+      const dt=new Date(Date.UTC(+m[1],+m[2]-1,+m[3],12));
+      const wd=new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:'UTC'}).format(dt);
+      let h=+m[4]; const ap=h>=12?'PM':'AM'; h=h%12||12;
+      asof=`as of ${wd} ${h}:${m[5]} ${ap} PT`;
+    } else asof='as of '+esc(String(w.as_of));
+  }
+  const counts = ok ? `${Number(w.fulfilled).toLocaleString()} / ${Number(w.denominator).toLocaleString()} slots · since Mon` : 'no data yet';
+  const scope = isWl ? `Watch list groups only (${w&&w.groups!=null?w.groups:'—'} request groups ever on the list)` : 'Company-wide';
+  const tip = ok ? `${scope} · fulfilled ${w.fulfilled} (status 3/4/5) of ${w.denominator} started slots since Mon 00:00 PT · unfilled ${w.unfilled??'—'} · expired ${w.expired??'—'} · cancelled excluded ${w.cancelled_excluded??'—'}` : `${isWl?'Watch list':'Weekly'} fulfilment not available yet`;
+  const title = isWl ? 'Watch list fulfilment' : '📈 Weekly fulfilment';
+  return `<div class="kpi kpi-weekly${isWl?' kpi-wl':''}" title="${esc(tip)}">
+    <div class="ring"><svg viewBox="0 0 56 56" aria-hidden="true"><circle class="circle" cx="28" cy="28" r="27" data-pct="${pct==null?'':pct.toFixed(2)}"/></svg><div class="pct">${pctTxt}</div></div>
+    <div class="wk-meta"><div class="l">${title}</div><div class="wk-counts">${counts}</div>${asof?`<div class="wk-asof">${asof}</div>`:''}</div>
+  </div>`;
+}
+const cityClass = (m='') => {
+  const s=(m||'').toLowerCase();
+  if (/\bbc\b|british columbia|van|surrey|coquitlam|burnaby|vancouver|langley|richmond/.test(s)) return 'city-bc';
+  if (/\bab\b|alberta|cal|edm|rocky|nisku|calgary|edmonton|tofield|grande/.test(s)) return 'city-ab';
+  if (/\bmb\b|manitoba|winnipeg|headingley|rosser/.test(s)) return 'city-ab'; // prairie group color
+  if (/\btx\b|texas|dallas|burleson|houston|austin|cedar hill|cross roads/.test(s)) return 'city-tx';
+  return 'city-other';
+};
+/** City column: "City, ST/province". Keep existing "City, XX"; otherwise infer. */
+const CITY_REGION = {
+  // BC
+  vancouver:'BC', surrey:'BC', burnaby:'BC', coquitlam:'BC', langley:'BC', richmond:'BC',
+  // AB
+  calgary:'AB', edmonton:'AB', nisku:'AB', rocky:'AB', tofield:'AB', 'grande prairie':'AB',
+  // MB
+  winnipeg:'MB', headingley:'MB', rosser:'MB',
+  // TX
+  dallas:'TX', houston:'TX', austin:'TX', burleson:'TX', 'cedar hill':'TX', 'cross roads':'TX',
+};
+function formatCity(raw){
+  const m = String(raw||'').trim();
+  if(!m || m==='—' || m==='-') return '—';
+  // already "City, ST" / "City, Province"
+  if (/,\s*[A-Za-z]{2,}$/.test(m) || /\b(BC|AB|MB|SK|ON|QC|TX|WA|OR|CA|NY|FL)\b/i.test(m)) {
+    return m.replace(/,\s*/, ', ');
+  }
+  const key = m.toLowerCase();
+  let st = CITY_REGION[key];
+  if(!st){
+    // fuzzy: first token / contains
+    for (const [city, code] of Object.entries(CITY_REGION)){
+      if (key===city || key.startsWith(city+' ') || key.endsWith(' '+city) || key.includes(city)){
+        st = code; break;
+      }
+    }
+  }
+  if(!st){
+    const cls = cityClass(m);
+    st = cls==='city-bc' ? 'BC' : cls==='city-tx' ? 'TX' : cls==='city-ab' ? (/rosser|winnipeg|headingley|\bmb\b/i.test(m)?'MB':'AB') : '';
+  }
+  return st ? `${m}, ${st}` : m;
+}
+function postedCell(j){
+  const raw = j.watchlist_posted_at || j.posted_at || j.time || '';
+  if(!raw || raw==='—') return '—';
+  const m = String(raw).match(/(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}:\d{2})/);
+  if(m){
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const mon = months[Number(m[2])-1] || m[2];
+    return `${mon} ${Number(m[3])} ${m[4]} PT`; // month + day + time, no year
+  }
+  return String(raw);
+}
+function parseHoursNum(v){
+  if(v==null || v==='' || v==='—') return null;
+  const m=String(v).replace(/[−–]/g,'-').match(/([+-]?\d+(?:\.\d+)?)/);
+  if(!m) return null;
+  const n=Number(m[1]);
+  return Number.isFinite(n) ? n : null;
+}
+/** Parse "YYYY-MM-DD HH:MM[:SS] …" wall clock as America/Vancouver instant. */
+function parseVancouverWall(raw){
+  const m=String(raw||'').match(/(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?/);
+  if(!m) return null;
+  const y=+m[1], mo=+m[2], d=+m[3], hh=+m[4], mi=+m[5], ss=+(m[6]||0);
+  const desired = Date.UTC(y, mo-1, d, hh, mi, ss);
+  let t = desired;
+  const opts = {timeZone:'America/Vancouver', hour12:false,
+    year:'numeric', month:'2-digit', day:'2-digit',
+    hour:'2-digit', minute:'2-digit', second:'2-digit'};
+  for(let i=0;i<4;i++){
+    const parts = Object.fromEntries(
+      new Intl.DateTimeFormat('en-US', opts).formatToParts(new Date(t))
+        .filter(p=>p.type!=='literal').map(p=>[p.type, p.value])
+    );
+    const asUtc = Date.UTC(+parts.year, +parts.month-1, +parts.day, Number(parts.hour)%24, +parts.minute, +parts.second);
+    t += desired - asUtc;
+  }
+  return new Date(t);
+}
+/** Job start from Timing hours + hours_as_of → "Thu 9/25" / "Fri 9/5" in PT. */
+/** Absolute job start (Date) = hours_as_of + Timing hours; null if unknown. */
+function jobStartDate(j){
+  // Prefer live absolute start from Metabase (start_date+start_time in project tz, stored as UTC ISO)
+  if(j && j.start_at){
+    const d = new Date(String(j.start_at));
+    if(!Number.isNaN(d.getTime())) return d;
+  }
+  const h = parseHoursNum(j && j.hours);
+  if(h==null) return null;
+  const asOf = parseVancouverWall((j && (j.hours_as_of || j.time || j.watchlist_posted_at)) || '');
+  if(!asOf || Number.isNaN(asOf.getTime())) return null;
+  return new Date(asOf.getTime() + h * 3600 * 1000);
+}
+/** Timing cell: red background when the start time has already passed (computed vs now at render). */
+function timingCell(j){
+  // start_at = frozen ORIGINAL start (never moves forward). Red is sticky once overdue_since is set.
+  const start = jobStartDate(j);
+  const ms = start ? start.getTime() : '';
+  const sticky = !!(j && j.overdue_since);
+  const over = sticky || (start ? start.getTime() < Date.now() : /^\s*-/.test(String((j&&j.hours)||'')));
+  const txt = start ? fmtHoursToStart(start.getTime()) : (j.hours||'—');
+  const tip = over ? `Overdue: original start has passed${sticky?' (since '+j.overdue_since+')':''}` : 'Hours to original start';
+  return `<td class="timing${over?' overdue':''}" data-start-ms="${ms}" data-sticky="${sticky?1:''}" title="${esc(tip)}">${txt}</td>`;
+}
+/** Hours-to-start text from an absolute start (same style as the pipeline: "14.2h", "15h", "-3.5h"). */
+function fmtHoursToStart(ms){
+  const h = Math.round((ms - Date.now())/360000)/10;
+  return (Math.abs(h - Math.round(h)) < 0.05 ? String(Math.round(h)) : h.toFixed(1)) + 'h';
+}
+/** Flip Timing cells red as jobs go overdue between refreshes (no re-render needed). */
+function updateOverdueTiming(){
+  const now = Date.now();
+  document.querySelectorAll('td.timing[data-start-ms]').forEach(td=>{
+    const ms = Number(td.dataset.startMs);
+    if(!td.dataset.startMs || !Number.isFinite(ms)) return;
+    const over = !!td.dataset.sticky || ms < now; // sticky: never clears once overdue
+    td.classList.toggle('overdue', over);
+    td.textContent = fmtHoursToStart(ms);
+    if(!td.dataset.sticky) td.title = over ? 'Overdue: original start has passed' : 'Hours to original start';
+  });
+}
+setInterval(updateOverdueTiming, 30000);
+function startsCell(j){
+  // Original start date; small note with Betadash's next (rolled-forward) shift when it differs
+  const start = jobStartDate(j);
+  if(!start) return '—';
+  const fmt = (d,o)=>new Intl.DateTimeFormat('en-US', {...o, timeZone:'America/Vancouver'}).format(d);
+  let out = `${fmt(start,{weekday:'short'})} ${fmt(start,{month:'numeric', day:'numeric'})}`;
+  const nx = j && j.next_start_at ? new Date(String(j.next_start_at)) : null;
+  if(nx && !Number.isNaN(nx.getTime()) && Math.abs(nx.getTime()-start.getTime()) > 3600*1000){
+    out += `<div class="next-shift" title="Next shift start (Betadash current start_date)">next ${fmt(nx,{weekday:'short'})} ${fmt(nx,{month:'numeric', day:'numeric'})} ${fmt(nx,{hour:'numeric', minute:'2-digit'})}</div>`;
+  }
+  return out;
+}
+function money(v){
+  if(v==null || v==='' || v==='—') return '—';
+  const s=String(v).trim();
+  if(/^see\s*dash$/i.test(s) || !/[0-9]/.test(s)) return s; // non-numeric notes stay as-is
+  if(s.startsWith('$')) return s;
+  const n=Number(s.replace(/[^0-9.]/g,''));
+  if(isNaN(n)) return s;
+  // keep decimals if present
+  const formatted = s.includes('.')
+    ? n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})
+    : n.toLocaleString();
+  return '$'+formatted;
+}
+function parseMoney(v){
+  if(!v||v==='—') return 0;
+  const n=Number(String(v).replace(/[^0-9.]/g,''));
+  return isNaN(n)?0:n;
+}
+function fillProgress(j){
+  const fun=String(j.funnel||'');
+  const m=fun.match(/(\d[\d,]*)\s*\/\s*(\d[\d,]*)\s*\/\s*(\d[\d,]*)/);
+  const sn=String(j.slots||'').match(/^(\d+)/);
+  if(!m || !sn) return null;
+  const accepts=Number(m[3].replace(/,/g,''));
+  const need=Number(sn[1]);
+  if(!need) return null;
+  return `${Math.min(accepts, need)}/${need}`;
+}
+function openKind(j){
+  /* Under Open: no-show / withdraw / late-withdraw. Blank only for normal opens. */
+  if(!j || typeof j!=='object') return '';
+  const raw = String(j.open_case || j.replacement_case || j.case || '').trim().toLowerCase().replace(/_/g,'-').replace(/\s+/g,'-');
+  const map = {
+    'no-show':'no-show', 'noshow':'no-show', 'no-shows':'no-show',
+    'late-withdraw':'late-withdraw', 'late-withdrawal':'late-withdraw', 'latewithdraw':'late-withdraw',
+    'withdraw':'withdraw', 'withdrawal':'withdraw'
+  };
+  if(raw && map[raw]) return map[raw];
+  if(j.is_late_withdrawal===true || j.is_late_withdrawal===1 || j.is_late_withdrawal==='true') return 'late-withdraw';
+  const blob = `${j.flags||''} ${j.note||''} ${j.why||''} ${j.intervention||''} ${j.source||''} ${j.open_case||''}`.toLowerCase();
+  if(/no[\s-]*show|\bnoshow\b/.test(blob)) return 'no-show';
+  if(/late[\s-]*withdraw/.test(blob)) return 'late-withdraw';
+  if(/\bwithdraw(?:al|n)?\b|\brestaff\b/.test(blob)) return 'withdraw';
+  // Replacement with no finer reason → withdraw (never blank, never "replacement")
+  if(j.replacement===true || j.replacement===1 || j.replacement==='true' || /\breplacement\b|open replacement/.test(blob)){
+    return 'withdraw';
+  }
+  return '';
+}
+function statusBadge(j){
+  const t=(typeof j==='string' ? j : (j&&j.status)) || 'Open';
+  let cls='open';
+  if(/fill/i.test(t)) cls='filled';
+  else if(/ack/i.test(t)) cls='acked';
+  else if(/match/i.test(t)) cls='matched';
+  let label=t;
+  if(cls==='filled' && typeof j==='object' && j){
+    const fp=fillProgress(j);
+    label = fp ? `Filled ${fp}` : 'Filled';
+  }
+  const main = `<span class="badge ${cls}">${label}</span>`;
+  // Second line under Open only — distinguish new Open vs Withdraw
+  if(cls==='open' && typeof j==='object' && j){
+    const kind = openKind(j);
+    if(kind){
+      const kcls = ({
+        'withdraw':'open-kind withdraw',
+        'late-withdraw':'open-kind late-withdraw',
+        'no-show':'open-kind noshow',
+        'replacement':'open-kind replacement'
+      })[kind] || 'open-kind';
+      return `<div class="status-stack">${main}<div class="${kcls}">${kind}</div></div>`;
+    }
+  }
+  return main;
+}
+function sourceFlags(j){
+  // Keep source counts aligned with the existing source-count rule: sales is /sales/i.
+  // Non-sales rows are System; an explicit merged source counts in both breakdowns.
+  const raw = String((j && j.source) || '');
+  const sales = /sales/i.test(raw);
+  return { sales, system:!sales || /system/i.test(raw) };
+}
+function funnelFmt(v){
+  if(!v || v==='—') return null;
+  const s=String(v);
+  const m=s.match(/(\d[\d,]*)\s*\/\s*(\d[\d,]*)\s*\/\s*(\d[\d,]*)/);
+  if(m) return `${m[1]} / ${m[2]} / ${m[3]}`;
+  const head=s.split('(')[0].trim();
+  return head || s;
+}
+
+function fillCell(j){
+  // Fill = group slots filled (Betadash 3/4/5) / total (filled + open 1/2/6), from Metabase batch
+  let f=j.fill_filled, t=j.fill_total;
+  if((f==null||t==null) && j.fill){
+    const m=String(j.fill).match(/^\s*(\d+)\s*\/\s*(\d+)\s*$/);
+    if(m){ f=m[1]; t=m[2]; }
+  }
+  // Unknown Fill (new job, Metabase sync not run yet) → grey "pending", never a bare dash
+  if(f==null||t==null||f===''||t==='') return `<span class="fill-pending" title="Fill pending: waiting for the next Metabase sync">pending</span>`;
+  return `<div class="nums" title="Slots filled / total in group (cancelled & expired excluded)">${esc(String(f))}/${esc(String(t))}</div><div class="lbl">filled</div>`;
+}
+function jobTraits(j){
+  const parts=[];
+  const tier=j.tier!=null && String(j.tier).trim()!=='' && String(j.tier)!=='—' ? String(j.tier).trim() : '';
+  if(tier && /^\d+$/.test(tier)) parts.push('Tier '+tier);
+  const slotsRaw=j.slots!=null ? String(j.slots).trim() : '';
+  if(slotsRaw && slotsRaw!=='—'){
+    const n=slotsRaw.match(/^\d+/);
+    const label=n ? (n[0]+' slot'+(n[0]==='1'?'':'s')) : slotsRaw;
+    parts.push(label);
+  }
+  const hours=j.hours!=null && String(j.hours).trim()!=='' && String(j.hours)!=='—' ? String(j.hours).trim() : '';
+  if(hours) parts.push(hours);
+  // Always surface Slack tags (new) / (risk) / (high risk) under company — bold
+  const flagSrc=`${j.flags||''} ${j.note||''} ${j.why||''} ${j.intervention||''}`.toLowerCase();
+  const isNew = /(?:^|[\s·,(])(?:new)(?:\s+logo|\s+company)?(?:$|[\s·,)])|\(new\)|new logo|new company|first interaction|\+10\).*new|new logo\/company/.test(flagSrc)
+    || /\(new\)/.test(`${j.flags||''} ${j.note||''}`.toLowerCase());
+  const isHighRisk = /high risk|\(high risk\)|client risk|highrisk/.test(flagSrc);
+  const isRisk = !isHighRisk && (/(?:^|[\s·,(])\(risk\)|(?<!high )\brisk\b/.test(flagSrc) || /\(risk\)/.test(`${j.flags||''} ${j.note||''}`.toLowerCase()));
+  if(isNew) parts.push('<b class="tag-new">new</b>');
+  if(isHighRisk) parts.push('<b class="tag-risk">high risk</b>');
+  else if(isRisk) parts.push('<b class="tag-risk">risk</b>');
+  return parts.join(' · ');
+}
+
+function heatBg(n){
+  /* Heat 0–100: light red (low) → very red (high) */
+  const t = Math.max(0, Math.min(100, Number(n)||0)) / 100;
+  const stops = [
+    [0.00, [254, 202, 202]], // light red
+    [0.20, [252, 165, 165]],
+    [0.40, [248, 113, 113]],
+    [0.55, [239, 68, 68]],
+    [0.70, [220, 38, 38]],
+    [0.85, [185, 28, 28]],
+    [1.00, [127, 29, 29]],   // very red / deepest
+  ];
+  let a=stops[0], b=stops[stops.length-1];
+  for(let i=0;i<stops.length-1;i++){
+    if(t>=stops[i][0] && t<=stops[i+1][0]){ a=stops[i]; b=stops[i+1]; break; }
+  }
+  const u = (t - a[0]) / ((b[0]-a[0]) || 1);
+  const rgb = a[1].map((v,i)=>Math.round(v + (b[1][i]-v)*u));
+  return rgb;
+}
+function heatCell(j){
+  const h = j.heat==null || j.heat==='' ? null : Number(j.heat);
+  if(h==null || Number.isNaN(h)){
+    return `<div class="heat na">—<small>HEAT</small></div>`;
+  }
+  const [r,g,b] = heatBg(h);
+  // dark text on light reds, white on deep reds
+  const lum = (0.299*r + 0.587*g + 0.114*b) / 255;
+  const fg = lum > 0.55 ? '#7f1d1d' : '#fff';
+  return `<div class="heat" style="background:rgb(${r},${g},${b});color:${fg};border-color:transparent" title="Heat ${h}">${h}<small>HEAT</small></div>`;
+}
+
+function hashHue(s){
+  let h=0;
+  for(let i=0;i<s.length;i++) h = ((h<<5)-h) + s.charCodeAt(i) | 0;
+  return Math.abs(h);
+}
+/* Fixed solid colors per sales rep — no hash collisions for known names */
+const REP_COLORS = {
+  'gabbie sumner': '#7c3aed',           // purple (Gabby)
+  'gabbie': '#7c3aed',
+  'gabby': '#7c3aed',
+  'gabby sumner': '#7c3aed',
+  'matthias friedel': '#16a34a',        // green
+  'matthias': '#16a34a',
+  'mathias': '#16a34a',
+  'mathias friedel': '#16a34a',
+  'sarah mccoy': '#2563eb',             // blue
+  'sarah': '#2563eb',
+  'samantha rizos': '#ea580c',          // orange
+  'talia mitchell': '#db2777',          // pink
+  'cam schock': '#0d9488',              // teal
+  'natalie broad': '#ca8a04',           // gold
+  'teagan todd': '#0891b2',             // cyan
+  'sam prawdzik': '#9333ea',            // violet
+  'stephen clancy': '#dc2626',          // red
+  'house account': '#64748b',
+  'house account - vancouver sales': '#64748b',
+  'house account - calgary sales': '#64748b',
+  'house account - edmonton sales': '#64748b',
+  'house account - dallas sales': '#64748b',
+  'sales intake @score': '#4f46e5',
+  'request ops priority form': '#6366f1',
+};
+const REP_FALLBACK = [
+  '#e11d48','#0284c7','#059669','#d97706','#be123c','#4f46e5','#14b8a6','#f59e0b'
+];
+function repColor(name){
+  const key = String(name||'').trim().toLowerCase().replace(/\s+/g,' ');
+  if(REP_COLORS[key]) return REP_COLORS[key];
+  // first-name fallback for "First Last"
+  const first = key.split(' ')[0];
+  if(first && REP_COLORS[first]) return REP_COLORS[first];
+  return REP_FALLBACK[hashHue(key) % REP_FALLBACK.length];
+}
+function formatRepName(name){
+  const n = String(name||'').trim();
+  if(!n) return '';
+  // House Account - Vancouver / Calgary / … → just House Account
+  if(/^house\s*account\b/i.test(n)) return 'House Account';
+  return n;
+}
+function repBadge(name){
+  const raw = String(name||'').trim();
+  if(!raw || raw==='—' || raw.toLowerCase()==='unknown') return '—';
+  const n = formatRepName(raw);
+  const bg = repColor(/^house\s*account\b/i.test(raw) ? 'House Account' : raw);
+  const short = n.length>22 ? n.slice(0,20)+'…' : n;
+  return `<span class="badge rep" title="${esc(raw)}" style="background:${bg};color:#fff;border-color:transparent">${esc(short)}</span>`;
+}
+function esc(s){ return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function commentsCell(j){
+  // Notes column: editable team note + saved timestamp (no system Note line)
+  const rid = String(j.request_id||'').trim();
+  const team = (j.team_note!=null ? String(j.team_note) : '');
+  const when = j.team_note_at ? esc(j.team_note_at) : '';
+  if(!rid) return `<span class="none">—</span>`;
+  return `<div class="team-note-wrap" data-rid="${esc(rid)}">
+        <textarea class="team-note" rows="2" placeholder="Add a team note…">${esc(team)}</textarea>
+        <div class="team-note-bar">
+          <button type="button" class="save-note" disabled>Save</button>
+          <span class="note-status">${when ? ('saved '+when) : ''}</span>
+        </div>
+      </div>`;
+}
+async function saveTeamNote(wrap){
+  if(!wrap) return;
+  const rid = wrap.getAttribute('data-rid');
+  const ta = wrap.querySelector('textarea.team-note');
+  const btn = wrap.querySelector('.save-note');
+  const st = wrap.querySelector('.note-status');
+  if(!rid || !ta) return;
+  const text = ta.value;
+  btn.disabled = true;
+  btn.classList.remove('dirty');
+  st.className = 'note-status';
+  st.textContent = 'saving…';
+  try{
+    const r = await fetch(API_BASE+'/api/comment', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      cache:'no-store',
+      body: JSON.stringify({ request_id: rid, text, author: 'Team' })
+    });
+    const data = await r.json().catch(()=>({}));
+    if(!r.ok || !data.ok){
+      st.className = 'note-status err';
+      st.textContent = (data && data.error) ? data.error : 'save failed';
+      btn.disabled = false;
+      btn.classList.add('dirty');
+      return;
+    }
+    const job = JOBS.find(x => String(x.request_id||'') === rid);
+    if(job){
+      job.team_note = text;
+      job.team_note_at = data.updated_at || '';
+      job.team_note_author = data.author || 'Team';
+    }
+    ta.dataset.saved = text;
+    st.className = 'note-status ok';
+    st.textContent = data.updated_at ? ('saved '+data.updated_at) : 'saved';
+  }catch(e){
+    st.className = 'note-status err';
+    st.textContent = 'save failed';
+    btn.disabled = false;
+    btn.classList.add('dirty');
+  }
+}
+function wireCommentEditors(root){
+  (root||document).querySelectorAll('.team-note-wrap').forEach(wrap=>{
+    const ta = wrap.querySelector('textarea.team-note');
+    const btn = wrap.querySelector('.save-note');
+    if(!ta || !btn || ta.dataset.wired) return;
+    ta.dataset.wired = '1';
+    ta.dataset.saved = ta.value;
+    const sync = ()=>{
+      const dirty = ta.value !== (ta.dataset.saved||'');
+      btn.disabled = !dirty;
+      btn.classList.toggle('dirty', dirty);
+      const st = wrap.querySelector('.note-status');
+      if(dirty && st && !st.classList.contains('err')){
+        st.className = 'note-status';
+        st.textContent = '';
+      }
+    };
+    ta.addEventListener('input', sync);
+    ta.addEventListener('keydown', (e)=>{
+      if((e.metaKey||e.ctrlKey) && e.key==='Enter'){ e.preventDefault(); saveTeamNote(wrap); }
+    });
+    btn.addEventListener('click', ()=> saveTeamNote(wrap));
+  });
+}
+function sourceLabel(j){
+  const s = String((j && j.source) || '');
+  if(/sales/i.test(s) && /system/i.test(s)) return {cls:'both', label:'Slack/System'};
+  if(/sales/i.test(s)) return {cls:'sales', label:'Slack by Sales'};
+  if(/system/i.test(s)) return {cls:'system', label:'System'};
+  return {cls:'system', label:s || '—'};
+}
+function rowHtml(j, rank, active){
+  const link = j.link || j.slack || '#';
+  const rid = j.request_id ? `#${j.request_id}` : '—';
+  // Tier cell: digits only (never placeholders like "see dash")
+  const tierRaw = (j.tier==null||j.tier===''||j.tier==='—') ? null : String(j.tier).trim();
+  const tierNum = tierRaw && /^\d+$/.test(tierRaw) ? tierRaw : null;
+  const tierHtml = tierNum
+    ? `<span class="tier" title="Tier">${esc(tierNum)}</span>`
+    : `<span class="tier na" title="Tier">—</span>`;
+  return `<tr class="${active?'active':''}">
+    <td class="rank">${rank}</td>
+    <td class="heat-cell">${heatCell(j)}</td>
+    <td><div class="tier-status">${tierHtml}${statusBadge(j)}</div></td>
+    <td>${repBadge(j.sales)}</td>
+    <td>${(() => { const s = sourceLabel(j); return `<span class="badge source ${s.cls}" title="${esc(j.source||'')}">${esc(s.label)}</span>`; })()}</td>
+    <td><a class="req" href="${link}" target="_blank" rel="noopener">${rid}</a>
+      ${j.slack?`<div class="muted"><a href="${j.slack}" target="_blank">Slack</a></div>`:''}</td>
+    ${timingCell(j)}
+    <td class="muted" title="Original job start (Timing counts from this)">${startsCell(j)}</td>
+    <td class="value">${money(j.value)}</td>
+    <td class="funnel">${(() => {
+      const f = funnelFmt(j.funnel);
+      if(!f) return `<span class="muted">—</span>`;
+      return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
+    })()}</td>
+    <td class="fill">${fillCell(j)}</td>
+    <td><div class="intervention">Protocol 1</div></td>
+    <td class="posted muted">${postedCell(j)}</td>
+    <td><div>${j.company||'—'}</div><div class="muted">${jobTraits(j)||''}</div></td>
+    <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
+    <td>${j.trade||'—'}</td>
+    <td class="comments">${commentsCell(j)}</td>
+  </tr>`;
+}
+function fillTierOptions(){
+  const sel=document.getElementById('tier');
+  if(!sel) return;
+  const cur=sel.value;
+  const tiers=[...new Set(JOBS.map(j=>String(j.tier??'').trim()).filter(x=>x && x!=='—' && /^\d+$/.test(x)))].sort((a,b)=>Number(a)-Number(b));
+  sel.innerHTML='<option value="">All tiers</option>'+tiers.map(n=>`<option value="${n}">Tier ${n}</option>`).join('');
+  if([...sel.options].some(o=>o.value===cur)) sel.value=cur;
+}
+function fillSalesOptions(){
+  const sel=document.getElementById('sales');
+  const cur=sel.value;
+  const names=[...new Set(JOBS.map(j=>formatRepName((j.sales||'').trim())).filter(s=>s && s!=='—' && s.toLowerCase()!=='unknown'))].sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML='<option value="">All sales reps</option>'+names.map(n=>`<option value="${n.replace(/"/g,'&quot;')}">${n}</option>`).join('');
+  // Migrate old "House Account - City" filter value → House Account
+  const want = /^house\s*account\b/i.test(cur) ? 'House Account' : cur;
+  if([...sel.options].some(o=>o.value===want)) sel.value=want;
+  else if([...sel.options].some(o=>o.value===cur)) sel.value=cur;
+}
+function sortedFiltered(){
+  const q=(document.getElementById('q').value||'').toLowerCase();
+  const band=document.getElementById('band').value;
+  const status=document.getElementById('status').value;
+  const sales=document.getElementById('sales').value;
+  const tier=document.getElementById('tier')?document.getElementById('tier').value:'';
+  const source=document.getElementById('source')?document.getElementById('source').value:'';
+  let rows=JOBS.filter(j=>{
+    if(band && j.band!==band) return false;
+    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked') return false; }
+    else if(status && j.status!==status) return false;
+    if(tier && String(j.tier||'')!==tier) return false;
+    // Source filter: Slack, System, or merged Slack/System only
+    if(source==='Sales'){
+      if(!/sales/i.test(j.source||'')) return false;
+    } else if(source==='System'){
+      if(!/system/i.test(j.source||'')) return false;
+    } else if(source==='Sales/System'){
+      const s=j.source||'';
+      if(!(/sales/i.test(s) && /system/i.test(s))) return false;
+    }
+    if(sales && formatRepName((j.sales||'').trim())!==sales) return false;
+    if(!q) return true;
+    const ctext=(Array.isArray(j.comments)?j.comments:[]).map(c=>`${c.author||''} ${c.text||''}`).join(' ')+' '+(j.team_note||'')+' '+(j.note||'');
+    return [j.company,j.sales,j.market,j.trade,j.intervention,j.request_id,j.band,j.note,ctext].join(' ').toLowerCase().includes(q);
+  });
+  rows.sort((a,b)=>{
+    const ha=a.heat==null?-1:a.heat, hb=b.heat==null?-1:b.heat;
+    if(hb!==ha) return hb-ha;
+    const order={Immediate:0,Urgent:1,Act:2,Watch:3};
+    return (order[a.band]??9)-(order[b.band]??9);
+  });
+  return rows;
+}
+function render(){
+  const rows=sortedFiltered();
+  const counts={Immediate:0,Urgent:0,Act:0,Watch:0,Open:0,Acked:0,Filled:0};
+  let total=0;
+  let active=0;
+  JOBS.forEach(j=>{
+    const st=j.status||'Open';
+    if(counts[st]!=null) counts[st]++;
+    const isActive = st==='Open' || st==='Acked';
+    if(isActive){
+      active++;
+      if(counts[j.band]!=null) counts[j.band]++;
+      total+=parseMoney(j.value);
+    }
+  });
+  const levelTotal=(counts.Immediate||0)+(counts.Urgent||0)+(counts.Act||0)+(counts.Watch||0);
+  const sourceByBand = {
+    Immediate:{sales:0, system:0}, Urgent:{sales:0, system:0},
+    Act:{sales:0, system:0}, Watch:{sales:0, system:0}
+  };
+  const sourceTotals = {sales:0, system:0};
+  JOBS.forEach(j=>{
+    const st=j.status||'Open';
+    if(st!=='Open' && st!=='Acked') return;
+    const flags = sourceFlags(j);
+    if(flags.sales) sourceTotals.sales++;
+    if(flags.system) sourceTotals.system++;
+    const bandSources = sourceByBand[j.band];
+    if(bandSources){
+      if(flags.sales) bandSources.sales++;
+      if(flags.system) bandSources.system++;
+    }
+  });
+  const sourceLine = counts => `<div class="source-break"><span class="sales-count">Sales ${counts.sales}</span> · <span class="system-count">System ${counts.system}</span></div>`;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="n bad">${counts.Immediate||0}</div><div class="l">🚨 Immediate</div>${sourceLine(sourceByBand.Immediate)}</div>
+    <div class="kpi"><div class="n hot">${counts.Urgent||0}</div><div class="l">⚡ Urgent</div>${sourceLine(sourceByBand.Urgent)}</div>
+    <div class="kpi"><div class="n" style="color:#8ab4ff">${counts.Act||0}</div><div class="l">🛠️ Act</div>${sourceLine(sourceByBand.Act)}</div>
+    <div class="kpi"><div class="n" style="color:var(--green)">${counts.Watch||0}</div><div class="l">👀 Watch</div>${sourceLine(sourceByBand.Watch)}</div>
+    <div class="kpi kpi-total"><div class="n total">${levelTotal}</div><div class="source-total"><span class="sales-count">Sales ${sourceTotals.sales}</span> · <span class="system-count">System ${sourceTotals.system}</span></div><div class="l">Total</div></div>
+    <div class="kpi kpi-filled"><div class="n">${FILLED_TODAY||0}</div><div class="l">✅🎉 Filled Today</div></div>
+    ${weeklyKpi(WEEKLY)}
+    ${weeklyKpi(WL_WEEKLY,{kind:'watchlist'})}
+  `;
+  document.getElementById('list').innerHTML = rows.length
+    ? rows.map((j,i)=>rowHtml(j,i+1, i<15)).join('')
+    : `<tr><td colspan="17" class="empty">No jobs match these filters.</td></tr>`;
+  wireCommentEditors(document.getElementById('list'));
+  document.getElementById('listHint').textContent = `${rows.length} jobs · ranked by Heat · top rows highlighted`;
+  document.getElementById('subtitle').innerHTML = (()=>{
+    const u = UPDATED || '—';
+    const m = String(u).match(/^(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2}(?::\d{2})?)\s*(.*)$/);
+    const stamp = m
+      ? `${m[1]} <b style="color:#ef4444;font-weight:700">${m[2]}</b>${m[3] ? (' ' + m[3]) : ''}`
+      : u;
+    return `From System and Sales Reps Slack posts · updated ${stamp}`;
+  })();
+}
+async function load(soft){
+  try{
+    let r; try{ const c=new AbortController(); const t=setTimeout(()=>c.abort(),8000); r=await fetch(API_BASE+'/data.json?ts='+Date.now(),{cache:'no-store',signal:c.signal}); clearTimeout(t); if(!r.ok) throw 0; liveNote(false);}catch(_){ liveNote(true); r=await fetch('data.json?ts='+Date.now(),{cache:'no-store'}); }
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    const ft = (d.filled_today != null) ? Number(d.filled_today) : FILLED_TODAY;
+    const wk = (d.weekly_fulfilment && typeof d.weekly_fulfilment==='object') ? d.weekly_fulfilment : WEEKLY;
+    const wl = (d.watchlist_fulfilment && typeof d.watchlist_fulfilment==='object') ? d.watchlist_fulfilment : WL_WEEKLY;
+    const fp=JSON.stringify(d.jobs)+(d.updated_at||'')+'|ft:'+ft+'|wk:'+JSON.stringify(wk||null)+'|wl:'+JSON.stringify(wl||null);
+    if(fp===lastFp) return;
+    WEEKLY = wk; WL_WEEKLY = wl;
+    lastFp=fp; JOBS=d.jobs||[]; UPDATED=d.updated_at||''; FILLED_TODAY = Number.isFinite(ft) ? ft : 0; fillSalesOptions(); fillTierOptions(); render();
+  }catch(e){
+    if(!soft) document.getElementById('list').innerHTML=`<tr><td colspan="17" class="empty">Could not load data.json</td></tr>`;
+  }
+}
+async function triggerRefresh({blocking=true}={}){
+  // ALWAYS force full pipeline: Slack/heat refresh + Metabase status + funnel + open-only membership
+  const btn=document.getElementById('refreshBtn');
+  const prev=btn?btn.textContent:'Refresh Data';
+  if(btn){ btn.textContent='Refreshing…'; btn.disabled=true; }
+  const ctrl=new AbortController();
+  const timer=setTimeout(()=>ctrl.abort(), blocking?90000:25000);
+  try{
+    const r=await fetch(API_BASE+'/api/refresh?debounce=0&force=1&ts='+Date.now(),{method:'POST',cache:'no-store',signal:ctrl.signal});
+    if(!r.ok) liveNote(true);
+    if(r.ok){
+      try{
+        const j=await r.json();
+        if(j && j.updated_at) UPDATED=j.updated_at;
+      }catch(_){}
+    }
+  }catch(_){ liveNote(true); }
+  finally{
+    clearTimeout(timer);
+    if(btn){ btn.textContent=prev; btn.disabled=false; }
+  }
+  lastFp='';
+  await load(false);
+}
+['q','band','status','sales','tier','source'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', render);
+  document.getElementById(id).addEventListener('change', render);
+});
+document.getElementById('refreshBtn').onclick=()=>triggerRefresh({blocking:true});
+// Hard refresh / first visit: same full force pipeline as the corner button
+load(false).then(()=>triggerRefresh({blocking:true}));
+// Back/forward cache restore also re-runs membership (not a soft data.json poll)
+window.addEventListener('pageshow', (e)=>{ if(e.persisted) triggerRefresh({blocking:true}); });
+setInterval(()=>load(true),60000);
+</script>
+</body>
+</html>
