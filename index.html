@@ -322,6 +322,35 @@
 </footer>
 <script>
 const API_BASE="https://festive-tux-italics.ngrok-free.dev";
+const COMMENTS_URL="";
+const COMMENTS_TOKEN="4e44010e427db8ea3d232320";
+// Save: Apps Script first (text/plain = no CORS preflight), ngrok fallback
+async function postComment(rid,text){
+  if(COMMENTS_URL){
+    try{
+      const c=new AbortController(); const t=setTimeout(()=>c.abort(),15000);
+      const r=await fetch(COMMENTS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({token:COMMENTS_TOKEN,request_id:rid,text,author:'Team'}),signal:c.signal});
+      clearTimeout(t);
+      const d=await r.json();
+      if(d&&d.ok) return new Response(JSON.stringify(d),{status:200});
+    }catch(_){}
+  }
+  return fetch(API_BASE+'/api/comment',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify({request_id:rid,text,author:'Team'})});
+}
+// Overlay latest sheet comments so every viewer sees them right away
+async function mergeSheetComments(){
+  if(!COMMENTS_URL) return;
+  try{
+    const c=new AbortController(); const t=setTimeout(()=>c.abort(),10000);
+    const r=await fetch(COMMENTS_URL+'?ts='+Date.now(),{signal:c.signal}); clearTimeout(t);
+    const cm=((await r.json())||{}).comments||{};
+    let changed=false;
+    (JOBS||[]).forEach(j=>{const x=cm[String(j.request_id||'').trim()];
+      if(x && String(x.updated_at||'')>=String(j.team_note_at||'') && (j.team_note!==x.text||j.team_note_at!==x.updated_at)){
+        j.team_note=x.text; j.team_note_at=x.updated_at; j.team_note_author=x.author||'Team'; changed=true;}});
+    if(changed && !document.querySelector('textarea.team-note:focus')) render();
+  }catch(_){}
+}
 function liveNote(on){let n=document.getElementById('liveNote');
  if(!n){n=document.createElement('div');n.id='liveNote';n.style.cssText='position:fixed;bottom:10px;left:10px;background:#0b2545;color:#c8f7dc;padding:6px 10px;border-radius:6px;font:12px sans-serif;z-index:9999;display:none';n.textContent='Live refresh unavailable, showing last synced data (updates every 10 min)';document.body.appendChild(n);}
  n.style.display=on?'block':'none';}
@@ -735,12 +764,7 @@ async function saveTeamNote(wrap){
   st.className = 'note-status';
   st.textContent = 'saving…';
   try{
-    const r = await fetch(API_BASE+'/api/comment', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      cache:'no-store',
-      body: JSON.stringify({ request_id: rid, text, author: 'Team' })
-    });
+    const r = await postComment(rid, text);
     const data = await r.json().catch(()=>({}));
     if(!r.ok || !data.ok){
       st.className = 'note-status err';
@@ -951,7 +975,7 @@ async function load(soft){
     const fp=JSON.stringify(d.jobs)+(d.updated_at||'')+'|ft:'+ft+'|wk:'+JSON.stringify(wk||null)+'|wl:'+JSON.stringify(wl||null);
     if(fp===lastFp) return;
     WEEKLY = wk; WL_WEEKLY = wl;
-    lastFp=fp; JOBS=d.jobs||[]; UPDATED=d.updated_at||''; FILLED_TODAY = Number.isFinite(ft) ? ft : 0; fillSalesOptions(); fillTierOptions(); render();
+    lastFp=fp; JOBS=d.jobs||[]; UPDATED=d.updated_at||''; FILLED_TODAY = Number.isFinite(ft) ? ft : 0; fillSalesOptions(); fillTierOptions(); render(); mergeSheetComments();
   }catch(e){
     if(!soft) document.getElementById('list').innerHTML=`<tr><td colspan="17" class="empty">Could not load data.json</td></tr>`;
   }
