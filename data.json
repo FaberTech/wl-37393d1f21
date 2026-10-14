@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 08:31:50 PT",
+ "updated_at": "2026-10-14 08:35:34 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -453,6 +453,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-15T13:00:00Z",
    "next_start_local": "2026-10-15 08:00"
+  },
+  {
+   "request_id": "129901",
+   "heat": 66,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89124?request_id=129901",
+   "company": "Aztec Group",
+   "trade": "Asbestos",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "117.4",
+   "value": "3360",
+   "slots": "2",
+   "why": "Banff Fire Cache, 2 asbestos workers, month-long full-time in Banff with accommodation + LOA; needs asbestos ticket, fall protection, MEWP/aerial lift ticket; client had 2 unfilled asbestos projects before; auto-accept off",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1791992010505979",
+   "funnel": "230 / 3 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 08:35 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 08:35:34 PT",
+   "scored_at": "2026-10-14 08:35:34 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -485,5 +518,5 @@
  },
  "funnels_updated_at": "2026-10-14 08:31:49 PT",
  "fill_updated_at": "2026-10-14 08:31:49 PT",
- "updated": "2026-10-14 15:23:34 UTC"
+ "updated": "2026-10-14 15:35:34 UTC"
 }
