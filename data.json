@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 08:10:13 PT",
+ "updated_at": "2026-10-14 08:14:28 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -124,9 +124,9 @@
    "watchlist_posted_at": "2026-10-07 09:23 PT",
    "hours_as_of": "2026-10-13 21:04:10 PT",
    "scored_at": "2026-10-07 09:23:53 PT",
-   "betadash_status": "Matched",
-   "betadash_status_id": 2,
-   "code_request_status_id": 2,
+   "betadash_status": "Unfulfilled",
+   "betadash_status_id": 6,
+   "code_request_status_id": 6,
    "start_at": "2026-10-14T13:00:00Z",
    "start_local": "2026-10-14 07:00",
    "start_tz": "America/Edmonton",
@@ -441,7 +441,10 @@
    "fill": "0/2",
    "fill_pending": false,
    "hours_as_of": "2026-10-14 07:12:05 PT",
-   "scored_at": "2026-10-14 07:12:05 PT"
+   "scored_at": "2026-10-14 07:12:05 PT",
+   "betadash_status": "Matched",
+   "betadash_status_id": 2,
+   "code_request_status_id": 2
   },
   {
    "request_id": "129900",
@@ -474,7 +477,10 @@
    "fill": "0/1",
    "fill_pending": false,
    "hours_as_of": "2026-10-14 08:10:13 PT",
-   "scored_at": "2026-10-14 08:10:13 PT"
+   "scored_at": "2026-10-14 08:10:13 PT",
+   "betadash_status": "Matched",
+   "betadash_status_id": 2,
+   "code_request_status_id": 2
   }
  ],
  "filter_rule": "open_only_v1",
