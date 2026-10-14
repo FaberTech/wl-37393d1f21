@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 14:40:47 PT",
+ "updated_at": "2026-10-14 14:45:26 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -453,6 +453,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "129989",
+   "heat": 100,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89162?request_id=129989",
+   "company": "Genics Inc",
+   "trade": "General Labour",
+   "market": "Acheson, AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "-0.7",
+   "value": "1504.5",
+   "slots": "2",
+   "why": "No-show replacement x2 GL, started 3pm today, high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk,replacement,no-show",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792014256991009?thread_ts=1792013184.608209&cid=C0923DK97A8",
+   "funnel": "3974 / 11 / 9",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 14:45 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 14:45:26 PT",
+   "scored_at": "2026-10-14 14:45:26 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -484,5 +517,6 @@
   "groups": 294
  },
  "funnels_updated_at": "2026-10-14 14:40:47 PT",
- "fill_updated_at": "2026-10-14 14:40:47 PT"
+ "fill_updated_at": "2026-10-14 14:40:47 PT",
+ "updated": "2026-10-14 21:45:26 UTC"
 }
