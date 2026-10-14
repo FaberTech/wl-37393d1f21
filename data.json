@@ -496,6 +496,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-14T16:00:00Z",
    "next_start_local": "2026-10-14 09:00"
+  },
+  {
+   "request_id": "129903",
+   "heat": 46,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89125?request_id=129903",
+   "company": "Strand",
+   "trade": "General Labour",
+   "market": "BC",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "1.1",
+   "value": "390",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791991324119349",
+   "funnel": "198 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 08:23 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 08:23:34 PT",
+   "scored_at": "2026-10-14 08:23:34 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -528,5 +561,5 @@
  },
  "funnels_updated_at": "2026-10-14 08:14:28 PT",
  "fill_updated_at": "2026-10-14 08:14:28 PT",
- "updated": "2026-10-14 15:10:13 UTC"
+ "updated": "2026-10-14 15:23:34 UTC"
 }
