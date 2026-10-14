@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-13 17:48:29 PT",
+ "updated_at": "2026-10-13 17:55:02 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -409,6 +409,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "129843",
+   "heat": 61,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89101?request_id=129843",
+   "company": "Amacon Construction Ltd.",
+   "trade": "Rigger",
+   "market": "Coquitlam, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "13.1",
+   "value": "2652",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 13.1h · high risk",
+   "intervention": "Protocol 1",
+   "flags": "High risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791939255690639",
+   "funnel": "137 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-13 17:55 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-13 17:55:02 PT",
+   "scored_at": "2026-10-13 17:55:02 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -440,5 +473,6 @@
   "groups": 284
  },
  "funnels_updated_at": "2026-10-13 17:48:29 PT",
- "fill_updated_at": "2026-10-13 17:48:29 PT"
+ "fill_updated_at": "2026-10-13 17:48:29 PT",
+ "updated": "2026-10-14 00:55:02 UTC"
 }
