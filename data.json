@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 07:12:05 PT",
+ "updated_at": "2026-10-14 08:10:13 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -442,6 +442,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-14 07:12:05 PT",
    "scored_at": "2026-10-14 07:12:05 PT"
+  },
+  {
+   "request_id": "129900",
+   "heat": 41,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89123?request_id=129900",
+   "company": "Orrmoniz",
+   "trade": "General Labour",
+   "market": "North Vancouver BC",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "0.8",
+   "value": "195",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 0.8h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791990503202589",
+   "funnel": "189 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 08:10 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 08:10:13 PT",
+   "scored_at": "2026-10-14 08:10:13 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -474,5 +507,5 @@
  },
  "funnels_updated_at": "2026-10-13 21:04:10 PT",
  "fill_updated_at": "2026-10-13 21:04:10 PT",
- "updated": "2026-10-14 14:12:05 UTC"
+ "updated": "2026-10-14 15:10:13 UTC"
 }
