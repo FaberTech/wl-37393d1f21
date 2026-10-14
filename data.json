@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 08:52:19 PT",
+ "updated_at": "2026-10-14 08:56:02 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -539,6 +539,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "129896",
+   "heat": 100,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89119?request_id=129896",
+   "company": "701 Kingsway",
+   "trade": "General Labour",
+   "market": "Vancouver, BC",
+   "sales": "Juliana",
+   "tier": "5",
+   "hours": "0.6",
+   "value": "390",
+   "slots": "1",
+   "why": "Replacement for upset customer (worker sent off site), same-day 9:30am start, high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791993286761769?thread_ts=1791989001.636509&cid=G3SUU809L",
+   "funnel": "13490 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 08:56 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 08:56:02 PT",
+   "scored_at": "2026-10-14 08:56:02 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -570,5 +603,6 @@
   "groups": 291
  },
  "funnels_updated_at": "2026-10-14 08:52:19 PT",
- "fill_updated_at": "2026-10-14 08:52:19 PT"
+ "fill_updated_at": "2026-10-14 08:52:19 PT",
+ "updated": "2026-10-14 15:56:02 UTC"
 }
