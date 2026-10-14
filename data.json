@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14 08:35:34 PT",
+ "updated_at": "2026-10-14 08:35:49 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -486,6 +486,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-14 08:35:34 PT",
    "scored_at": "2026-10-14 08:35:34 PT"
+  },
+  {
+   "request_id": "129905",
+   "heat": 28,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89126?request_id=129905",
+   "company": "Carbon Landmark",
+   "trade": "General Labour",
+   "market": "TX",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "8780.2",
+   "value": "1209.5",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 8780.2h · risk",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1791991986718129",
+   "funnel": "58 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 08:35 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 08:35:49 PT",
+   "scored_at": "2026-10-14 08:35:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -518,5 +551,5 @@
  },
  "funnels_updated_at": "2026-10-14 08:31:49 PT",
  "fill_updated_at": "2026-10-14 08:31:49 PT",
- "updated": "2026-10-14 15:35:34 UTC"
+ "updated": "2026-10-14 15:35:49 UTC"
 }
