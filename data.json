@@ -453,6 +453,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130020",
+   "heat": 48,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89191?request_id=130020",
+   "company": "Wales McLelland Construction",
+   "trade": "General Labour",
+   "market": "Pitt Meadows BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "12.6",
+   "value": "325",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 12.6h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792027598867229?thread_ts=1792027513.909169&cid=G3SUU809L",
+   "funnel": "150 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-14 18:27 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-14 18:27:47 PT",
+   "scored_at": "2026-10-14 18:27:47 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -484,5 +517,6 @@
   "groups": 296
  },
  "funnels_updated_at": "2026-10-14 18:23:03 PT",
- "fill_updated_at": "2026-10-14 18:23:03 PT"
+ "fill_updated_at": "2026-10-14 18:23:03 PT",
+ "updated": "2026-10-15 01:27:47 UTC"
 }
