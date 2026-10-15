@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 08:52:31 PT",
+ "updated_at": "2026-10-15 08:56:32 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -496,6 +496,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-15T16:30:00Z",
    "next_start_local": "2026-10-15 09:30"
+  },
+  {
+   "request_id": "130090",
+   "heat": 36,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89223?request_id=130090",
+   "company": "Crossland",
+   "trade": "General Labour",
+   "market": "Carrollton, TX",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "21.1",
+   "value": "377.6",
+   "slots": "2",
+   "why": "Sales intake @score high risk · Newman Smith High School · 21.1h to start",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "#workers_dallas",
+   "funnel": "64 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 08:56 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 08:56:32 PT",
+   "scored_at": "2026-10-15 08:56:32 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -528,5 +561,5 @@
  },
  "funnels_updated_at": "2026-10-15 08:52:31 PT",
  "fill_updated_at": "2026-10-15 08:52:31 PT",
- "updated": "2026-10-15 15:51:28 UTC"
+ "updated": "2026-10-15 15:56:32 UTC"
 }
