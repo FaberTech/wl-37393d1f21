@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 14:51:02 PT",
+ "updated_at": "2026-10-15 14:58:36 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -500,6 +500,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130174",
+   "heat": 53,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89274?request_id=130174",
+   "company": "Orion Construction",
+   "trade": "OFA Level 2",
+   "market": "Calgary, AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "15.0",
+   "value": "318.64",
+   "slots": "1",
+   "why": "OFA Level 2 for tomorrow 7am, Astria Horizon; @score (high)",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792101435033269",
+   "funnel": "122 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 14:58 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 14:58:36 PT",
+   "scored_at": "2026-10-15 14:58:36 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -531,5 +564,6 @@
   "groups": 304
  },
  "funnels_updated_at": "2026-10-15 14:51:02 PT",
- "fill_updated_at": "2026-10-15 14:51:02 PT"
+ "fill_updated_at": "2026-10-15 14:51:02 PT",
+ "updated": "2026-10-15 21:58:36 UTC"
 }
