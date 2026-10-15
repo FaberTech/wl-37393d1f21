@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 12:48:00 PT",
+ "updated_at": "2026-10-15 12:58:39 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -543,6 +543,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130143",
+   "heat": 72,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89257?request_id=130143",
+   "company": "Ridgemont Commercial Construction",
+   "trade": "—",
+   "market": "Wylie, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "15.8",
+   "value": "5162.5",
+   "slots": "5",
+   "why": "tier 2 · 5 slots · 15.8h · risk",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "#workers_dallas",
+   "funnel": "50 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 12:58 PT",
+   "fill_filled": 0,
+   "fill_total": 5,
+   "fill": "0/5",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 12:58:39 PT",
+   "scored_at": "2026-10-15 12:58:39 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -574,5 +607,6 @@
   "groups": 303
  },
  "funnels_updated_at": "2026-10-15 12:48:00 PT",
- "fill_updated_at": "2026-10-15 12:48:00 PT"
+ "fill_updated_at": "2026-10-15 12:48:00 PT",
+ "updated": "2026-10-15 19:58:39 UTC"
 }
