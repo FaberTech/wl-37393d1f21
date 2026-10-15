@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 15:49:14 PT",
+ "updated_at": "2026-10-15 16:02:37 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -543,6 +543,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130186",
+   "heat": 47,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89282?request_id=130186",
+   "company": "Infinity Properties",
+   "trade": "—",
+   "market": "Abbotsford, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "15.0",
+   "value": "276.25",
+   "slots": "1",
+   "why": "High risk: client had a bad worker experience again, wants a higher quality score worker",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792105282134389",
+   "funnel": "41 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 16:02 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 16:02:37 PT",
+   "scored_at": "2026-10-15 16:02:37 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -574,5 +607,6 @@
   "groups": 305
  },
  "funnels_updated_at": "2026-10-15 15:49:14 PT",
- "fill_updated_at": "2026-10-15 15:49:14 PT"
+ "fill_updated_at": "2026-10-15 15:49:14 PT",
+ "updated": "2026-10-15 23:02:37 UTC"
 }
