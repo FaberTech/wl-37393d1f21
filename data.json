@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 11:01:41 PT",
+ "updated_at": "2026-10-15 11:12:04 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -540,6 +540,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-20T14:00:00Z",
    "next_start_local": "2026-10-20 08:00"
+  },
+  {
+   "request_id": "130120",
+   "heat": 39,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89244?request_id=130120",
+   "company": "Wesgroup Contracting Ltd.",
+   "trade": "Machine Operator",
+   "market": "BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "91.6",
+   "value": "2234.38",
+   "slots": "1",
+   "why": "Parcel 29 Vancouver · Operator x1 (hoist exp) · Oct 19–Dec 18 · high risk, worker flipped to ES, long term/could be perm",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "G3SUU809L/1792087857.229189",
+   "funnel": "33 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 11:12 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 11:12:04 PT",
+   "scored_at": "2026-10-15 11:12:04 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -572,5 +605,5 @@
  },
  "funnels_updated_at": "2026-10-15 11:01:41 PT",
  "fill_updated_at": "2026-10-15 11:01:41 PT",
- "updated": "2026-10-15 17:37:56 UTC"
+ "updated": "2026-10-15 18:12:04 UTC"
 }
