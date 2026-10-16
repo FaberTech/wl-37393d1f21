@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 18:07:16 PT",
+ "updated_at": "2026-10-15 18:10:46 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -535,7 +535,10 @@
    "fill": "0/1",
    "fill_pending": false,
    "hours_as_of": "2026-10-15 18:07:16 PT",
-   "scored_at": "2026-10-15 18:07:16 PT"
+   "scored_at": "2026-10-15 18:07:16 PT",
+   "betadash_status": "Matched",
+   "betadash_status_id": 2,
+   "code_request_status_id": 2
   }
  ],
  "filter_rule": "open_only_v1",
