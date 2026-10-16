@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 13:22:10 PT",
+ "updated_at": "2026-10-16 13:29:34 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -452,6 +452,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130193",
+   "heat": 51,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89288?request_id=130193",
+   "company": "Royop Developments",
+   "trade": "Operator",
+   "market": "Sherwood Park, AB",
+   "sales": "Sam",
+   "tier": "4",
+   "hours": "400.5",
+   "value": "2212.5",
+   "slots": "1",
+   "why": "Skid steer/telehandler operator + carpentry on down time, Loxely Common, from Nov 2; replacing Ultimate on site, possible long term; @score (high)",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792182508303959",
+   "funnel": "13 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 13:29 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 13:29:34 PT",
+   "scored_at": "2026-10-16 13:29:34 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -483,5 +516,6 @@
   "groups": 312
  },
  "funnels_updated_at": "2026-10-16 13:22:10 PT",
- "fill_updated_at": "2026-10-16 13:22:10 PT"
+ "fill_updated_at": "2026-10-16 13:22:10 PT",
+ "updated": "2026-10-16 20:29:34 UTC"
 }
