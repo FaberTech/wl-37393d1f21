@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 13:29:34 PT",
+ "updated_at": "2026-10-16 13:30:11 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -485,6 +485,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-16 13:29:34 PT",
    "scored_at": "2026-10-16 13:29:34 PT"
+  },
+  {
+   "request_id": "126035",
+   "heat": 54,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/86671?request_id=126035",
+   "company": "Marcon",
+   "trade": "Hoist",
+   "market": "Vancouver",
+   "sales": "Talia",
+   "tier": "5",
+   "hours": "258.0",
+   "value": "1912.5",
+   "slots": "1",
+   "why": "(risk) long-term; rep unhappy with accepted worker; first order from Marcon in a while",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792182565021909",
+   "funnel": "329 / 2 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 13:30 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 13:30:11 PT",
+   "scored_at": "2026-10-16 13:30:11 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -517,5 +550,5 @@
  },
  "funnels_updated_at": "2026-10-16 13:22:10 PT",
  "fill_updated_at": "2026-10-16 13:22:10 PT",
- "updated": "2026-10-16 20:29:34 UTC"
+ "updated": "2026-10-16 20:30:11 UTC"
 }
