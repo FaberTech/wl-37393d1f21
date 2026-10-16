@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 09:59:18 PT",
+ "updated_at": "2026-10-16 10:03:30 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -500,6 +500,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-21T11:45:00Z",
    "next_start_local": "2026-10-21 06:45"
+  },
+  {
+   "request_id": "130261",
+   "heat": 39,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89323?request_id=130261",
+   "company": "TX Morrow",
+   "trade": "General Labour",
+   "market": "Celina, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "66.9",
+   "value": "1805.4",
+   "slots": "3",
+   "why": "@score (new); new project + superintendent; all PPE, broom and shovel",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1792170163102349",
+   "funnel": "52 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 10:03 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 10:03:30 PT",
+   "scored_at": "2026-10-16 10:03:30 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -532,5 +565,5 @@
  },
  "funnels_updated_at": "2026-10-16 09:59:18 PT",
  "fill_updated_at": "2026-10-16 09:59:18 PT",
- "updated": "2026-10-16 16:43:59 UTC"
+ "updated": "2026-10-16 17:03:30 UTC"
 }
