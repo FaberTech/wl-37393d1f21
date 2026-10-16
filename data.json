@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 15:49:59 PT",
+ "updated_at": "2026-10-16 15:56:57 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -452,6 +452,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T14:00:00Z",
    "next_start_local": "2026-10-26 07:00"
+  },
+  {
+   "request_id": "130319",
+   "heat": 26,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89354?request_id=130319",
+   "company": "West Coast Building Restorations Inc",
+   "trade": "General Labour",
+   "market": "Burnaby, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "64.1",
+   "value": "480",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 64.1h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792191353899389",
+   "funnel": "202 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 15:56 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 15:56:56 PT",
+   "scored_at": "2026-10-16 15:56:56 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -483,5 +516,6 @@
   "groups": 314
  },
  "funnels_updated_at": "2026-10-16 15:49:59 PT",
- "fill_updated_at": "2026-10-16 15:49:59 PT"
+ "fill_updated_at": "2026-10-16 15:49:59 PT",
+ "updated": "2026-10-16 22:56:56 UTC"
 }
