@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 20:58:50 PT",
+ "updated_at": "2026-10-16 07:36:51 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -503,11 +503,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130242",
+   "heat": 43,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89313?request_id=130242",
+   "company": "Fillmore Construction",
+   "trade": "Flagger",
+   "market": "Sherwood Park, AB",
+   "sales": "Sam",
+   "tier": "2",
+   "hours": "0.9",
+   "value": "298.73",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "urgent",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792161252981429",
+   "funnel": "6 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 07:36 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 07:36:51 PT",
+   "scored_at": "2026-10-16 07:36:51 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 15,
- "filled_today_date": "2026-10-15",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-16",
  "weekly_fulfilment": {
   "fulfilled": 359,
   "denominator": 370,
@@ -535,5 +568,5 @@
  },
  "funnels_updated_at": "2026-10-15 20:58:50 PT",
  "fill_updated_at": "2026-10-15 20:58:50 PT",
- "updated": "2026-10-16 01:07:16 UTC"
+ "updated": "2026-10-16 14:36:51 UTC"
 }
