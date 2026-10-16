@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 08:38:21 PT",
+ "updated_at": "2026-10-16 08:48:39 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -461,6 +461,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130245",
+   "heat": 67,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89315?request_id=130245",
+   "company": "HIBCO",
+   "trade": "Carpenter",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "237.7",
+   "value": "3009.0",
+   "slots": "1",
+   "why": "tier 5 · 1 slot · 237.7h · high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792165638182259",
+   "funnel": "193 / 1 / 1",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 08:48 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 08:48:39 PT",
+   "scored_at": "2026-10-16 08:48:39 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -493,5 +526,5 @@
  },
  "funnels_updated_at": "2026-10-16 08:38:21 PT",
  "fill_updated_at": "2026-10-16 08:38:21 PT",
- "updated": "2026-10-16 14:36:51 UTC"
+ "updated": "2026-10-16 15:48:39 UTC"
 }
