@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 09:41:10 PT",
+ "updated_at": "2026-10-16 09:44:00 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -457,6 +457,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130252",
+   "heat": 49,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89321?request_id=130252",
+   "company": "Core (Mia Price HS)",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "115.0",
+   "value": "4584.3",
+   "slots": "7",
+   "why": "high risk; super asked for no previously-sent workers; 3 GL overfilled by 4 for Wed Oct 21",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "#workers_dallas",
+   "funnel": "63 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-16 09:44 PT",
+   "fill_filled": 0,
+   "fill_total": 7,
+   "fill": "0/7",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-16 09:44:00 PT",
+   "scored_at": "2026-10-16 09:44:00 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -488,5 +521,6 @@
   "groups": 309
  },
  "funnels_updated_at": "2026-10-16 09:41:10 PT",
- "fill_updated_at": "2026-10-16 09:41:10 PT"
+ "fill_updated_at": "2026-10-16 09:41:10 PT",
+ "updated": "2026-10-16 16:43:59 UTC"
 }
