@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15 18:04:03 PT",
+ "updated_at": "2026-10-15 18:07:16 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -503,6 +503,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-19T14:00:00Z",
    "next_start_local": "2026-10-19 07:00"
+  },
+  {
+   "request_id": "130205",
+   "heat": 47,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89294?request_id=130205",
+   "company": "Amacon",
+   "trade": "Hoist",
+   "market": "Vancouver BC",
+   "sales": "Natalie",
+   "tier": "2",
+   "hours": "12.9",
+   "value": "327.25",
+   "slots": "1",
+   "why": "high risk; long-term hoist; prior worker removed from site",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792112786090649",
+   "funnel": "10 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-15 18:07 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-15 18:07:16 PT",
+   "scored_at": "2026-10-15 18:07:16 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -534,5 +567,6 @@
   "groups": 306
  },
  "funnels_updated_at": "2026-10-15 18:04:03 PT",
- "fill_updated_at": "2026-10-15 18:04:03 PT"
+ "fill_updated_at": "2026-10-15 18:04:03 PT",
+ "updated": "2026-10-16 01:07:16 UTC"
 }
