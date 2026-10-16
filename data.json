@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16 10:40:51 PT",
+ "updated_at": "2026-10-16 10:40:57 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -555,7 +555,7 @@
    "source": "Sales intake",
    "status": "Open",
    "link": "https://betadash.faberconnect.com/#/requests/view-group/89301?request_id=130264",
-   "company": "Lucas Tom Thumb (Ridgemont)",
+   "company": "Ridgemont (Lucas Tomb Thumb)",
    "trade": "—",
    "market": "Wylie TX",
    "sales": "Samantha",
@@ -577,8 +577,8 @@
    "fill_total": 5,
    "fill": "2/5",
    "fill_pending": false,
-   "hours_as_of": "2026-10-16 10:40:51 PT",
-   "scored_at": "2026-10-16 10:40:51 PT"
+   "hours_as_of": "2026-10-16 10:40:57 PT",
+   "scored_at": "2026-10-16 10:40:57 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -611,5 +611,5 @@
  },
  "funnels_updated_at": "2026-10-16 10:34:45 PT",
  "fill_updated_at": "2026-10-16 10:34:45 PT",
- "updated": "2026-10-16 17:40:51 UTC"
+ "updated": "2026-10-16 17:40:57 UTC"
 }
