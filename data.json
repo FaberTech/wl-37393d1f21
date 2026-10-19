@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19 12:28:03 PT",
+ "updated_at": "2026-10-19 12:36:49 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -234,6 +234,39 @@
    "team_note": "Moved to Oct 26",
    "team_note_at": "2026-10-16 17:32 PT",
    "team_note_author": "Team"
+  },
+  {
+   "request_id": "130440",
+   "heat": 47,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89433?request_id=130440",
+   "company": "Norson",
+   "trade": "—",
+   "market": "Penticton, BC",
+   "sales": "Juliana",
+   "tier": "5",
+   "hours": "33.4",
+   "value": "1608.75",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792434277671559",
+   "funnel": "18 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-19 12:36 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-19 12:36:49 PT",
+   "scored_at": "2026-10-19 12:36:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -265,5 +298,6 @@
   "groups": 317
  },
  "funnels_updated_at": "2026-10-19 12:28:03 PT",
- "fill_updated_at": "2026-10-19 12:28:03 PT"
+ "fill_updated_at": "2026-10-19 12:28:03 PT",
+ "updated": "2026-10-19 19:36:49 UTC"
 }
