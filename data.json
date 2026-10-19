@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19 15:20:51 PT",
+ "updated_at": "2026-10-19 15:28:05 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -277,6 +277,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-21T05:00:00Z",
    "next_start_local": "2026-10-20 22:00"
+  },
+  {
+   "request_id": "130510",
+   "heat": 60,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89479?request_id=130510",
+   "company": "Maclure",
+   "trade": "—",
+   "market": "Abbotsford, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "15.5",
+   "value": "2340",
+   "slots": "2",
+   "why": "@score(highrisk): bad experience with workers the last couple times",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792448827400599",
+   "funnel": "39 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-19 15:28 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-19 15:28:05 PT",
+   "scored_at": "2026-10-19 15:28:05 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -308,5 +341,6 @@
   "groups": 318
  },
  "funnels_updated_at": "2026-10-19 15:20:51 PT",
- "fill_updated_at": "2026-10-19 15:20:51 PT"
+ "fill_updated_at": "2026-10-19 15:20:51 PT",
+ "updated": "2026-10-19 22:28:05 UTC"
 }
