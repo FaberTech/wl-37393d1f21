@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 14:25:06 PT",
+ "updated_at": "2026-10-20 14:35:02 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -363,6 +363,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-21T18:30:00Z",
    "next_start_local": "2026-10-21 11:30"
+  },
+  {
+   "request_id": "130585",
+   "heat": 75,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89540?request_id=130585",
+   "company": "Cooks Construction",
+   "trade": "Carpenter",
+   "market": "Calgary AB",
+   "sales": "Gabbie",
+   "tier": "3",
+   "hours": "39.4",
+   "value": "5265.75",
+   "slots": "2",
+   "why": "New client order (Cooks Construction CAL3 Data Center), 2x 5-yr carpenters, high risk: good English and full-shift commitment, auto-accept off",
+   "intervention": "Protocol 1",
+   "flags": "new,high risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792524296076959",
+   "funnel": "7 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 14:35 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 14:35:02 PT",
+   "scored_at": "2026-10-20 14:35:02 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -395,5 +428,5 @@
  },
  "funnels_updated_at": "2026-10-20 14:25:06 PT",
  "fill_updated_at": "2026-10-20 14:25:06 PT",
- "updated": "2026-10-20 21:13:02 UTC"
+ "updated": "2026-10-20 21:35:02 UTC"
 }
