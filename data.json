@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19 21:02:51 PT",
+ "updated_at": "2026-10-20 05:47:09 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -277,11 +277,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-21T05:00:00Z",
    "next_start_local": "2026-10-20 22:00"
+  },
+  {
+   "request_id": "130540",
+   "heat": 57,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89501?request_id=130540",
+   "company": "Waltz Construction",
+   "trade": "General Labour",
+   "market": "Fort Worth, TX",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "1.2",
+   "value": "377.6",
+   "slots": "2",
+   "why": "scored via @score (new) same-day, first order",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "#workers_dallas",
+   "funnel": "48 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 05:47 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 05:47:09 PT",
+   "scored_at": "2026-10-20 05:47:09 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 9,
- "filled_today_date": "2026-10-19",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-20",
  "weekly_fulfilment": {
   "fulfilled": 119,
   "denominator": 121,
@@ -308,5 +341,6 @@
   "groups": 320
  },
  "funnels_updated_at": "2026-10-19 21:02:51 PT",
- "fill_updated_at": "2026-10-19 21:02:51 PT"
+ "fill_updated_at": "2026-10-19 21:02:51 PT",
+ "updated": "2026-10-20 12:47:09 UTC"
 }
