@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 09:48:37 PT",
+ "updated_at": "2026-10-20 10:04:38 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -320,6 +320,39 @@
    "team_note": "Moved to Oct 26",
    "team_note_at": "2026-10-16 17:32 PT",
    "team_note_author": "Team"
+  },
+  {
+   "request_id": "130573",
+   "heat": 42,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89528?request_id=130573",
+   "company": "Lear Construction",
+   "trade": "SK",
+   "market": "Calgary, AB",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "19.9",
+   "value": "827.48",
+   "slots": "1",
+   "why": "New superintendent (first time with Faber); fired previous agency for no-shows, needs solid reliable worker",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792515816589149",
+   "funnel": "85 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 10:04 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 10:04:38 PT",
+   "scored_at": "2026-10-20 10:04:38 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -351,5 +384,6 @@
   "groups": 323
  },
  "funnels_updated_at": "2026-10-20 09:48:37 PT",
- "fill_updated_at": "2026-10-20 09:48:37 PT"
+ "fill_updated_at": "2026-10-20 09:48:37 PT",
+ "updated": "2026-10-20 17:04:38 UTC"
 }
