@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 05:47:09 PT",
+ "updated_at": "2026-10-20 06:48:04 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -310,6 +310,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-20 05:47:09 PT",
    "scored_at": "2026-10-20 05:47:09 PT"
+  },
+  {
+   "request_id": "130552",
+   "heat": 53,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89508?request_id=130552",
+   "company": "Urban One",
+   "trade": "Flagger",
+   "market": "Burnaby, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "0.2",
+   "value": "372.98",
+   "slots": "1",
+   "why": "Flagger ASAP, starts today 7am (0.2h), high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792504031712259",
+   "funnel": "27 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 06:48 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 06:48:04 PT",
+   "scored_at": "2026-10-20 06:48:04 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -342,5 +375,5 @@
  },
  "funnels_updated_at": "2026-10-19 21:02:51 PT",
  "fill_updated_at": "2026-10-19 21:02:51 PT",
- "updated": "2026-10-20 12:47:09 UTC"
+ "updated": "2026-10-20 13:48:04 UTC"
 }
