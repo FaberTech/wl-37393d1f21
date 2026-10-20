@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 14:43:22 PT",
+ "updated_at": "2026-10-20 14:44:10 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -449,6 +449,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-21T14:00:00Z",
    "next_start_local": "2026-10-21 07:00"
+  },
+  {
+   "request_id": "130566",
+   "heat": 35,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89519?request_id=130566",
+   "company": "Gallaway Construction",
+   "trade": "General Labour",
+   "market": "Royse City, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "159.3h",
+   "value": "$1,433.60",
+   "slots": "2",
+   "why": "scored via @score (new)",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "#workers_dallas",
+   "funnel": "47 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 14:44 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 14:44:10 PT",
+   "scored_at": "2026-10-20 14:44:10 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -481,5 +514,5 @@
  },
  "funnels_updated_at": "2026-10-20 14:43:22 PT",
  "fill_updated_at": "2026-10-20 14:43:22 PT",
- "updated": "2026-10-20 21:39:43 UTC"
+ "updated": "2026-10-20 21:44:10 UTC"
 }
