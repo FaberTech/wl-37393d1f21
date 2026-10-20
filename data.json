@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 16:31:03 PT",
+ "updated_at": "2026-10-20 16:32:12 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -409,6 +409,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T13:00:00Z",
    "next_start_local": "2026-10-27 08:00"
+  },
+  {
+   "request_id": "130678",
+   "heat": 55,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89588?request_id=130678",
+   "company": "Concore Concrete",
+   "trade": "Skilled Labourer",
+   "market": "North Vancouver BC",
+   "sales": "Stephen",
+   "tier": "2",
+   "hours": "13.5",
+   "value": "891",
+   "slots": "2",
+   "why": "New logo; trial day, possible ongoing for weeks",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792539088698699",
+   "funnel": "174 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-20 16:32 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-20 16:32:12 PT",
+   "scored_at": "2026-10-20 16:32:12 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -440,5 +473,6 @@
   "groups": 329
  },
  "funnels_updated_at": "2026-10-20 16:31:03 PT",
- "fill_updated_at": "2026-10-20 16:31:03 PT"
+ "fill_updated_at": "2026-10-20 16:31:03 PT",
+ "updated": "2026-10-20 23:32:12 UTC"
 }
