@@ -655,5 +655,7 @@
   "definition": "all non-deleted requests in request groups of any job ever on the Watch list (watchlist_ever_request_ids.json), slots starting Mon 00:00 PT..now: status 3/4/5 / (3/4/5 + 1/2/6 + 8); 7 excluded",
   "source": "metabase_funnel_batch",
   "groups": 337
- }
+ },
+ "funnels_updated_at": "2026-10-21 14:05:13 PT",
+ "fill_updated_at": "2026-10-21 14:05:13 PT"
 }
