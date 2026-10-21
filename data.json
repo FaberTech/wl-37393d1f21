@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 14:31:33 PT",
+ "updated_at": "2026-10-21 14:35:59 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -659,6 +659,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-21 14:31:33 PT",
    "scored_at": "2026-10-21 14:31:33 PT"
+  },
+  {
+   "request_id": "130788",
+   "heat": 21,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89640?request_id=130788",
+   "company": "Royop Developments - Loxely Common",
+   "trade": "General Labour",
+   "market": "Sherwood Park, AB",
+   "sales": "Sam",
+   "tier": "2",
+   "hours": "112.4",
+   "value": "1253.75",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792618509885009",
+   "funnel": "67 / 0 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 14:35 PT",
+   "fill_filled": 1,
+   "fill_total": 1,
+   "fill": "1/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 14:35:59 PT",
+   "scored_at": "2026-10-21 14:35:59 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -691,5 +724,5 @@
  },
  "funnels_updated_at": "2026-10-21 14:29:48 PT",
  "fill_updated_at": "2026-10-21 14:29:48 PT",
- "updated": "2026-10-21 21:31:33 UTC"
+ "updated": "2026-10-21 21:35:59 UTC"
 }
