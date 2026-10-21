@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 12:45:57 PT",
+ "updated_at": "2026-10-21 12:46:28 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -580,6 +580,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T13:00:00Z",
    "next_start_local": "2026-10-27 08:00"
+  },
+  {
+   "request_id": "130756",
+   "heat": 43,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89636?request_id=130756",
+   "company": "Roseridge Waste Services",
+   "trade": "General Labour",
+   "market": "Rivière Qui Barre, AB",
+   "sales": "Matthias",
+   "tier": "2",
+   "hours": "19.2",
+   "value": "3363.60",
+   "slots": "4",
+   "why": "Sales intake @score; site clean up Oct 22–27, vehicle required",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792611920563339",
+   "funnel": "55 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 12:46 PT",
+   "fill_filled": 0,
+   "fill_total": 4,
+   "fill": "0/4",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 12:46:28 PT",
+   "scored_at": "2026-10-21 12:46:28 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -611,5 +644,6 @@
   "groups": 336
  },
  "funnels_updated_at": "2026-10-21 12:45:57 PT",
- "fill_updated_at": "2026-10-21 12:45:57 PT"
+ "fill_updated_at": "2026-10-21 12:45:57 PT",
+ "updated": "2026-10-21 19:46:28 UTC"
 }
