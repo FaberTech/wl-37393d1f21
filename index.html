@@ -846,7 +846,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention">Protocol 1</div></td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div><div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
@@ -1015,5 +1015,101 @@ load(false).then(()=>triggerRefresh({blocking:true}));
 window.addEventListener('pageshow', (e)=>{ if(e.persisted) triggerRefresh({blocking:true}); });
 setInterval(()=>load(true),60000);
 </script>
+<!-- protocol1:start (Apply Protocol 1 button; owner: protocol1 bot; module in /workspace/protocol1) -->
+<style>
+  .p1-btn { background:#1d2b4a; color:#cfe0ff; border:1px solid #35548f; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .p1-btn:hover { background:#27406e; }
+  .p1-sent { font-size:11px; color:#7ee2a8; font-weight:700; white-space:nowrap; }
+  .p1-sent small { display:block; color:var(--muted); font-weight:500; }
+  #p1-modal { position:fixed; inset:0; background:rgba(0,0,0,.72); display:none; z-index:9999; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 12px; }
+  #p1-modal.open { display:flex; }
+  #p1-modal .box { background:#0b0d12; border:1px solid #2a3245; border-radius:14px; max-width:640px; width:100%; padding:18px 20px; color:var(--text); font-size:13px; }
+  #p1-modal h3 { margin:0 0 6px; font-size:16px; }
+  #p1-modal .mode { display:inline-block; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; margin-left:6px; }
+  #p1-modal .mode.dry { background:#3b2f0b; color:#ffd36e; } #p1-modal .mode.live { background:#4a1212; color:#ff9b9b; }
+  #p1-modal .kv { display:grid; grid-template-columns:150px 1fr; gap:3px 10px; margin:10px 0; }
+  #p1-modal .kv div:nth-child(odd) { color:var(--muted); }
+  #p1-modal pre { white-space:pre-wrap; background:#05070a; border:1px solid #1f2533; border-radius:8px; padding:8px 10px; font-size:12px; max-height:260px; overflow:auto; }
+  #p1-modal .row { display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap; }
+  #p1-modal input { background:#05070a; border:1px solid #2a3245; color:var(--text); border-radius:8px; padding:6px 8px; width:110px; letter-spacing:.2em; }
+  #p1-modal button { border-radius:8px; padding:6px 12px; font-weight:700; cursor:pointer; border:1px solid #2a3245; background:#121722; color:var(--text); }
+  #p1-modal button.go { background:#1f6f43; border-color:#2f9a5f; }
+  #p1-modal button:disabled { opacity:.5; cursor:default; }
+  #p1-modal .err { color:#ff9b9b; } #p1-modal .ok { color:#7ee2a8; }
+</style>
+<div id="p1-modal" role="dialog" aria-modal="true"><div class="box" id="p1-box"></div></div>
+<script>
+const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py rewrites this to the ngrok API for the GitHub Pages copy
+(function(){
+  let P1 = { live:false, lock_hours:12, sent:{} };
+  const $m = document.getElementById('p1-modal'), $b = document.getElementById('p1-box');
+  const e = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function shortTime(at){ const m=/(\d{2}):(\d{2}):\d{2}/.exec(at||''); if(!m) return at||''; let h=+m[1]; const ap=h<12?'am':'pm'; h=h%12||12; return `${h}:${m[2]}${ap}`; }
+  function lockedInfo(rid){ const s=P1.sent[String(rid)]; if(!s) return null; const ageH=(Date.now()/1000-(+s.at_epoch||0))/3600; return ageH < P1.lock_hours ? s : null; }
+  function decorate(){
+    document.querySelectorAll('.p1-cell').forEach(cell=>{
+      const rid=cell.dataset.rid; if(!rid) return;
+      const s=lockedInfo(rid);
+      const want = s ? `sent:${s.at_epoch}` : 'btn';
+      if(cell.dataset.p1state===want) return;
+      cell.dataset.p1state=want;
+      cell.innerHTML = s
+        ? `<div class="p1-sent" title="Protocol 1 sent; locked ${P1.lock_hours}h">P1 sent ${e(shortTime(s.at))} PT · ${e(s.count)}</div>`
+        : `<button type="button" class="p1-btn" data-rid="${e(rid)}">Apply Protocol 1</button>`;
+    });
+  }
+  async function loadStatus(){
+    try{ const r=await fetch(P1_BASE+'/api/protocol1/status?ts='+Date.now(),{cache:'no-store'}); if(r.ok){ P1=await r.json(); } }catch(_){}
+    document.querySelectorAll('.p1-cell').forEach(c=>{ delete c.dataset.p1state; }); decorate();
+  }
+  async function post(body){
+    const r=await fetch(P1_BASE+'/api/protocol1',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify(body)});
+    let d={}; try{ d=await r.json(); }catch(_){ d={ok:false,error:'HTTP '+r.status}; } return d;
+  }
+  function close(){ $m.classList.remove('open'); $b.innerHTML=''; }
+  $m.addEventListener('click',ev=>{ if(ev.target===$m) close(); });
+  document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && $m.classList.contains('open')) close(); });
+  async function open(rid){
+    $m.classList.add('open');
+    $b.innerHTML=`<h3>Apply Protocol 1 · ${e(rid)}</h3><div class="muted">Loading audience and preview…</div>`;
+    const d=await post({action:'preview', request_id:rid});
+    if(!d.ok){ $b.innerHTML=`<h3>Apply Protocol 1 · ${e(rid)}</h3><p class="err">${e(d.error||'Preview failed')}</p><div class="row"><button id="p1-x">Close</button></div>`; document.getElementById('p1-x').onclick=close; return; }
+    const j=d.job||{}, c=d.copy||{}, live=!!d.live || !!P1.live;
+    $b.innerHTML=`
+      <h3>Apply Protocol 1 · ${e(rid)} <span class="mode ${live?'live':'dry'}">${live?'LIVE: will send':'DRY RUN: nothing is sent'}</span></h3>
+      <div class="muted">Email + app push through Intercom (event <code>${e(d.event_name)}</code>), asking workers to apply through the link.</div>
+      <div class="kv">
+        <div>Job</div><div>${e(j.trade)} · ${e(j.city)}, ${e(j.province)} · $${e(j.worker_price)}/hr</div>
+        <div>Audience</div><div><b>${e(d.audience_n)}</b> workers (Tier A matched: ${e(d.tiers?.A)}, Tier B nearby trade: ${e(d.tiers?.B)}) · cap ${e(d.cap)}</div>
+        <div>Reach</div><div>${e(d.reachable_push)} have the app (push) · ${e(d.email_unsub)} email-unsubscribed · ${e(d.intercom_inactive_90d)} not seen in Intercom 90d</div>
+        <div>Apply link</div><div><a href="${e(d.apply_link?.url)}" target="_blank" rel="noopener">${e(d.apply_link?.url)}</a> <span class="muted">(${e(d.apply_link?.kind)})</span></div>
+        <div>Data</div><div class="muted">${e(d.audience_source)}${d.audience_source==='cache'?` · ${e(d.audience_age_min)} min old`:''}${d.intercom_lookup_error?` · <span class="err">Intercom lookup: ${e(d.intercom_lookup_error)}</span>`:''}</div>
+      </div>
+      <div><b>Email</b> · ${e(c.email_subject)}</div><pre>${e(c.email_body)}</pre>
+      <div><b>Push</b> · ${e(c.push_title)}</div><pre>${e(c.push_body)}</pre>
+      <div class="row"><label>Ops PIN <input id="p1-pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"></label>
+        <button class="go" id="p1-go">${live?'Send Protocol 1':'Run dry run'}</button><button id="p1-x">Cancel</button></div>
+      <div id="p1-res" style="margin-top:10px"></div>`;
+    document.getElementById('p1-x').onclick=close;
+    const pin=document.getElementById('p1-pin'); pin.focus();
+    const go=document.getElementById('p1-go');
+    go.onclick=async()=>{
+      if(!/^\d{6}$/.test(pin.value)){ document.getElementById('p1-res').innerHTML='<span class="err">Enter the 6-digit ops PIN.</span>'; return; }
+      go.disabled=true; document.getElementById('p1-res').innerHTML='<span class="muted">Working…</span>';
+      const r=await post({action:'send', request_id:rid, pin:pin.value, actor:'Watch list'});
+      pin.value='';
+      if(!r.ok){ go.disabled=false; document.getElementById('p1-res').innerHTML=`<span class="err">${e(r.error||'Failed')}</span>`; return; }
+      document.getElementById('p1-res').innerHTML = r.mode==='live'
+        ? `<span class="ok">Sent to ${e(r.sent_n)} workers${r.failed_n?` (${e(r.failed_n)} failed)`:''}.</span>`
+        : `<span class="ok">Dry run OK: ${e(r.audience_n)} workers would get it. Nothing was sent.</span>`;
+      loadStatus();
+    };
+  }
+  document.addEventListener('click',ev=>{ const b=ev.target.closest && ev.target.closest('.p1-btn'); if(b){ ev.preventDefault(); ev.stopPropagation(); open(b.dataset.rid); } }, true);
+  new MutationObserver(()=>decorate()).observe(document.body,{childList:true,subtree:true});
+  loadStatus(); setInterval(loadStatus, 60000);
+})();
+</script>
+<!-- protocol1:end -->
 </body>
 </html>
