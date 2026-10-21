@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20 21:01:44 PT",
+ "updated_at": "2026-10-21 06:55:45 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -363,11 +363,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T13:00:00Z",
    "next_start_local": "2026-10-27 08:00"
+  },
+  {
+   "request_id": "130704",
+   "heat": 71,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89610?request_id=130704",
+   "company": "LEAR - PORTE Currie Barracks",
+   "trade": "Skilled Labourer",
+   "market": "Calgary, AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "0.6",
+   "value": "827.48",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "urgent",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792590883227299",
+   "funnel": "3821 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 06:55 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 06:55:45 PT",
+   "scored_at": "2026-10-21 06:55:45 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 13,
- "filled_today_date": "2026-10-20",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-21",
  "weekly_fulfilment": {
   "fulfilled": 230,
   "denominator": 237,
@@ -394,5 +427,6 @@
   "groups": 330
  },
  "funnels_updated_at": "2026-10-20 21:01:43 PT",
- "fill_updated_at": "2026-10-20 21:01:43 PT"
+ "fill_updated_at": "2026-10-20 21:01:43 PT",
+ "updated": "2026-10-21 13:55:45 UTC"
 }
