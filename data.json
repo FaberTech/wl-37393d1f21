@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 11:43:58 PT",
+ "updated_at": "2026-10-21 11:49:23 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -451,6 +451,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T13:00:00Z",
    "next_start_local": "2026-10-27 08:00"
+  },
+  {
+   "request_id": "130739",
+   "heat": 59,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89629?request_id=130739",
+   "company": "Beyond Roofing",
+   "trade": "SK",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "4",
+   "hours": "18.7",
+   "value": "1298",
+   "slots": "2",
+   "why": "Sunreal Condo, Red Deer AB (client pays travel from Calgary); new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792608510488269?thread_ts=1792607745.649169&cid=C071SU4EHBK",
+   "funnel": "235 / 1 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 11:49 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 11:49:23 PT",
+   "scored_at": "2026-10-21 11:49:23 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -482,5 +515,6 @@
   "groups": 334
  },
  "funnels_updated_at": "2026-10-21 11:43:58 PT",
- "fill_updated_at": "2026-10-21 11:43:58 PT"
+ "fill_updated_at": "2026-10-21 11:43:58 PT",
+ "updated": "2026-10-21 18:49:23 UTC"
 }
