@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 09:12:38 PT",
+ "updated_at": "2026-10-21 09:12:40 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -407,6 +407,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T11:00:00Z",
    "next_start_local": "2026-10-26 07:00"
+  },
+  {
+   "request_id": "130517",
+   "heat": 68,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89485?request_id=130517",
+   "company": "Peak",
+   "trade": "Forklift Operator",
+   "market": "BC",
+   "sales": "Stephen",
+   "tier": "5",
+   "hours": "18.8",
+   "value": "2856",
+   "slots": "1",
+   "why": "@score(risk) still open, start pushed to Monday per Stephen; client OK without forklift ticket",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1791490241191279",
+   "funnel": "11 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 09:12 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 09:12:40 PT",
+   "scored_at": "2026-10-21 09:12:40 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -439,5 +472,5 @@
  },
  "funnels_updated_at": "2026-10-21 09:12:38 PT",
  "fill_updated_at": "2026-10-21 09:12:38 PT",
- "updated": "2026-10-21 16:11:28 UTC"
+ "updated": "2026-10-21 16:12:40 UTC"
 }
