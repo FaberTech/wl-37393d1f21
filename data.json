@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 09:05:04 PT",
+ "updated_at": "2026-10-21 09:11:28 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -364,6 +364,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T12:00:00Z",
    "next_start_local": "2026-10-27 07:00"
+  },
+  {
+   "request_id": "130718",
+   "heat": 69,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89620?request_id=130718",
+   "company": "Peak",
+   "trade": "General Labour",
+   "market": "Windsor, ON",
+   "sales": "Stephen",
+   "tier": "5",
+   "hours": "114.8",
+   "value": "6120",
+   "slots": "3",
+   "why": "x3 GL broom crew til end, $25/hr; @score(risk)",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792599043221179",
+   "funnel": "26 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 09:11 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 09:11:28 PT",
+   "scored_at": "2026-10-21 09:11:28 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -396,5 +429,5 @@
  },
  "funnels_updated_at": "2026-10-21 09:05:04 PT",
  "fill_updated_at": "2026-10-21 09:05:04 PT",
- "updated": "2026-10-21 15:15:23 UTC"
+ "updated": "2026-10-21 16:11:28 UTC"
 }
