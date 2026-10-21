@@ -846,7 +846,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div></td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div><div class="pn-later"><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 2</button><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 3</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div><div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
@@ -1019,6 +1019,8 @@ setInterval(()=>load(true),60000);
 <style>
   .p1-btn { background:#1d2b4a; color:#cfe0ff; border:1px solid #35548f; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
   .p1-btn:hover { background:#27406e; }
+  .pn-later { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
+  .pn-btn { background:#141a26; color:#7d8aa5; border:1px dashed #2f3d5c; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; white-space:nowrap; cursor:default; }
   .p1-sent { font-size:11px; color:#7ee2a8; font-weight:700; white-space:nowrap; }
   .p1-sent small { display:block; color:var(--muted); font-weight:500; }
   #p1-modal { position:fixed; inset:0; background:rgba(0,0,0,.72); display:none; z-index:9999; align-items:flex-start; justify-content:center; overflow:auto; padding:40px 12px; }
