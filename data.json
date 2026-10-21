@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21 14:29:48 PT",
+ "updated_at": "2026-10-21 14:31:33 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -626,6 +626,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T13:00:00Z",
    "next_start_local": "2026-10-27 08:00"
+  },
+  {
+   "request_id": "130787",
+   "heat": 25,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89639?request_id=130787",
+   "company": "Royop Developments - Loxely Project",
+   "trade": "SL",
+   "market": "Sherwood Park AB",
+   "sales": "Sam",
+   "tier": "2",
+   "hours": "112.5",
+   "value": "1379.13",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792618245862139",
+   "funnel": "55 / 1 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-21 14:31 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-21 14:31:33 PT",
+   "scored_at": "2026-10-21 14:31:33 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -657,5 +690,6 @@
   "groups": 337
  },
  "funnels_updated_at": "2026-10-21 14:29:48 PT",
- "fill_updated_at": "2026-10-21 14:29:48 PT"
+ "fill_updated_at": "2026-10-21 14:29:48 PT",
+ "updated": "2026-10-21 21:31:33 UTC"
 }
