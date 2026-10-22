@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 11:16:24 PT",
+ "updated_at": "2026-10-22 11:17:55 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -676,6 +676,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:00:00Z",
    "next_start_local": "2026-10-26 06:00"
+  },
+  {
+   "request_id": "130873",
+   "heat": 66,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89711?request_id=130873",
+   "company": "Perfection Millwork P1",
+   "trade": "Finish Carpenter",
+   "market": "Calgary, AB",
+   "sales": "Gabbie",
+   "tier": "4",
+   "hours": "427.2",
+   "value": "4788.00",
+   "slots": "2",
+   "why": "tier 4 · 2 slots · 427.2h · high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792692984438979",
+   "funnel": "10 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 11:17 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 11:17:54 PT",
+   "scored_at": "2026-10-22 11:17:54 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -708,5 +741,5 @@
  },
  "funnels_updated_at": "2026-10-22 11:16:24 PT",
  "fill_updated_at": "2026-10-22 11:16:24 PT",
- "updated": "2026-10-22 17:41:59 UTC"
+ "updated": "2026-10-22 18:17:54 UTC"
 }
