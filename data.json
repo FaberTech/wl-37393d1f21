@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 15:33:33 PT",
+ "updated_at": "2026-10-22 15:34:49 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -801,6 +801,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T14:00:00Z",
    "next_start_local": "2026-10-26 08:00"
+  },
+  {
+   "request_id": "130912",
+   "heat": 45,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89735?request_id=130912",
+   "company": "YVR Bulk Fill",
+   "trade": "—",
+   "market": "Richmond, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "15.4",
+   "value": "1787.50",
+   "slots": "1",
+   "why": "@score: swap worker at C&C (longer-term position), worker unreliable",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792708453173219",
+   "funnel": "165 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 15:34 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 15:34:49 PT",
+   "scored_at": "2026-10-22 15:34:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -832,5 +865,6 @@
   "groups": 347
  },
  "funnels_updated_at": "2026-10-22 15:33:33 PT",
- "fill_updated_at": "2026-10-22 15:33:33 PT"
+ "fill_updated_at": "2026-10-22 15:33:33 PT",
+ "updated": "2026-10-22 22:34:49 UTC"
 }
