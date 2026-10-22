@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 12:31:58 PT",
+ "updated_at": "2026-10-22 12:41:11 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -763,6 +763,39 @@
    "next_start_at": "2026-10-22T20:00:00Z",
    "next_start_local": "2026-10-22 13:00",
    "overdue_since": "2026-10-22 12:30:00 PT"
+  },
+  {
+   "request_id": "130886",
+   "heat": 46,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89718?request_id=130886",
+   "company": "Crossland",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "16.3",
+   "value": "424.80",
+   "slots": "2",
+   "why": "v2.3 Option A; sales intake; Metabase hours 16.3 tier 2 value $424.80 slots 2 funnel 62/0/0 autofill on; (high risk) first order, new site/new super, brooms requested",
+   "intervention": "Protocol 1",
+   "flags": "(high risk)",
+   "slack": "#workers_dallas",
+   "funnel": "62 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 12:41 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 12:41:11 PT",
+   "scored_at": "2026-10-22 12:41:11 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -795,5 +828,5 @@
  },
  "funnels_updated_at": "2026-10-22 12:31:58 PT",
  "fill_updated_at": "2026-10-22 12:31:58 PT",
- "updated": "2026-10-22 18:57:39 UTC"
+ "updated": "2026-10-22 19:41:11 UTC"
 }
