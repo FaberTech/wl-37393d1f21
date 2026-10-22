@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 11:52:11 PT",
+ "updated_at": "2026-10-22 11:57:39 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -719,6 +719,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-09T14:30:00Z",
    "next_start_local": "2026-11-09 07:30"
+  },
+  {
+   "request_id": "130877",
+   "heat": 18,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/130877",
+   "company": "Axiom",
+   "trade": "Flagger",
+   "market": "Vancouver",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "120.5",
+   "value": "364.50",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792695415435359",
+   "funnel": "21 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 11:57 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 11:57:39 PT",
+   "scored_at": "2026-10-22 11:57:39 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -751,5 +784,5 @@
  },
  "funnels_updated_at": "2026-10-22 11:52:11 PT",
  "fill_updated_at": "2026-10-22 11:52:11 PT",
- "updated": "2026-10-22 18:17:54 UTC"
+ "updated": "2026-10-22 18:57:39 UTC"
 }
