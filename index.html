@@ -584,8 +584,9 @@ function statusBadge(j){
   else if(/match/i.test(t)) cls='matched';
   let label=t;
   if(cls==='filled' && typeof j==='object' && j){
-    const fp=fillProgress(j);
-    label = fp ? `Filled ${fp}` : 'Filled';
+    const ft=Number(j.fill_total||0), ff=Number(j.fill_filled||0);
+    if(ft && ff<ft){ cls='open'; label='Open'; }
+    else { label='Fulfilled'; }
   }
   const main = `<span class="badge ${cls}">${label}</span>`;
   // Second line under Open only — distinguish new Open vs Withdraw
