@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23 16:43:31 PT",
+ "updated_at": "2026-10-23 16:48:18 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -711,6 +711,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:45:00Z",
    "next_start_local": "2026-10-26 07:45"
+  },
+  {
+   "request_id": "131110",
+   "heat": 20,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89826?request_id=131110",
+   "company": "Scott Construction",
+   "trade": "General Labour",
+   "market": "Abbotsford, BC",
+   "sales": "Renz",
+   "tier": "2",
+   "hours": "62.7",
+   "value": "552.50",
+   "slots": "2",
+   "why": "tier 2 · 2 slots · 62.7h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792799225781919?thread_ts=1792794677.942099&cid=G3SUU809L",
+   "funnel": "40 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 16:48 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 16:48:18 PT",
+   "scored_at": "2026-10-23 16:48:18 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -742,5 +775,6 @@
   "groups": 361
  },
  "funnels_updated_at": "2026-10-23 16:43:31 PT",
- "fill_updated_at": "2026-10-23 16:43:31 PT"
+ "fill_updated_at": "2026-10-23 16:43:31 PT",
+ "updated": "2026-10-23 23:48:18 UTC"
 }
