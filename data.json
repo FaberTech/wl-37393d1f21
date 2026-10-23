@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23 10:38:00 PT",
+ "updated_at": "2026-10-23 10:47:54 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -715,6 +715,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:45:00Z",
    "next_start_local": "2026-10-26 07:45"
+  },
+  {
+   "request_id": "131066",
+   "heat": 35,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89798?request_id=131066",
+   "company": "Ventana Construction",
+   "trade": "General Labour",
+   "market": "Burnaby, BC",
+   "sales": "Natalie",
+   "tier": "2",
+   "hours": "68.2",
+   "value": "3149.76",
+   "slots": "6",
+   "why": "Sales intake @score; CSA-approved safety boots required (3 sent home last time)",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792777628663689",
+   "funnel": "221 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 10:47 PT",
+   "fill_filled": 0,
+   "fill_total": 6,
+   "fill": "0/6",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 10:47:54 PT",
+   "scored_at": "2026-10-23 10:47:54 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -746,5 +779,6 @@
   "groups": 356
  },
  "funnels_updated_at": "2026-10-23 10:38:00 PT",
- "fill_updated_at": "2026-10-23 10:38:00 PT"
+ "fill_updated_at": "2026-10-23 10:38:00 PT",
+ "updated": "2026-10-23 17:47:54 UTC"
 }
