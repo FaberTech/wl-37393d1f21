@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23 13:51:01 PT",
+ "updated_at": "2026-10-23 13:52:10 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -715,6 +715,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:45:00Z",
    "next_start_local": "2026-10-26 07:45"
+  },
+  {
+   "request_id": "131047",
+   "heat": 53,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89789?request_id=131047",
+   "company": "Satterfield - Klein Tools",
+   "trade": "General Labour",
+   "market": "Mansfield, TX",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "62.6h",
+   "value": "$8,496.00",
+   "slots": "4",
+   "why": "scored via @score (high risk)",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "#workers_dallas",
+   "funnel": "45 / 1 / 1",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 13:52 PT",
+   "fill_filled": 0,
+   "fill_total": 4,
+   "fill": "0/4",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 13:52:09 PT",
+   "scored_at": "2026-10-23 13:52:09 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -746,5 +779,6 @@
   "groups": 358
  },
  "funnels_updated_at": "2026-10-23 13:51:01 PT",
- "fill_updated_at": "2026-10-23 13:51:01 PT"
+ "fill_updated_at": "2026-10-23 13:51:01 PT",
+ "updated": "2026-10-23 20:52:09 UTC"
 }
