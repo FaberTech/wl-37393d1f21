@@ -545,6 +545,7 @@ function parseMoney(v){
   return isNaN(n)?0:n;
 }
 function fillProgress(j){
+  if(j && j.fill_total){ return `${j.fill_filled||0}/${j.fill_total}`; }
   const fun=String(j.funnel||'');
   const m=fun.match(/(\d[\d,]*)\s*\/\s*(\d[\d,]*)\s*\/\s*(\d[\d,]*)/);
   const sn=String(j.slots||'').match(/^(\d+)/);
