@@ -668,6 +668,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:45:00Z",
    "next_start_local": "2026-10-26 07:45"
+  },
+  {
+   "request_id": "131101",
+   "heat": 44,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89818?request_id=131101",
+   "company": "BlueCity Construction",
+   "trade": "General Carpenter",
+   "market": "Delta, BC",
+   "sales": "Juliana Middleton",
+   "tier": "2",
+   "hours": "64.0",
+   "value": "2047.50",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "new logo / first interaction",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792792639879749",
+   "funnel": "28 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 14:58 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 14:58:20 PT",
+   "scored_at": "2026-10-23 14:58:20 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -699,5 +732,6 @@
   "groups": 359
  },
  "funnels_updated_at": "2026-10-23 14:57:35 PT",
- "fill_updated_at": "2026-10-23 14:57:35 PT"
+ "fill_updated_at": "2026-10-23 14:57:35 PT",
+ "updated": "2026-10-23 21:58:20 UTC"
 }
