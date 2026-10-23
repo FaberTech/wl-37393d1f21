@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 20:14:01 PT",
+ "updated_at": "2026-10-22 20:20:04 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -702,6 +702,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-23T12:00:00Z",
    "next_start_local": "2026-10-23 07:00"
+  },
+  {
+   "request_id": "130993",
+   "heat": 62,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89771?request_id=130993",
+   "company": "Priestly Demolition Inc.",
+   "trade": "SK",
+   "market": "Edmonton, AB",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "753.7",
+   "value": "13572",
+   "slots": "8",
+   "why": "8 x SK, starts Nov 23 for 4 weeks, (new)",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792725537934469",
+   "funnel": "62 / 1 / 1",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 20:20 PT",
+   "fill_filled": 0,
+   "fill_total": 8,
+   "fill": "0/8",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 20:20:04 PT",
+   "scored_at": "2026-10-22 20:20:04 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -733,5 +766,6 @@
   "groups": 352
  },
  "funnels_updated_at": "2026-10-22 20:14:01 PT",
- "fill_updated_at": "2026-10-22 20:14:01 PT"
+ "fill_updated_at": "2026-10-22 20:14:01 PT",
+ "updated": "2026-10-23 03:20:04 UTC"
 }
