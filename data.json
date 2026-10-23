@@ -756,6 +756,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-25T15:00:00Z",
    "next_start_local": "2026-10-25 08:00"
+  },
+  {
+   "request_id": "131044",
+   "heat": 32,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89788?request_id=131044",
+   "company": "Satterfield - Klein tools",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "68.7",
+   "value": "584.10",
+   "slots": "3",
+   "why": "high risk; punctuality critical to super",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "#workers_dallas",
+   "funnel": "51 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 09:02 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 09:02:21 PT",
+   "scored_at": "2026-10-23 09:02:21 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -787,5 +820,6 @@
   "groups": 355
  },
  "funnels_updated_at": "2026-10-23 09:00:04 PT",
- "fill_updated_at": "2026-10-23 09:00:04 PT"
+ "fill_updated_at": "2026-10-23 09:00:04 PT",
+ "updated": "2026-10-23 16:02:21 UTC"
 }
