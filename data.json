@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23 11:06:44 PT",
+ "updated_at": "2026-10-23 11:10:35 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -758,6 +758,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T12:45:00Z",
    "next_start_local": "2026-10-26 07:45"
+  },
+  {
+   "request_id": "131073",
+   "heat": 49,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89800?request_id=131073",
+   "company": "Wesgroup (Inlet)",
+   "trade": "Carpenter",
+   "market": "Port Moody, BC",
+   "sales": "Natalie",
+   "tier": "2",
+   "hours": "67.8",
+   "value": "36686",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1792778993880959",
+   "funnel": "33 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 11:10 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 11:10:35 PT",
+   "scored_at": "2026-10-23 11:10:35 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -789,5 +822,6 @@
   "groups": 357
  },
  "funnels_updated_at": "2026-10-23 11:06:43 PT",
- "fill_updated_at": "2026-10-23 11:06:43 PT"
+ "fill_updated_at": "2026-10-23 11:06:43 PT",
+ "updated": "2026-10-23 18:10:35 UTC"
 }
