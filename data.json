@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 21:19:40 PT",
+ "updated_at": "2026-10-23 04:19:31 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -710,11 +710,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-25T15:00:00Z",
    "next_start_local": "2026-10-25 08:00"
+  },
+  {
+   "request_id": "131007",
+   "heat": 60,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89775?request_id=131007",
+   "company": "Hideaway Pizza (ready construction)",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "1.7",
+   "value": "566.40",
+   "slots": "3",
+   "why": "high risk, last minute; must have brooms",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "#workers_dallas",
+   "funnel": "51 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-23 04:19 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-23 04:19:31 PT",
+   "scored_at": "2026-10-23 04:19:31 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 8,
- "filled_today_date": "2026-10-22",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-23",
  "weekly_fulfilment": {
   "fulfilled": 389,
   "denominator": 401,
@@ -741,5 +774,6 @@
   "groups": 353
  },
  "funnels_updated_at": "2026-10-22 21:19:40 PT",
- "fill_updated_at": "2026-10-22 21:19:40 PT"
+ "fill_updated_at": "2026-10-22 21:19:40 PT",
+ "updated": "2026-10-23 11:19:31 UTC"
 }
