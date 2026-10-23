@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 17:14:40 PT",
+ "updated_at": "2026-10-22 17:21:18 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -682,6 +682,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-22 17:14:40 PT",
    "scored_at": "2026-10-22 17:14:40 PT"
+  },
+  {
+   "request_id": "130979",
+   "heat": 78,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89762?request_id=130979",
+   "company": "Priestly Demolition Inc.",
+   "trade": "Asbestos",
+   "market": "Vancouver",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "85.6",
+   "value": "7476",
+   "slots": "4",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1792714826823879",
+   "funnel": "738 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 17:21 PT",
+   "fill_filled": 0,
+   "fill_total": 4,
+   "fill": "0/4",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 17:21:18 PT",
+   "scored_at": "2026-10-22 17:21:18 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -714,5 +747,5 @@
  },
  "funnels_updated_at": "2026-10-22 17:10:26 PT",
  "fill_updated_at": "2026-10-22 17:10:26 PT",
- "updated": "2026-10-23 00:14:40 UTC"
+ "updated": "2026-10-23 00:21:18 UTC"
 }
