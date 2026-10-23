@@ -271,6 +271,13 @@
   .open-kind.late-withdraw { background:rgba(249,115,22,.22); color:#fdba74; }
   .open-kind.withdraw { background:rgba(234,179,8,.18); color:#fde68a; }
   .open-kind.replacement { background:rgba(148,163,184,.18); color:#cbd5e1; }
+  /* pinned client exception (pinned_clients.json, Haz Oct 22 2026): lime/chartreuse is used nowhere else on the page */
+  tr.pinned td, tr.pinned.active td { background:rgba(190,242,100,.10); border-bottom-color:rgba(190,242,100,.28); }
+  tr.pinned:hover td { background:rgba(190,242,100,.16); }
+  tr.pinned td:first-child, tr.pinned.active td:first-child { box-shadow:inset 4px 0 0 #a3e635; }
+  tr.pin-head td { background:rgba(190,242,100,.18) !important; color:#d9f99d; font-weight:800; font-size:12px; letter-spacing:.03em; padding:7px 10px; border-top:2px solid #a3e635; border-bottom:1px solid rgba(190,242,100,.35); box-shadow:inset 4px 0 0 #a3e635; }
+  tr.pin-end td { padding:0; height:6px; background:transparent; border-bottom:2px solid #a3e635; }
+  .pin-tag { display:inline-block; margin-top:3px; padding:1px 7px; border-radius:999px; font-size:10.5px; font-weight:800; background:rgba(190,242,100,.18); color:#d9f99d; border:1px solid rgba(163,230,53,.55); white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -829,7 +836,7 @@ function rowHtml(j, rank, active){
   const tierHtml = tierNum
     ? `<span class="tier" title="Tier">${esc(tierNum)}</span>`
     : `<span class="tier na" title="Tier">—</span>`;
-  return `<tr class="${active?'active':''}">
+  return `<tr class="${active?'active':''}${j.pinned?' pinned':''}">
     <td class="rank">${rank}</td>
     <td class="heat-cell">${heatCell(j)}</td>
     <td><div class="tier-status">${tierHtml}${statusBadge(j)}</div></td>
@@ -848,7 +855,7 @@ function rowHtml(j, rank, active){
     <td class="fill">${fillCell(j)}</td>
     <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div><div class="pn-later"><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 2</button><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 3</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
-    <td><div>${j.company||'—'}</div><div class="muted">${jobTraits(j)||''}</div></td>
+    <td><div>${j.company||'—'}</div>${j.pinned?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
     <td>${j.trade||'—'}</td>
     <td class="comments">${commentsCell(j)}</td>
@@ -881,7 +888,7 @@ function sortedFiltered(){
   const source=document.getElementById('source')?document.getElementById('source').value:'';
   let rows=JOBS.filter(j=>{
     if(band && j.band!==band) return false;
-    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked') return false; }
+    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked' && !j.pinned) return false; }
     else if(status && j.status!==status) return false;
     if(tier && String(j.tier||'')!==tier) return false;
     // Source filter: Slack, System, or merged Slack/System only
@@ -899,6 +906,7 @@ function sortedFiltered(){
     return [j.company,j.sales,j.market,j.trade,j.intervention,j.request_id,j.band,j.note,ctext].join(' ').toLowerCase().includes(q);
   });
   rows.sort((a,b)=>{
+    if(!!a.pinned!==!!b.pinned) return a.pinned?-1:1;  // pinned client rows always on top
     const ha=a.heat==null?-1:a.heat, hb=b.heat==null?-1:b.heat;
     if(hb!==ha) return hb-ha;
     const order={Immediate:0,Urgent:1,Act:2,Watch:3};
@@ -951,7 +959,11 @@ function render(){
     ${weeklyKpi(WL_WEEKLY,{kind:'watchlist'})}
   `;
   document.getElementById('list').innerHTML = rows.length
-    ? rows.map((j,i)=>rowHtml(j,i+1, i<15)).join('')
+    ? (()=>{ const np=rows.filter(j=>j.pinned).length;
+        const names=[...new Set(rows.filter(j=>j.pinned).map(j=>j.company||''))].join(', ');
+        return rows.map((j,i)=>(np && i===0 ? `<tr class="pin-head"><td colspan="17">📌 Pinned client · ${esc(names)} · ${np} job${np===1?'':'s'} · kept at the top and on the list even after they fill</td></tr>` : '')
+          + rowHtml(j,i+1, i<15)
+          + (np && i===np-1 && np<rows.length ? `<tr class="pin-end"><td colspan="17"></td></tr>` : '')).join(''); })()
     : `<tr><td colspan="17" class="empty">No jobs match these filters.</td></tr>`;
   wireCommentEditors(document.getElementById('list'));
   document.getElementById('listHint').textContent = `${rows.length} jobs · ranked by Heat · top rows highlighted`;
