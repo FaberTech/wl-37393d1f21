@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 17:10:26 PT",
+ "updated_at": "2026-10-22 17:10:53 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -616,6 +616,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-26T14:00:00Z",
    "next_start_local": "2026-10-26 08:00"
+  },
+  {
+   "request_id": "130949",
+   "heat": 62,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89751?request_id=130949",
+   "company": "Priestly Demolition Inc.",
+   "trade": "Skilled Labour",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "84.8",
+   "value": "16965",
+   "slots": "10",
+   "why": "10 x SK, Hudson's Bay Edmonton, starts Mon Oct 26, 4 months full time, full PPE + CSTS; ramp to 18 then 30",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792714201926359",
+   "funnel": "58 / 1 / 1",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 17:10 PT",
+   "fill_filled": 0,
+   "fill_total": 10,
+   "fill": "0/10",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 17:10:53 PT",
+   "scored_at": "2026-10-22 17:10:53 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -647,5 +680,6 @@
   "groups": 349
  },
  "funnels_updated_at": "2026-10-22 17:10:26 PT",
- "fill_updated_at": "2026-10-22 17:10:26 PT"
+ "fill_updated_at": "2026-10-22 17:10:26 PT",
+ "updated": "2026-10-23 00:10:53 UTC"
 }
