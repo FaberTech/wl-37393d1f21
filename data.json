@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22 17:10:53 PT",
+ "updated_at": "2026-10-22 17:14:40 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -649,6 +649,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-22 17:10:53 PT",
    "scored_at": "2026-10-22 17:10:53 PT"
+  },
+  {
+   "request_id": "130965",
+   "heat": 62,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89756?request_id=130965",
+   "company": "Priestly Demolition Inc.",
+   "trade": "SK",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "84.8",
+   "value": "16965",
+   "slots": "10",
+   "why": "New project South Gate (PCL site), 10 x SK from Oct 26, full time 4 months; full PPE, CSTS, Type 2 hard hat; hand/power tools (jackhammers, grinders, saws)",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1792714439018559",
+   "funnel": "57 / 2 / 2",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-22 17:14 PT",
+   "fill_filled": 0,
+   "fill_total": 10,
+   "fill": "0/10",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-22 17:14:40 PT",
+   "scored_at": "2026-10-22 17:14:40 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -681,5 +714,5 @@
  },
  "funnels_updated_at": "2026-10-22 17:10:26 PT",
  "fill_updated_at": "2026-10-22 17:10:26 PT",
- "updated": "2026-10-23 00:10:53 UTC"
+ "updated": "2026-10-23 00:14:40 UTC"
 }
