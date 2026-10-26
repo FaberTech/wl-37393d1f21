@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-25 20:58:46 PT",
+ "updated_at": "2026-10-26 05:31:26 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -448,11 +448,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T12:00:00Z",
    "next_start_local": "2026-10-29 07:00"
+  },
+  {
+   "request_id": "131193",
+   "heat": 50,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89870?request_id=131193",
+   "company": "Reeder Construction",
+   "trade": "General Labour",
+   "market": "Flower Mound, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "1.5",
+   "value": "566.40",
+   "slots": "3",
+   "why": "tier 2 · 3 slots · 1.5h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793017809754949?thread_ts=1793017682.256529&cid=G01H65R64AH",
+   "funnel": "61 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-26 05:31 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-26 05:31:26 PT",
+   "scored_at": "2026-10-26 05:31:26 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 10,
- "filled_today_date": "2026-10-25",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-26",
  "weekly_fulfilment": {
   "fulfilled": 485,
   "denominator": 503,
@@ -479,5 +512,6 @@
   "groups": 362
  },
  "funnels_updated_at": "2026-10-25 20:58:46 PT",
- "fill_updated_at": "2026-10-25 20:58:46 PT"
+ "fill_updated_at": "2026-10-25 20:58:46 PT",
+ "updated": "2026-10-26 12:31:26 UTC"
 }
