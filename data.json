@@ -548,7 +548,10 @@
    "start_checked_at": "2026-10-26T20:00:21Z",
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-28T14:00:00Z",
-   "next_start_local": "2026-10-28 08:00"
+   "next_start_local": "2026-10-28 08:00",
+   "team_note": "Andre Francis will be there",
+   "team_note_at": "2026-10-26 13:34 PT",
+   "team_note_author": "Team"
   },
   {
    "request_id": "131231",
@@ -592,6 +595,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-28T14:00:00Z",
    "next_start_local": "2026-10-28 08:00"
+  },
+  {
+   "request_id": "131311",
+   "heat": 87,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89933?request_id=131311",
+   "company": "Celina Ownsby Phase 2",
+   "trade": "—",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "15.4",
+   "value": "1604.80",
+   "slots": "1",
+   "why": "Replacement: Marquis Spencer removed from site (TX Morrow); high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793046841039869",
+   "funnel": "48 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-26 13:35 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-26 13:35:08 PT",
+   "scored_at": "2026-10-26 13:35:08 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -623,5 +659,6 @@
   "groups": 368
  },
  "funnels_updated_at": "2026-10-26 13:33:54 PT",
- "fill_updated_at": "2026-10-26 13:33:54 PT"
+ "fill_updated_at": "2026-10-26 13:33:54 PT",
+ "updated": "2026-10-26 20:35:08 UTC"
 }
