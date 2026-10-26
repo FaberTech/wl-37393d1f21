@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26 08:19:11 PT",
+ "updated_at": "2026-10-26 08:21:09 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -453,6 +453,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T12:00:00Z",
    "next_start_local": "2026-10-29 07:00"
+  },
+  {
+   "request_id": "131216",
+   "heat": 41,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89889?request_id=131216",
+   "company": "Strand Contracting Ltd",
+   "trade": "General Labour",
+   "market": "Vancouver, BC",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "1.2",
+   "value": "195",
+   "slots": "1",
+   "why": "Strand x1 GL ASAP, The Henley, Oct 26 9:30am-3:30pm; status 2 Matched",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793028024870569",
+   "funnel": "200 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-26 08:21 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-26 08:21:09 PT",
+   "scored_at": "2026-10-26 08:21:09 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -485,5 +518,5 @@
  },
  "funnels_updated_at": "2026-10-26 08:19:11 PT",
  "fill_updated_at": "2026-10-26 08:19:11 PT",
- "updated": "2026-10-26 12:31:26 UTC"
+ "updated": "2026-10-26 15:21:09 UTC"
 }
