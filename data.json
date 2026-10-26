@@ -453,6 +453,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T12:00:00Z",
    "next_start_local": "2026-10-29 07:00"
+  },
+  {
+   "request_id": "131227",
+   "heat": 43,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89898",
+   "company": "Marcon Craft LTD",
+   "trade": "CSO",
+   "market": "North Vancouver, BC",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "0.8",
+   "value": "292.50",
+   "slots": "1",
+   "why": "CSO asap, starts in 0.8h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793032966139839",
+   "funnel": "24 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-26 09:43 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-26 09:43:47 PT",
+   "scored_at": "2026-10-26 09:43:47 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -485,5 +518,5 @@
  },
  "funnels_updated_at": "2026-10-26 09:38:49 PT",
  "fill_updated_at": "2026-10-26 09:38:49 PT",
- "updated": "2026-10-26 15:21:09 UTC"
+ "updated": "2026-10-26 16:43:47 UTC"
 }
