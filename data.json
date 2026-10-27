@@ -498,6 +498,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-02T13:00:00Z",
    "next_start_local": "2026-11-02 07:00"
+  },
+  {
+   "request_id": "131422",
+   "heat": 47,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90009?request_id=131422",
+   "company": "Satterfield",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "15.7",
+   "value": "436.60",
+   "slots": "2",
+   "why": "2 GL needed tomorrow, new super, South Garland (new)",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793131531141359",
+   "funnel": "49 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-27 13:06 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-27 13:06:06 PT",
+   "scored_at": "2026-10-27 13:06:06 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -529,5 +562,6 @@
   "groups": 376
  },
  "funnels_updated_at": "2026-10-27 13:02:58 PT",
- "fill_updated_at": "2026-10-27 13:02:58 PT"
+ "fill_updated_at": "2026-10-27 13:02:58 PT",
+ "updated": "2026-10-27 20:06:06 UTC"
 }
