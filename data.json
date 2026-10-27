@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27 06:54:58 PT",
+ "updated_at": "2026-10-27 08:07:49 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -448,6 +448,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-27 06:54:58 PT",
    "scored_at": "2026-10-27 06:54:58 PT"
+  },
+  {
+   "request_id": "131392",
+   "heat": 80,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89984?request_id=131392",
+   "company": "Strand",
+   "trade": "General Labour",
+   "market": "Vancouver",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "0.9",
+   "value": "227.50",
+   "slots": "1",
+   "why": "Replacement: our worker sent away from site (bedbugs); risk",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793113577801589",
+   "funnel": "199 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-27 08:07 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-27 08:07:49 PT",
+   "scored_at": "2026-10-27 08:07:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -480,5 +513,5 @@
  },
  "funnels_updated_at": "2026-10-26 20:56:21 PT",
  "fill_updated_at": "2026-10-26 20:56:21 PT",
- "updated": "2026-10-27 13:54:58 UTC"
+ "updated": "2026-10-27 15:07:49 UTC"
 }
