@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27 08:35:02 PT",
+ "updated_at": "2026-10-27 08:40:17 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -502,6 +502,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-27T16:00:00Z",
    "next_start_local": "2026-10-27 09:00"
+  },
+  {
+   "request_id": "131383",
+   "heat": 79,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/89976?request_id=131383",
+   "company": "Royop - Loxely Project",
+   "trade": "Carpenter (team lead)",
+   "market": "Edmonton",
+   "sales": "Sam",
+   "tier": "5",
+   "hours": "646.3",
+   "value": "43145.49",
+   "slots": "1",
+   "why": "@score (high risk); Metabase hours 646.3, tier 5, value $43,145.49 over 93 working days, 1 slot",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793115561638059",
+   "funnel": "100 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-27 08:40 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-27 08:40:17 PT",
+   "scored_at": "2026-10-27 08:40:17 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -534,5 +567,5 @@
  },
  "funnels_updated_at": "2026-10-27 08:35:02 PT",
  "fill_updated_at": "2026-10-27 08:35:02 PT",
- "updated": "2026-10-27 15:07:49 UTC"
+ "updated": "2026-10-27 15:40:17 UTC"
 }
