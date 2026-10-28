@@ -627,6 +627,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T13:00:00Z",
    "next_start_local": "2026-10-29 07:00"
+  },
+  {
+   "request_id": "131574",
+   "heat": 29,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90094?request_id=131574",
+   "company": "Triton - Rockwall Flexspace",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "43.1",
+   "value": "369.60",
+   "slots": "2",
+   "why": "New logo, 2x GL Fri Oct 30, brooms+shovels",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793209145640239",
+   "funnel": "54 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 10:39 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 10:39:45 PT",
+   "scored_at": "2026-10-28 10:39:45 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -659,5 +692,5 @@
  },
  "funnels_updated_at": "2026-10-28 10:35:21 PT",
  "fill_updated_at": "2026-10-28 10:35:21 PT",
- "updated": "2026-10-28 16:37:31 UTC"
+ "updated": "2026-10-28 17:39:45 UTC"
 }
