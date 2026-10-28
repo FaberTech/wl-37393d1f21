@@ -540,6 +540,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T14:00:00Z",
    "next_start_local": "2026-10-29 08:00"
+  },
+  {
+   "request_id": "131547",
+   "heat": 44,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90079?request_id=131547",
+   "company": "CORE",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "0.4",
+   "value": "212.40",
+   "slots": "2",
+   "why": "2x GL CORE Apollo ASAP today",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793201604931429",
+   "funnel": "57 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 08:36 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 08:36:02 PT",
+   "scored_at": "2026-10-28 08:36:02 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -572,5 +605,5 @@
  },
  "funnels_updated_at": "2026-10-28 08:32:57 PT",
  "fill_updated_at": "2026-10-28 08:32:57 PT",
- "updated": "2026-10-28 15:07:02 UTC"
+ "updated": "2026-10-28 15:36:02 UTC"
 }
