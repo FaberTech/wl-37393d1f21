@@ -703,6 +703,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-10-28 11:37:29 PT",
    "scored_at": "2026-10-28 11:37:29 PT"
+  },
+  {
+   "request_id": "131590",
+   "heat": 86,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90104?request_id=131590",
+   "company": "AECOM",
+   "trade": "Machine Operator",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "4",
+   "hours": "17.1",
+   "value": "34496.23",
+   "slots": "1",
+   "why": "Backup 1x machine operator (forklift) at The Mix Frisco from Oct 29 (131 working days) in case Trevon no-shows; Trevon unresponsive today; new",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793213542971979",
+   "funnel": "5 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 11:53 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 11:53:10 PT",
+   "scored_at": "2026-10-28 11:53:10 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -735,5 +768,5 @@
  },
  "funnels_updated_at": "2026-10-28 11:48:30 PT",
  "fill_updated_at": "2026-10-28 11:48:30 PT",
- "updated": "2026-10-28 18:37:29 UTC"
+ "updated": "2026-10-28 18:53:10 UTC"
 }
