@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27 20:57:57 PT",
+ "updated_at": "2026-10-28 06:55:52 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -540,11 +540,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-29T14:00:00Z",
    "next_start_local": "2026-10-29 08:00"
+  },
+  {
+   "request_id": "131539",
+   "heat": 84,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90071?request_id=131539",
+   "company": "SEC Redevelopment Night",
+   "trade": "General Labour",
+   "market": "Calgary",
+   "sales": "Sarah",
+   "tier": "2",
+   "hours": "-14.4",
+   "value": "746.46",
+   "slots": "1",
+   "why": "Replacement for worker on SEC night job; risk of losing customer",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793195678012089",
+   "funnel": "110 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 06:55 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 06:55:52 PT",
+   "scored_at": "2026-10-28 06:55:52 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 3,
- "filled_today_date": "2026-10-27",
+ "filled_today": 0,
+ "filled_today_date": "2026-10-28",
  "weekly_fulfilment": {
   "fulfilled": 252,
   "denominator": 253,
@@ -572,5 +605,5 @@
  },
  "funnels_updated_at": "2026-10-27 20:57:57 PT",
  "fill_updated_at": "2026-10-27 20:57:57 PT",
- "updated": "2026-10-27 23:24:10 UTC"
+ "updated": "2026-10-28 13:55:52 UTC"
 }
