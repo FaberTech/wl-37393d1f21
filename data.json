@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28 06:55:52 PT",
+ "updated_at": "2026-10-28 07:53:14 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -93,6 +93,41 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-30T14:00:00Z",
    "next_start_local": "2026-11-30 07:00"
+  },
+  {
+   "request_id": "131542",
+   "heat": 76,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90075?request_id=131542",
+   "company": "Priestly Demolition Inc.",
+   "trade": "Skilled Labourer (scissor lift cert)",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "22.1",
+   "value": "14929.20",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793199094501499?thread_ts=1792778036.320489&cid=C0923DK97A8",
+   "funnel": "3081 / 6 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 07:53 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 07:53:14 PT",
+   "scored_at": "2026-10-28 07:53:14 PT",
+   "pinned": true,
+   "pinned_label": "Priestly · pinned"
   },
   {
    "request_id": "129162",
@@ -605,5 +640,5 @@
  },
  "funnels_updated_at": "2026-10-27 20:57:57 PT",
  "fill_updated_at": "2026-10-27 20:57:57 PT",
- "updated": "2026-10-28 13:55:52 UTC"
+ "updated": "2026-10-28 14:53:14 UTC"
 }
