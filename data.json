@@ -670,6 +670,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-10-30T12:45:00Z",
    "next_start_local": "2026-10-30 07:45"
+  },
+  {
+   "request_id": "131588",
+   "heat": 72,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90103?request_id=131588",
+   "company": "Satterfield",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "17.1",
+   "value": "57194.60",
+   "slots": "2",
+   "why": "2x GL Klein Tools project from Oct 29 (long-term, 131 working days); client unhappy with current crew, wants reliable long-term workers; high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faber.slack.com/archives/G01H65R64AH/p1793212603637869",
+   "funnel": "45 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-28 11:37 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-28 11:37:23 PT",
+   "scored_at": "2026-10-28 11:37:23 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -701,5 +734,6 @@
   "groups": 387
  },
  "funnels_updated_at": "2026-10-28 11:36:34 PT",
- "fill_updated_at": "2026-10-28 11:36:34 PT"
+ "fill_updated_at": "2026-10-28 11:36:34 PT",
+ "updated": "2026-10-28 18:37:23 UTC"
 }
