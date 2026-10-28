@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28 11:36:34 PT",
+ "updated_at": "2026-10-28 11:37:29 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -690,7 +690,7 @@
    "why": "2x GL Klein Tools project from Oct 29 (long-term, 131 working days); client unhappy with current crew, wants reliable long-term workers; high risk",
    "intervention": "Protocol 1",
    "flags": "high risk",
-   "slack": "https://faber.slack.com/archives/G01H65R64AH/p1793212603637869",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793212603637869",
    "funnel": "45 / 0 / 0",
    "replacement": false,
    "autofill": "off",
@@ -701,8 +701,8 @@
    "fill_total": 2,
    "fill": "0/2",
    "fill_pending": false,
-   "hours_as_of": "2026-10-28 11:37:23 PT",
-   "scored_at": "2026-10-28 11:37:23 PT"
+   "hours_as_of": "2026-10-28 11:37:29 PT",
+   "scored_at": "2026-10-28 11:37:29 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -735,5 +735,5 @@
  },
  "funnels_updated_at": "2026-10-28 11:36:34 PT",
  "fill_updated_at": "2026-10-28 11:36:34 PT",
- "updated": "2026-10-28 18:37:23 UTC"
+ "updated": "2026-10-28 18:37:29 UTC"
 }
