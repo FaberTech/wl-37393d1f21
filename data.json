@@ -586,6 +586,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-02T13:00:00Z",
    "next_start_local": "2026-11-02 07:00"
+  },
+  {
+   "request_id": "131703",
+   "heat": 69,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90189?request_id=131703",
+   "company": "Byrne Construction",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "17.5",
+   "value": "849.60",
+   "slots": "1",
+   "why": "1x GL replacement at 911 Call Center (Carrollton) Oct 30–Nov 3 (4 working days); worker no-showed this morning, needs someone reliable",
+   "intervention": "Protocol 1",
+   "flags": "replacement",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793298632937099",
+   "funnel": "29 / 1 / 1",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-29 11:31 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-29 11:31:36 PT",
+   "scored_at": "2026-10-29 11:31:36 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -617,5 +650,6 @@
   "groups": 389
  },
  "funnels_updated_at": "2026-10-29 11:22:48 PT",
- "fill_updated_at": "2026-10-29 11:22:48 PT"
+ "fill_updated_at": "2026-10-29 11:22:48 PT",
+ "updated": "2026-10-29 18:31:36 UTC"
 }
