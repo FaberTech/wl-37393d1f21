@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-29 14:45:08 PT",
+ "updated_at": "2026-10-29 14:52:49 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -542,6 +542,39 @@
    "team_note_at": "2026-10-29 13:41 PT",
    "team_note_author": "Team",
    "open_case": "withdraw"
+  },
+  {
+   "request_id": "131785",
+   "heat": 53,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90226?request_id=131785",
+   "company": "Slokker Homes - Westmount Apartments (Okotoks)",
+   "trade": "2x GL",
+   "market": "Calgary",
+   "sales": "Sarah",
+   "tier": "2",
+   "hours": "16.1",
+   "value": "584.10",
+   "slots": "2",
+   "why": "New project/new logo in Okotoks (10 min from south Calgary, must live there or drive); shoveling snow out of buildings; fall arrest + harness a bonus",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793310728891659",
+   "funnel": "32 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-10-29 14:52 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-10-29 14:52:49 PT",
+   "scored_at": "2026-10-29 14:52:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -573,5 +606,6 @@
   "groups": 391
  },
  "funnels_updated_at": "2026-10-29 14:45:08 PT",
- "fill_updated_at": "2026-10-29 14:45:08 PT"
+ "fill_updated_at": "2026-10-29 14:45:08 PT",
+ "updated": "2026-10-29 21:52:49 UTC"
 }
