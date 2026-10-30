@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30 14:19:56 PT",
+ "updated_at": "2026-10-30 14:26:22 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -325,7 +325,10 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-02T15:00:00Z",
    "next_start_local": "2026-11-02 08:00",
-   "overdue_since": "2026-10-29 07:00:00 PT"
+   "overdue_since": "2026-10-29 07:00:00 PT",
+   "team_note": "Ronnie will let us know on Sunday if he can take this job. ",
+   "team_note_at": "2026-10-30 14:22 PT",
+   "team_note_author": "Team"
   },
   {
    "request_id": "131850",
