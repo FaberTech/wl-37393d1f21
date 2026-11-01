@@ -48,6 +48,41 @@
    "next_start_local": "2026-11-30 07:00"
   },
   {
+   "request_id": "131796",
+   "heat": 85,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90235?request_id=131796",
+   "company": "Priestly Demolition Inc.",
+   "trade": "General Labour",
+   "market": "Edmonton, AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "14.6h",
+   "value": "$67,860",
+   "slots": "10",
+   "why": "tier 5 · 10 slots · 14.6h · group 131796–131805",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793312329868769?thread_ts=1792778036.320489&cid=C0923DK97A8",
+   "funnel": "3153 / 109 / 3",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-01 16:26 PT",
+   "fill_filled": 0,
+   "fill_total": 10,
+   "fill": "0/10",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-01 16:26:59 PT",
+   "scored_at": "2026-11-01 16:26:59 PT",
+   "pinned": true,
+   "pinned_label": "Priestly · pinned"
+  },
+  {
    "ts": "1790644691.743789",
    "time": "2026-09-28 18:18:11 MST",
    "band": "Immediate",
@@ -488,5 +523,6 @@
   "groups": 394
  },
  "funnels_updated_at": "2026-11-01 15:26:25 PT",
- "fill_updated_at": "2026-11-01 15:26:25 PT"
+ "fill_updated_at": "2026-11-01 15:26:25 PT",
+ "updated": "2026-11-01 23:26:59 UTC"
 }
