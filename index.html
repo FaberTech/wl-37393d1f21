@@ -243,6 +243,7 @@
   }
   .comments .team-note-bar .note-status.ok { color:var(--green); }
   .comments .team-note-bar .note-status.err { color:#ef4444; }
+  .comments .team-note-bar .note-status.pending { color:#f59e0b; }
   .tier {
     display:inline-flex; align-items:center; justify-content:center;
     min-width:28px; padding:4px 8px; border-radius:8px; font-weight:800; font-size:14px;
@@ -749,9 +750,17 @@ function esc(s){ return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 function commentsCell(j){
   // Notes column: editable team note + saved timestamp (no system Note line)
   const rid = String(j.request_id||'').trim();
-  const team = (j.team_note!=null ? String(j.team_note) : '');
+  const q = rid ? outboxGet()[rid] : null;
+  const team = q ? String(q.text) : (j.team_note!=null ? String(j.team_note) : '');
   const when = j.team_note_at ? esc(j.team_note_at) : '';
   if(!rid) return `<span class="none">—</span>`;
+  if(q) return `<div class="team-note-wrap" data-rid="${esc(rid)}">
+        <textarea class="team-note" rows="2" placeholder="Add a team note…">${esc(team)}</textarea>
+        <div class="team-note-bar">
+          <button type="button" class="save-note" disabled>Save</button>
+          <span class="note-status pending">${NOTE_QUEUED_MSG}</span>
+        </div>
+      </div>`;
   return `<div class="team-note-wrap" data-rid="${esc(rid)}">
         <textarea class="team-note" rows="2" placeholder="Add a team note…">${esc(team)}</textarea>
         <div class="team-note-bar">
@@ -759,6 +768,36 @@ function commentsCell(j){
           <span class="note-status">${when ? ('saved '+when) : ''}</span>
         </div>
       </div>`;
+}
+// Team notes are saved to the box API. When it is unreachable (box asleep / tunnel
+// reconnecting -> ngrok ERR_NGROK_3200, CORS preflight fails) the note is kept in this
+// browser's outbox (localStorage) and re-sent automatically until the server accepts it.
+const NOTE_OUTBOX_KEY='wlNoteOutbox_v1';
+const NOTE_QUEUED_MSG='queued · saves automatically when the list is back online';
+function outboxGet(){ try{ return JSON.parse(localStorage.getItem(NOTE_OUTBOX_KEY)||'{}')||{}; }catch(_){ return {}; } }
+function outboxSet(o){ try{ if(Object.keys(o).length) localStorage.setItem(NOTE_OUTBOX_KEY, JSON.stringify(o)); else localStorage.removeItem(NOTE_OUTBOX_KEY); }catch(_){} }
+async function sendNote(rid, text){
+  try{
+    const r = await postComment(rid, text);
+    const data = await r.json().catch(()=>null);
+    if(r.ok && data && data.ok) return {ok:true, data};
+    // a real JSON rejection from our server (e.g. bad request_id): don't retry
+    if(data && data.error && r.status>=400 && r.status<500 && ![404,408,429].includes(r.status)) return {ok:false, fatal:true, error:data.error};
+    return {ok:false, offline:true, error:'HTTP '+r.status};
+  }catch(e){ return {ok:false, offline:true, error:String((e&&e.message)||e)}; }
+}
+function noteWrap(rid){ return document.querySelector(`.team-note-wrap[data-rid="${CSS.escape(String(rid))}"]`); }
+function setNoteUI(rid, {saved, cls, msg, retry}){
+  const w = noteWrap(rid); if(!w) return;
+  const ta = w.querySelector('textarea.team-note'), btn = w.querySelector('.save-note'), st = w.querySelector('.note-status');
+  if(ta && saved!=null) ta.dataset.saved = saved;
+  const dirty = !!(ta && ta.value !== (ta.dataset.saved||''));
+  if(btn){ btn.disabled = !(retry || dirty); btn.classList.toggle('dirty', !!(retry || dirty)); }
+  if(st){ st.className = 'note-status' + (cls ? ' '+cls : ''); st.textContent = msg||''; }
+}
+function applySavedNote(rid, text, data){
+  const job = JOBS.find(x => String(x.request_id||'').trim() === String(rid));
+  if(job){ job.team_note = text; job.team_note_at = (data&&data.updated_at) || ''; job.team_note_author = (data&&data.author) || 'Team'; }
 }
 async function saveTeamNote(wrap){
   if(!wrap) return;
@@ -772,32 +811,40 @@ async function saveTeamNote(wrap){
   btn.classList.remove('dirty');
   st.className = 'note-status';
   st.textContent = 'saving…';
-  try{
-    const r = await postComment(rid, text);
-    const data = await r.json().catch(()=>({}));
-    if(!r.ok || !data.ok){
-      st.className = 'note-status err';
-      st.textContent = (data && data.error) ? data.error : 'save failed';
-      btn.disabled = false;
-      btn.classList.add('dirty');
-      return;
-    }
-    const job = JOBS.find(x => String(x.request_id||'') === rid);
-    if(job){
-      job.team_note = text;
-      job.team_note_at = data.updated_at || '';
-      job.team_note_author = data.author || 'Team';
-    }
-    ta.dataset.saved = text;
-    st.className = 'note-status ok';
-    st.textContent = data.updated_at ? ('saved '+data.updated_at) : 'saved';
-  }catch(e){
-    st.className = 'note-status err';
-    st.textContent = 'save failed';
-    btn.disabled = false;
-    btn.classList.add('dirty');
+  const res = await sendNote(rid, text);
+  const ob = outboxGet();
+  if(res.ok){
+    if(ob[rid] && ob[rid].text === text){ delete ob[rid]; outboxSet(ob); }
+    applySavedNote(rid, text, res.data);
+    setNoteUI(rid, {saved:text, cls:'ok', msg: res.data.updated_at ? ('saved '+res.data.updated_at) : 'saved'});
+  }else if(res.offline){
+    ob[rid] = {text, queued_at: new Date().toISOString()}; outboxSet(ob);
+    applySavedNote(rid, text, {updated_at:''});
+    setNoteUI(rid, {saved:text, cls:'pending', msg:NOTE_QUEUED_MSG});
+  }else{
+    setNoteUI(rid, {cls:'err', msg: res.error || 'save failed', retry:true});
   }
 }
+let _flushing=false;
+async function flushNoteOutbox(){
+  if(_flushing) return; _flushing=true;
+  try{
+    const ob = outboxGet();
+    for(const rid of Object.keys(ob)){
+      const text = ob[rid].text;
+      const res = await sendNote(rid, text);
+      if(res.offline) break;              // still unreachable; try again later
+      const cur = outboxGet();
+      if(cur[rid] && cur[rid].text === text){ delete cur[rid]; outboxSet(cur); }
+      if(res.ok){ applySavedNote(rid, text, res.data); setNoteUI(rid, {saved:text, cls:'ok', msg: res.data.updated_at ? ('saved '+res.data.updated_at) : 'saved'}); }
+      else setNoteUI(rid, {cls:'err', msg: res.error || 'save failed', retry:true});
+    }
+  }finally{ _flushing=false; }
+}
+setInterval(flushNoteOutbox, 30000);
+window.addEventListener('online', flushNoteOutbox);
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') flushNoteOutbox(); });
+setTimeout(flushNoteOutbox, 3000);
 function wireCommentEditors(root){
   (root||document).querySelectorAll('.team-note-wrap').forEach(wrap=>{
     const ta = wrap.querySelector('textarea.team-note');
@@ -960,6 +1007,13 @@ function render(){
     ${weeklyKpi(WEEKLY)}
     ${weeklyKpi(WL_WEEKLY,{kind:'watchlist'})}
   `;
+  const _drafts={}; let _focus=null;
+  document.querySelectorAll('#list .team-note-wrap').forEach(w=>{
+    const t=w.querySelector('textarea.team-note'); if(!t) return;
+    const rid=w.getAttribute('data-rid');
+    if(t.value!==(t.dataset.saved||'')) _drafts[rid]=t.value;
+    if(document.activeElement===t) _focus={rid, s:t.selectionStart, e:t.selectionEnd};
+  });
   document.getElementById('list').innerHTML = rows.length
     ? (()=>{ const np=rows.filter(j=>j.pinned).length;
         const names=[...new Set(rows.filter(j=>j.pinned).map(j=>j.company||''))].join(', ');
@@ -968,6 +1022,10 @@ function render(){
           + (np && i===np-1 && np<rows.length ? `<tr class="pin-end"><td colspan="17"></td></tr>` : '')).join(''); })()
     : `<tr><td colspan="17" class="empty">No jobs match these filters.</td></tr>`;
   wireCommentEditors(document.getElementById('list'));
+  Object.keys(_drafts).forEach(rid=>{ const w=noteWrap(rid); const t=w&&w.querySelector('textarea.team-note');
+    if(t){ t.value=_drafts[rid]; t.dispatchEvent(new Event('input')); } });
+  if(_focus){ const w=noteWrap(_focus.rid); const t=w&&w.querySelector('textarea.team-note');
+    if(t){ t.focus(); try{ t.setSelectionRange(_focus.s,_focus.e); }catch(_){} } }
   document.getElementById('listHint').textContent = `${rows.length} jobs · ranked by Heat · top rows highlighted`;
   document.getElementById('subtitle').innerHTML = (()=>{
     const u = UPDATED || '—';
