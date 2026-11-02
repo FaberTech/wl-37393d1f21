@@ -606,6 +606,39 @@
    "team_note": "from Patty - moved to Tuesday. Interested applicants will have to send resumé and CDL to Sam so she can send them to our client. Hard requirement: 2 yrs of experience. Blast sent for this job.",
    "team_note_at": "2026-11-01 18:43 PT",
    "team_note_author": "Team"
+  },
+  {
+   "request_id": "132043",
+   "heat": 35,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90381?request_id=132043",
+   "company": "Lark Projects Ltd. – Harrison Care Home",
+   "trade": "SL",
+   "market": "Vancouver, BC",
+   "sales": "Stephen",
+   "tier": "2",
+   "hours": "21.1h",
+   "value": "$304",
+   "slots": "0",
+   "why": "21.1h to start · tier 2 · 0 open slots · $304 · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793643702614589",
+   "funnel": "190 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 11:22 PT",
+   "fill_filled": 1,
+   "fill_total": 1,
+   "fill": "1/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 11:22:40 PT",
+   "scored_at": "2026-11-02 11:22:40 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -637,5 +670,6 @@
   "groups": 398
  },
  "funnels_updated_at": "2026-11-02 10:21:56 PT",
- "fill_updated_at": "2026-11-02 10:21:56 PT"
+ "fill_updated_at": "2026-11-02 10:21:56 PT",
+ "updated": "2026-11-02 18:22:40 UTC"
 }
