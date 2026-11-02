@@ -644,6 +644,39 @@
    "next_start_local": "2026-11-02 07:00",
    "overdue_since": "2026-10-30 08:30:00 PT",
    "open_case": "withdraw"
+  },
+  {
+   "request_id": "131973",
+   "heat": 98,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90346?request_id=131973",
+   "company": "Lear – WSL Currie",
+   "trade": "Carpenter",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "10.1",
+   "value": "3510.50",
+   "slots": "2",
+   "why": "2x carpenters tomorrow (Nov 2–6), 10.1h to start, no applicants",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793591451450879?thread_ts=1793554759.573509&cid=C071SU4EHBK",
+   "funnel": "554 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-01 20:51 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-01 20:51:27 PT",
+   "scored_at": "2026-11-01 20:51:27 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -675,5 +708,6 @@
   "groups": 397
  },
  "funnels_updated_at": "2026-11-01 19:45:31 PT",
- "fill_updated_at": "2026-11-01 19:45:31 PT"
+ "fill_updated_at": "2026-11-01 19:45:31 PT",
+ "updated": "2026-11-02 03:51:27 UTC"
 }
