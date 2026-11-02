@@ -639,6 +639,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-02 13:45:32 PT",
    "scored_at": "2026-11-02 13:20:41 PT"
+  },
+  {
+   "request_id": "132058",
+   "heat": 28,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90394?request_id=132058",
+   "company": "Clark Builders - CKUA Radio Station",
+   "trade": "General Labourer",
+   "market": "Edmonton",
+   "sales": "Sam",
+   "tier": "2",
+   "hours": "17.2",
+   "value": "236.00",
+   "slots": "0",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793652590507559",
+   "funnel": "66 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 13:50 PT",
+   "fill_filled": 1,
+   "fill_total": 1,
+   "fill": "1/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 13:50:32 PT",
+   "scored_at": "2026-11-02 13:50:32 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -670,5 +703,6 @@
   "groups": 399
  },
  "funnels_updated_at": "2026-11-02 12:45:32 PT",
- "fill_updated_at": "2026-11-02 12:45:32 PT"
+ "fill_updated_at": "2026-11-02 12:45:32 PT",
+ "updated": "2026-11-02 20:50:32 UTC"
 }
