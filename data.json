@@ -649,6 +649,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-03T13:00:00Z",
    "next_start_local": "2026-11-03 06:00"
+  },
+  {
+   "request_id": "132071",
+   "heat": 64,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/requests/132071",
+   "company": "EllisDon Construction Services Inc.",
+   "trade": "General Labour (snow shovelling)",
+   "market": "Calgary",
+   "sales": "Sarah",
+   "tier": "6",
+   "hours": "16.2",
+   "value": "3699.30",
+   "slots": "4",
+   "why": "SEC Redevelopment day (Suncor Energy Centre), 4x GL Nov 3-5, type 2 hard hat, (risk)",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793654230999149",
+   "funnel": "2 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 14:18 PT",
+   "fill_filled": 0,
+   "fill_total": 4,
+   "fill": "0/4",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 14:18:16 PT",
+   "scored_at": "2026-11-02 14:18:16 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -680,5 +713,6 @@
   "groups": 401
  },
  "funnels_updated_at": "2026-11-02 13:16:27 PT",
- "fill_updated_at": "2026-11-02 13:16:27 PT"
+ "fill_updated_at": "2026-11-02 13:16:27 PT",
+ "updated": "2026-11-02 21:18:16 UTC"
 }
