@@ -606,6 +606,39 @@
    "team_note": "from Patty - moved to Tuesday. Interested applicants will have to send resumé and CDL to Sam so she can send them to our client. Hard requirement: 2 yrs of experience. Blast sent for this job.",
    "team_note_at": "2026-11-01 18:43 PT",
    "team_note_author": "Team"
+  },
+  {
+   "request_id": "132049",
+   "heat": 65,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90388?request_id=132049",
+   "company": "Remote Camp - Conklin",
+   "trade": "Skilled Labourer",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "16.7",
+   "value": "3893.76",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793650799761429?thread_ts=1793642744.890619&cid=C0923DK97A8",
+   "funnel": "46 / 2 / 2",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 13:20 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 13:20:41 PT",
+   "scored_at": "2026-11-02 13:20:41 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -637,5 +670,6 @@
   "groups": 399
  },
  "funnels_updated_at": "2026-11-02 12:15:51 PT",
- "fill_updated_at": "2026-11-02 12:15:51 PT"
+ "fill_updated_at": "2026-11-02 12:15:51 PT",
+ "updated": "2026-11-02 20:20:41 UTC"
 }
