@@ -46,7 +46,10 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-02T14:00:00Z",
    "next_start_local": "2026-11-02 07:00",
-   "overdue_since": "2026-11-02 07:00:00 PT"
+   "overdue_since": "2026-11-02 07:00:00 PT",
+   "team_note": "E2E test note (temporary) 2026-11-02T15:26:37.232Z",
+   "team_note_at": "2026-11-02 08:26 PT",
+   "team_note_author": "Team"
   },
   {
    "request_id": "131667",
