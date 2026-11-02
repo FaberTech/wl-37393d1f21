@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02 13:16:27 PT",
+ "updated_at": "2026-11-02 13:18:30 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -657,7 +657,7 @@
    "band": "Urgent",
    "source": "Sales intake",
    "status": "Open",
-   "link": "https://betadash.faberconnect.com/requests/132071",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90403?request_id=132071",
    "company": "EllisDon Construction Services Inc.",
    "trade": "General Labour (snow shovelling)",
    "market": "Calgary",
@@ -680,8 +680,8 @@
    "fill_total": 4,
    "fill": "0/4",
    "fill_pending": false,
-   "hours_as_of": "2026-11-02 14:18:16 PT",
-   "scored_at": "2026-11-02 14:18:16 PT"
+   "hours_as_of": "2026-11-02 14:18:30 PT",
+   "scored_at": "2026-11-02 14:18:30 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -714,5 +714,5 @@
  },
  "funnels_updated_at": "2026-11-02 13:16:27 PT",
  "fill_updated_at": "2026-11-02 13:16:27 PT",
- "updated": "2026-11-02 21:18:16 UTC"
+ "updated": "2026-11-02 21:18:30 UTC"
 }
