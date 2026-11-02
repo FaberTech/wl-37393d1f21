@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02 13:18:30 PT",
+ "updated_at": "2026-11-02 13:30:23 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -715,6 +715,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-02 14:30:21 PT",
    "scored_at": "2026-11-02 14:30:21 PT"
+  },
+  {
+   "request_id": "132088",
+   "heat": 66,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90411?request_id=132088",
+   "company": "Quantum Construction – Airdrie Asphalt",
+   "trade": "Machine Operator",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "163.5",
+   "value": "3304.00",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793654984066519",
+   "funnel": "367 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 14:30 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 14:30:23 PT",
+   "scored_at": "2026-11-02 14:30:23 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -747,5 +780,5 @@
  },
  "funnels_updated_at": "2026-11-02 13:16:27 PT",
  "fill_updated_at": "2026-11-02 13:16:27 PT",
- "updated": "2026-11-02 21:30:21 UTC"
+ "updated": "2026-11-02 21:30:23 UTC"
 }
