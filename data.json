@@ -682,6 +682,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-02 14:18:30 PT",
    "scored_at": "2026-11-02 14:18:30 PT"
+  },
+  {
+   "request_id": "132095",
+   "heat": 43,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90414?request_id=132095",
+   "company": "Govan Brown",
+   "trade": "General Labourer",
+   "market": "Vancouver",
+   "sales": "Stephen",
+   "tier": "2",
+   "hours": "17.5",
+   "value": "276.25",
+   "slots": "1",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793654981584859",
+   "funnel": "202 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-02 14:30 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-02 14:30:21 PT",
+   "scored_at": "2026-11-02 14:30:21 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -714,5 +747,5 @@
  },
  "funnels_updated_at": "2026-11-02 13:16:27 PT",
  "fill_updated_at": "2026-11-02 13:16:27 PT",
- "updated": "2026-11-02 21:18:30 UTC"
+ "updated": "2026-11-02 21:30:21 UTC"
 }
