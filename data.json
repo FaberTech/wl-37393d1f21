@@ -739,6 +739,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-04T13:30:00Z",
    "next_start_local": "2026-11-04 06:30"
+  },
+  {
+   "request_id": "132172",
+   "heat": 72,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90463?request_id=132172",
+   "company": "Carbon Landmark",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "18.0",
+   "value": "56758.00",
+   "slots": "2",
+   "why": "Long-term GL (The Links on PGA, Frisco TX) Nov 4 2026–May 4 2027, 130 working days, starts in 18h, high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793724919656279",
+   "funnel": "45 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 11:43 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 11:43:08 PT",
+   "scored_at": "2026-11-03 11:43:08 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -771,5 +804,5 @@
  },
  "funnels_updated_at": "2026-11-03 10:38:52 PT",
  "fill_updated_at": "2026-11-03 10:38:52 PT",
- "updated": "2026-11-03 18:18:31 UTC"
+ "updated": "2026-11-03 18:43:08 UTC"
 }
