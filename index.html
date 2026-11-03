@@ -364,6 +364,8 @@ function liveNote(on){let n=document.getElementById('liveNote');
  n.style.display=on?'block':'none';}
 </script>
 <script>
+// Pinned-client UI is OFF (Haz 2026-11-03): rows are never pinned/highlighted/kept, even if a stale flag is present.
+const PIN_UI=false;
 let JOBS=[], UPDATED='', lastFp='', FILLED_TODAY=0, WEEKLY=null, WL_WEEKLY=null;
 function weeklyKpi(w, opts={}){
   // Weekly fulfilment (slots started Mon 00:00 PT → now) from Metabase via funnel batch.
@@ -885,7 +887,7 @@ function rowHtml(j, rank, active){
   const tierHtml = tierNum
     ? `<span class="tier" title="Tier">${esc(tierNum)}</span>`
     : `<span class="tier na" title="Tier">—</span>`;
-  return `<tr class="${active?'active':''}${j.pinned?' pinned':''}">
+  return `<tr class="${active?'active':''}${(PIN_UI&&j.pinned)?' pinned':''}">
     <td class="rank">${rank}</td>
     <td class="heat-cell">${heatCell(j)}</td>
     <td><div class="tier-status">${tierHtml}${statusBadge(j)}</div></td>
@@ -904,7 +906,7 @@ function rowHtml(j, rank, active){
     <td class="fill">${fillCell(j)}</td>
     <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div><div class="pn-later"><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 2</button><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 3</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
-    <td><div>${j.company||'—'}</div>${j.pinned?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
+    <td><div>${j.company||'—'}</div>${(PIN_UI&&j.pinned)?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
     <td>${j.trade||'—'}</td>
     <td class="comments">${commentsCell(j)}</td>
@@ -937,7 +939,7 @@ function sortedFiltered(){
   const source=document.getElementById('source')?document.getElementById('source').value:'';
   let rows=JOBS.filter(j=>{
     if(band && j.band!==band) return false;
-    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked' && !j.pinned) return false; }
+    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked' && !(PIN_UI&&j.pinned)) return false; }
     else if(status && j.status!==status) return false;
     if(tier && String(j.tier||'')!==tier) return false;
     // Source filter: Slack, System, or merged Slack/System only
@@ -955,7 +957,7 @@ function sortedFiltered(){
     return [j.company,j.sales,j.market,j.trade,j.intervention,j.request_id,j.band,j.note,ctext].join(' ').toLowerCase().includes(q);
   });
   rows.sort((a,b)=>{
-    if(!!a.pinned!==!!b.pinned) return a.pinned?-1:1;  // pinned client rows always on top
+    if(PIN_UI && !!a.pinned!==!!b.pinned) return a.pinned?-1:1;  // pinned client rows always on top
     const ha=a.heat==null?-1:a.heat, hb=b.heat==null?-1:b.heat;
     if(hb!==ha) return hb-ha;
     const order={Immediate:0,Urgent:1,Act:2,Watch:3};
@@ -1015,8 +1017,8 @@ function render(){
     if(document.activeElement===t) _focus={rid, s:t.selectionStart, e:t.selectionEnd};
   });
   document.getElementById('list').innerHTML = rows.length
-    ? (()=>{ const np=rows.filter(j=>j.pinned).length;
-        const names=[...new Set(rows.filter(j=>j.pinned).map(j=>j.company||''))].join(', ');
+    ? (()=>{ const np=rows.filter(j=>(PIN_UI&&j.pinned)).length;
+        const names=[...new Set(rows.filter(j=>(PIN_UI&&j.pinned)).map(j=>j.company||''))].join(', ');
         return rows.map((j,i)=>(np && i===0 ? `<tr class="pin-head"><td colspan="17">📌 Pinned client · ${esc(names)} · ${np} job${np===1?'':'s'} · kept at the top and on the list even after they fill</td></tr>` : '')
           + rowHtml(j,i+1, i<15)
           + (np && i===np-1 && np<rows.length ? `<tr class="pin-end"><td colspan="17"></td></tr>` : '')).join(''); })()
