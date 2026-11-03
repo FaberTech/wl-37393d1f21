@@ -735,11 +735,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-04T17:00:00Z",
    "next_start_local": "2026-11-04 10:00"
+  },
+  {
+   "request_id": "132136",
+   "heat": 48,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90446?request_id=132136",
+   "company": "PK Developments",
+   "trade": "2x GL Basic PPE (fence moving, exterior)",
+   "market": "Edmonton",
+   "sales": "Sam",
+   "tier": "2",
+   "hours": "1.7",
+   "value": "531.00",
+   "slots": "2",
+   "why": "Today last-minute, 1.7h to start, 2 open GL slots",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793711697393409",
+   "funnel": "37 / 1 / 1",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 06:15 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 06:15:54 PT",
+   "scored_at": "2026-11-03 06:15:54 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 12,
- "filled_today_date": "2026-11-02",
+ "filled_today": 0,
+ "filled_today_date": "2026-11-03",
  "weekly_fulfilment": {
   "fulfilled": 125,
   "denominator": 126,
@@ -766,5 +799,6 @@
   "groups": 405
  },
  "funnels_updated_at": "2026-11-02 21:03:27 PT",
- "fill_updated_at": "2026-11-02 21:03:27 PT"
+ "fill_updated_at": "2026-11-02 21:03:27 PT",
+ "updated": "2026-11-03 13:15:54 UTC"
 }
