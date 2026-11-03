@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-02 21:03:27 PT",
+ "updated_at": "2026-11-03 07:02:11 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -768,6 +768,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-03 06:15:54 PT",
    "scored_at": "2026-11-03 06:15:54 PT"
+  },
+  {
+   "request_id": "132156",
+   "heat": 32,
+   "heat_exact": true,
+   "band": "Watch",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90454?request_id=132156",
+   "company": "Joeris – Denton HEB",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "22.0",
+   "value": "212.40",
+   "slots": "1",
+   "why": "@score NEW: 2GL Nov 4, new project, 1 slot left",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "#workers_dallas",
+   "funnel": "65 / 2 / 2",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 08:02 PT",
+   "fill_filled": 2,
+   "fill_total": 3,
+   "fill": "2/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 08:02:11 PT",
+   "scored_at": "2026-11-03 08:02:11 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -800,5 +833,5 @@
  },
  "funnels_updated_at": "2026-11-02 21:03:27 PT",
  "fill_updated_at": "2026-11-02 21:03:27 PT",
- "updated": "2026-11-03 13:15:54 UTC"
+ "updated": "2026-11-03 15:02:11 UTC"
 }
