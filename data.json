@@ -769,6 +769,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-04T15:00:00Z",
    "next_start_local": "2026-11-04 07:00"
+  },
+  {
+   "request_id": "132217",
+   "heat": 55,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90493?request_id=132217",
+   "company": "Marcon",
+   "trade": "—",
+   "market": "Vancouver",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "138.4",
+   "value": "53640.00",
+   "slots": "1",
+   "why": "High-risk client (picky, prior rocky experiences); long-term order Nov 9 2026–Apr 30 2027; wants someone who has worked with Marcon with good ratings",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793738077633639",
+   "funnel": "27 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 13:35 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 13:35:14 PT",
+   "scored_at": "2026-11-03 13:35:14 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -801,5 +834,5 @@
  },
  "funnels_updated_at": "2026-11-03 12:33:59 PT",
  "fill_updated_at": "2026-11-03 12:33:59 PT",
- "updated": "2026-11-03 19:50:29 UTC"
+ "updated": "2026-11-03 20:35:14 UTC"
 }
