@@ -696,6 +696,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-09T17:00:00Z",
    "next_start_local": "2026-11-09 10:00"
+  },
+  {
+   "request_id": "132197",
+   "heat": 41,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90473?request_id=132197",
+   "company": "EllisDon Construction Services Inc.",
+   "trade": "General Labour (snow shovelling)",
+   "market": "Calgary, AB",
+   "sales": "Sarah",
+   "tier": "2",
+   "hours": "19.2",
+   "value": "1934.01",
+   "slots": "2",
+   "why": "@score (risk): 2 more GL for EllisDon SEC Redevelopment Nov 4–6",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "#workers_cal",
+   "funnel": "91 / 1 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 11:18 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 11:18:31 PT",
+   "scored_at": "2026-11-03 11:18:31 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -727,5 +760,6 @@
   "groups": 407
  },
  "funnels_updated_at": "2026-11-03 10:13:01 PT",
- "fill_updated_at": "2026-11-03 10:13:01 PT"
+ "fill_updated_at": "2026-11-03 10:13:01 PT",
+ "updated": "2026-11-03 18:18:31 UTC"
 }
