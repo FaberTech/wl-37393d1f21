@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03 12:43:45 PT",
+ "updated_at": "2026-11-03 12:47:07 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -802,6 +802,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-03 13:43:45 PT",
    "scored_at": "2026-11-03 13:43:45 PT"
+  },
+  {
+   "request_id": "132228",
+   "heat": 47,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90498?request_id=132228",
+   "company": "Canada Way",
+   "trade": "Flagger",
+   "market": "Vancouver",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "18.2",
+   "value": "2983.84",
+   "slots": "1",
+   "why": "Client unhappy with flagger again; needs someone with extensive experience",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793738779544909",
+   "funnel": "25 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-03 13:47 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-03 13:47:07 PT",
+   "scored_at": "2026-11-03 13:47:07 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -834,5 +867,5 @@
  },
  "funnels_updated_at": "2026-11-03 12:42:54 PT",
  "fill_updated_at": "2026-11-03 12:42:54 PT",
- "updated": "2026-11-03 20:43:45 UTC"
+ "updated": "2026-11-03 20:47:07 UTC"
 }
