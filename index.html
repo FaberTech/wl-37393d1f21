@@ -1150,9 +1150,10 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
     $b.innerHTML=`<h3>Apply Protocol 1 · ${e(rid)}</h3><div class="muted">Loading audience and preview…</div>`;
     const d=await post({action:'preview', request_id:rid});
     if(!d.ok){ $b.innerHTML=`<h3>Apply Protocol 1 · ${e(rid)}</h3><p class="err">${e(d.error||'Preview failed')}</p><div class="row"><button id="p1-x">Close</button></div>`; document.getElementById('p1-x').onclick=close; return; }
-    const j=d.job||{}, c=d.copy||{}, live=!!d.live || !!P1.live;
+    const j=d.job||{}, c=d.copy||{}, live=(!!d.live || !!P1.live) && (!d.test_mode || !!d.test_request_ok);
     $b.innerHTML=`
       <h3>Apply Protocol 1 · ${e(rid)} <span class="mode ${live?'live':'dry'}">${live?'LIVE: will send':'DRY RUN: nothing is sent'}</span></h3>
+      ${d.test_mode?`<div style="background:#4a1212;color:#ffd36e;padding:8px;border-radius:6px;margin:6px 0"><b>TEST MODE: sending to ${e((d.test_recipients||[]).length)} test accounts only</b> (worker ids: ${e((d.test_recipients||[]).join(', '))})${d.final_user_ids?` · reachable in Intercom: ${e(d.final_user_ids.join(', ')||'none')}`:''}${d.dropped?.not_in_intercom_ids?` · <span class="err">not in Intercom (skipped): ${e(d.dropped.not_in_intercom_ids.join(', '))}</span>`:''}${d.dropped?.unreachable_ids?` · <span class="err">unreachable (email unsubscribed, no app push), skipped: ${e(d.dropped.unreachable_ids.join(', '))}</span>`:''}${d.test_request_ok?'':' · <span class="err">this request is not a test request: dry run only</span>'}</div>`:''}
       <div class="muted">Email + app push through Intercom (event <code>${e(d.event_name)}</code>), asking workers to apply through the link.</div>
       <div class="kv">
         <div>Job</div><div>${e(j.trade)} · ${e(j.city)}, ${e(j.province)} · $${e(j.worker_price)}/hr</div>
