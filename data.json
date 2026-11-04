@@ -417,6 +417,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-30T14:00:00Z",
    "next_start_local": "2026-11-30 07:00"
+  },
+  {
+   "request_id": "132300",
+   "heat": 100,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90540?request_id=132300",
+   "company": "Cooks Construction – CAL-3 Data Centre",
+   "trade": "Carpenter",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "15.4",
+   "value": "14493.35",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "urgent",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793831749663569?thread_ts=1793801661.026729&cid=C071SU4EHBK",
+   "funnel": "244 / 0 / 0",
+   "replacement": true,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-04 15:36 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-04 15:36:29 PT",
+   "scored_at": "2026-11-04 15:36:29 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -448,5 +481,6 @@
   "groups": 415
  },
  "funnels_updated_at": "2026-11-04 14:36:09 PT",
- "fill_updated_at": "2026-11-04 14:36:09 PT"
+ "fill_updated_at": "2026-11-04 14:36:09 PT",
+ "updated": "2026-11-04 22:36:29 UTC"
 }
