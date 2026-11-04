@@ -1164,14 +1164,14 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
       </div>
       <div><b>Email</b> · ${e(c.email_subject)}</div><pre>${e(c.email_body)}</pre>
       <div><b>Push</b> · ${e(c.push_title)}</div><pre>${e(c.push_body)}</pre>
-      <div class="row"><label>Ops PIN <input id="p1-pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"></label>
+      <div class="row"><label>Ops PIN${P1.require_pin===false?' <span class="muted">(optional)</span>':''} <input id="p1-pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off"></label>
         <button class="go" id="p1-go">${live?'Send Protocol 1':'Run dry run'}</button><button id="p1-x">Cancel</button></div>
       <div id="p1-res" style="margin-top:10px"></div>`;
     document.getElementById('p1-x').onclick=close;
     const pin=document.getElementById('p1-pin'); pin.focus();
     const go=document.getElementById('p1-go');
     go.onclick=async()=>{
-      if(!/^\d{6}$/.test(pin.value)){ document.getElementById('p1-res').innerHTML='<span class="err">Enter the 6-digit ops PIN.</span>'; return; }
+      if(P1.require_pin!==false && !/^\d{6}$/.test(pin.value)){ document.getElementById('p1-res').innerHTML='<span class="err">Enter the 6-digit ops PIN.</span>'; return; }
       go.disabled=true; document.getElementById('p1-res').innerHTML='<span class="muted">Working…</span>';
       const r=await post({action:'send', request_id:rid, pin:pin.value, actor:'Watch list'});
       pin.value='';
