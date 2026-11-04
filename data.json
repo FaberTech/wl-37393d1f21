@@ -460,6 +460,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-05T14:00:00Z",
    "next_start_local": "2026-11-05 07:00"
+  },
+  {
+   "request_id": "132385",
+   "heat": 54,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90603?request_id=132385",
+   "company": "Skiles – Methodist Dallas",
+   "trade": "General Labourer (long term, bilingual preferred)",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "36.7",
+   "value": "131040.00",
+   "slots": "5",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793835906516209",
+   "funnel": "49 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-04 16:45 PT",
+   "fill_filled": 0,
+   "fill_total": 5,
+   "fill": "0/5",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-04 16:45:37 PT",
+   "scored_at": "2026-11-04 16:45:37 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -492,5 +525,5 @@
  },
  "funnels_updated_at": "2026-11-04 15:43:52 PT",
  "fill_updated_at": "2026-11-04 15:43:52 PT",
- "updated": "2026-11-04 22:36:29 UTC"
+ "updated": "2026-11-04 23:45:37 UTC"
 }
