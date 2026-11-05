@@ -646,7 +646,7 @@
    "source": "Sales intake",
    "status": "Open",
    "link": "https://betadash.faberconnect.com/#/requests/view-group/90663?request_id=132498",
-   "company": "Satterfield",
+   "company": "Satterfield & Pontikes Construction",
    "trade": "General Labour",
    "market": "Dallas",
    "sales": "Linda",
@@ -668,8 +668,8 @@
    "fill_total": 2,
    "fill": "0/2",
    "fill_pending": false,
-   "hours_as_of": "2026-11-05 14:34:02 PT",
-   "scored_at": "2026-11-05 14:34:02 PT",
+   "hours_as_of": "2026-11-05 14:34:20 PT",
+   "scored_at": "2026-11-05 14:34:20 PT",
    "betadash_status": "Matched",
    "betadash_status_id": 2,
    "code_request_status_id": 2
@@ -705,5 +705,5 @@
  },
  "funnels_updated_at": "2026-11-05 13:25:58 PT",
  "fill_updated_at": "2026-11-05 13:25:58 PT",
- "updated": "2026-11-05 21:34:02 UTC"
+ "updated": "2026-11-05 21:34:20 UTC"
 }
