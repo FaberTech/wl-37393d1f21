@@ -508,6 +508,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-09T12:30:00Z",
    "next_start_local": "2026-11-09 06:30"
+  },
+  {
+   "request_id": "132427",
+   "heat": 90,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90629?request_id=132427",
+   "company": "Satterfield – South Garland HS",
+   "trade": "General Labourer",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "1.5",
+   "value": "354.00",
+   "slots": "3",
+   "why": "Same-day 3 GLs (Garland TX), starts in 1.5h, high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793899906802989",
+   "funnel": "52 / 0 / 0",
+   "replacement": true,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-05 10:32 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-05 10:32:28 PT",
+   "scored_at": "2026-11-05 10:32:28 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -539,5 +572,6 @@
   "groups": 417
  },
  "funnels_updated_at": "2026-11-05 09:31:31 PT",
- "fill_updated_at": "2026-11-05 09:31:31 PT"
+ "fill_updated_at": "2026-11-05 09:31:31 PT",
+ "updated": "2026-11-05 17:32:28 UTC"
 }
