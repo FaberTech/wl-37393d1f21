@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05 11:29:48 PT",
+ "updated_at": "2026-11-05 11:32:46 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -508,6 +508,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-30T14:00:00Z",
    "next_start_local": "2026-11-30 07:00"
+  },
+  {
+   "request_id": "132445",
+   "heat": 69,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90640?request_id=132445",
+   "company": "TDW",
+   "trade": "B-Pressure Welder",
+   "market": "Edmonton",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "90.5",
+   "value": "18719.10",
+   "slots": "1",
+   "why": "Sales intake @score (urgent); Metabase hours 90.5 tier 5 value $18719.10 over 27 working days",
+   "intervention": "Protocol 1",
+   "flags": "urgent",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1793907110208759",
+   "funnel": "22 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-05 12:32 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-05 12:32:46 PT",
+   "scored_at": "2026-11-05 12:32:46 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -539,5 +572,6 @@
   "groups": 418
  },
  "funnels_updated_at": "2026-11-05 11:29:48 PT",
- "fill_updated_at": "2026-11-05 11:29:48 PT"
+ "fill_updated_at": "2026-11-05 11:29:48 PT",
+ "updated": "2026-11-05 19:32:46 UTC"
 }
