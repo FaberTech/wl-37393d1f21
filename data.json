@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05 15:42:40 PT",
+ "updated_at": "2026-11-05 14:42:40 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -732,5 +732,7 @@
   "definition": "all non-deleted requests in request groups of any job ever on the Watch list (watchlist_ever_request_ids.json), slots starting Mon 00:00 PT..now: status 3/4/5 / (3/4/5 + 1/2/6 + 8); 7 excluded",
   "source": "metabase_funnel_batch",
   "groups": 424
- }
+ },
+ "funnels_updated_at": "2026-11-05 14:42:40 PT",
+ "fill_updated_at": "2026-11-05 14:42:40 PT"
 }
