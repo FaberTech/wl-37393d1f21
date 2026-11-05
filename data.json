@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05 12:46:19 PT",
+ "updated_at": "2026-11-05 12:51:42 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -617,6 +617,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-05 13:48:12 PT",
    "scored_at": "2026-11-05 13:48:12 PT"
+  },
+  {
+   "request_id": "132474",
+   "heat": 42,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90654?request_id=132474",
+   "company": "Kinetic – BCSB",
+   "trade": "General Labour",
+   "market": "Vancouver",
+   "sales": "Juliana",
+   "tier": "2",
+   "hours": "90.2",
+   "value": "2762.50",
+   "slots": "2",
+   "why": "Metabase hours 90.2 tier 2 value $2762.50 over 5 working days; @score(Highrisk)",
+   "intervention": "Protocol 1",
+   "flags": "highrisk",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793911776520419",
+   "funnel": "221 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-05 13:51 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-05 13:51:42 PT",
+   "scored_at": "2026-11-05 13:51:42 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -649,5 +682,5 @@
  },
  "funnels_updated_at": "2026-11-05 12:46:19 PT",
  "fill_updated_at": "2026-11-05 12:46:19 PT",
- "updated": "2026-11-05 20:48:12 UTC"
+ "updated": "2026-11-05 20:51:42 UTC"
 }
