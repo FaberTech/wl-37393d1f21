@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06 08:11:56 PT",
+ "updated_at": "2026-11-06 08:19:25 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -723,6 +723,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-09T14:55:00Z",
    "next_start_local": "2026-11-09 06:55"
+  },
+  {
+   "request_id": "132585",
+   "heat": 41,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90721?request_id=132585",
+   "company": "Gordon Highlander – McKinney Highway Five",
+   "trade": "General Carpenter",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "93.2",
+   "value": "601.80",
+   "slots": "3",
+   "why": "Heat v2.3 Option A · (new) N+10 · Metabase hours 93.2 tier 2 value $601.80 · 3 slots · status 2 Matched",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faber.slack.com/archives/G01H65R64AH/p1793981645294939",
+   "funnel": "54 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-06 09:19 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-06 09:19:24 PT",
+   "scored_at": "2026-11-06 09:19:24 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -755,5 +788,5 @@
  },
  "funnels_updated_at": "2026-11-06 08:11:56 PT",
  "fill_updated_at": "2026-11-06 08:11:56 PT",
- "updated": "2026-11-06 16:02:36 UTC"
+ "updated": "2026-11-06 16:19:24 UTC"
 }
