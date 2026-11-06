@@ -838,7 +838,11 @@
    "replacement": false,
    "note": "scored via @score",
    "scored_via": "@score",
-   "why": "Heat 51 Act"
+   "why": "Heat 51 Act; high risk R+10; Metabase hours 68.0 tier 2 value CAD 16575 over 60 working days; funnel 219/1/1; status 2 Matched",
+   "watchlist_posted_at": "2026-11-06 12:00 PT",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-06 12:00:24 PT",
+   "scored_at": "2026-11-06 12:00:24 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -871,5 +875,5 @@
  },
  "funnels_updated_at": "2026-11-06 10:55:50 PT",
  "fill_updated_at": "2026-11-06 10:55:50 PT",
- "updated": "2026-11-06 18:59:40 UTC"
+ "updated": "2026-11-06 19:00:24 UTC"
 }
