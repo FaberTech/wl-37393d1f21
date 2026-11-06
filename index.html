@@ -279,6 +279,12 @@
   tr.pin-head td { background:rgba(190,242,100,.18) !important; color:#d9f99d; font-weight:800; font-size:12px; letter-spacing:.03em; padding:7px 10px; border-top:2px solid #a3e635; border-bottom:1px solid rgba(190,242,100,.35); box-shadow:inset 4px 0 0 #a3e635; }
   tr.pin-end td { padding:0; height:6px; background:transparent; border-bottom:2px solid #a3e635; }
   .pin-tag { display:inline-block; margin-top:3px; padding:1px 7px; border-radius:999px; font-size:10.5px; font-weight:800; background:rgba(190,242,100,.18); color:#d9f99d; border:1px solid rgba(163,230,53,.55); white-space:nowrap; }
+  tr.overdue-head td {
+    background:rgba(220,38,38,.20) !important; color:#fecaca; font-weight:800; font-size:12px;
+    letter-spacing:.03em; padding:8px 10px; border-top:2px solid #dc2626;
+    border-bottom:1px solid rgba(220,38,38,.40); box-shadow:inset 4px 0 0 #dc2626;
+  }
+  tr.overdue-end td { padding:0; height:4px; background:transparent; border-bottom:none; }
 </style>
 </head>
 <body>
@@ -306,7 +312,7 @@
 <main>
   <section class="section">
     <div class="section-h">
-      <div class="hint" id="listHint">One ranked list by Heat · Slack threads + editable team notes</div>
+      <div class="hint" id="listHint">Ranked by Heat · past-start jobs in their own section at the bottom · Slack threads + editable team notes</div>
       <div class="filters">
         <select id="sales"><option value="">All sales reps</option></select>
         <select id="band"><option value="">All bands</option><option>Immediate</option><option>Urgent</option><option>Act</option><option>Watch</option></select>
@@ -488,6 +494,13 @@ function jobStartDate(j){
   if(!asOf || Number.isNaN(asOf.getTime())) return null;
   return new Date(asOf.getTime() + h * 3600 * 1000);
 }
+/** True when original start has passed (matches Timing cell red / overdue_since sticky). */
+function isOverdue(j){
+  if(j && j.overdue_since) return true;
+  const start = jobStartDate(j);
+  if(start) return start.getTime() < Date.now();
+  return /^\s*-/.test(String((j&&j.hours)||''));
+}
 /** Timing cell: red background when the start time has already passed (computed vs now at render). */
 function timingCell(j){
   // start_at = frozen ORIGINAL start (never moves forward). Red is sticky once overdue_since is set.
@@ -504,17 +517,21 @@ function fmtHoursToStart(ms){
   const h = Math.round((ms - Date.now())/360000)/10;
   return (Math.abs(h - Math.round(h)) < 0.05 ? String(Math.round(h)) : h.toFixed(1)) + 'h';
 }
-/** Flip Timing cells red as jobs go overdue between refreshes (no re-render needed). */
+/** Flip Timing cells red as jobs go overdue; re-render to move newly overdue rows into the bottom section. */
 function updateOverdueTiming(){
   const now = Date.now();
+  let crossed = false;
   document.querySelectorAll('td.timing[data-start-ms]').forEach(td=>{
     const ms = Number(td.dataset.startMs);
     if(!td.dataset.startMs || !Number.isFinite(ms)) return;
+    const was = td.classList.contains('overdue');
     const over = !!td.dataset.sticky || ms < now; // sticky: never clears once overdue
+    if(over && !was) crossed = true;
     td.classList.toggle('overdue', over);
     td.textContent = fmtHoursToStart(ms);
     if(!td.dataset.sticky) td.title = over ? 'Overdue: original start has passed' : 'Hours to original start';
   });
+  if(crossed) render();
 }
 setInterval(updateOverdueTiming, 30000);
 function startsCell(j){
@@ -1017,18 +1034,39 @@ function render(){
     if(document.activeElement===t) _focus={rid, s:t.selectionStart, e:t.selectionEnd};
   });
   document.getElementById('list').innerHTML = rows.length
-    ? (()=>{ const np=rows.filter(j=>(PIN_UI&&j.pinned)).length;
-        const names=[...new Set(rows.filter(j=>(PIN_UI&&j.pinned)).map(j=>j.company||''))].join(', ');
-        return rows.map((j,i)=>(np && i===0 ? `<tr class="pin-head"><td colspan="17">📌 Pinned client · ${esc(names)} · ${np} job${np===1?'':'s'} · kept at the top and on the list even after they fill</td></tr>` : '')
-          + rowHtml(j,i+1, i<15)
-          + (np && i===np-1 && np<rows.length ? `<tr class="pin-end"><td colspan="17"></td></tr>` : '')).join(''); })()
+    ? (()=>{
+        const active = rows.filter(j=>!isOverdue(j));
+        const overdue = rows.filter(j=>isOverdue(j));
+        const np = active.filter(j=>(PIN_UI&&j.pinned)).length;
+        const names = [...new Set(active.filter(j=>(PIN_UI&&j.pinned)).map(j=>j.company||''))].join(', ');
+        const parts = [];
+        let rank = 0;
+        active.forEach((j,i)=>{
+          if(np && i===0) parts.push(`<tr class="pin-head"><td colspan="17">📌 Pinned client · ${esc(names)} · ${np} job${np===1?'':'s'} · kept at the top and on the list even after they fill</td></tr>`);
+          rank += 1;
+          parts.push(rowHtml(j, rank, rank<=15));
+          if(np && i===np-1 && (np<active.length || overdue.length)) parts.push(`<tr class="pin-end"><td colspan="17"></td></tr>`);
+        });
+        if(overdue.length){
+          parts.push(`<tr class="overdue-head"><td colspan="17">Past start date (${overdue.length})</td></tr>`);
+          overdue.forEach(j=>{
+            rank += 1;
+            parts.push(rowHtml(j, rank, false));
+          });
+        }
+        return parts.join('');
+      })()
     : `<tr><td colspan="17" class="empty">No jobs match these filters.</td></tr>`;
   wireCommentEditors(document.getElementById('list'));
   Object.keys(_drafts).forEach(rid=>{ const w=noteWrap(rid); const t=w&&w.querySelector('textarea.team-note');
     if(t){ t.value=_drafts[rid]; t.dispatchEvent(new Event('input')); } });
   if(_focus){ const w=noteWrap(_focus.rid); const t=w&&w.querySelector('textarea.team-note');
     if(t){ t.focus(); try{ t.setSelectionRange(_focus.s,_focus.e); }catch(_){} } }
-  document.getElementById('listHint').textContent = `${rows.length} jobs · ranked by Heat · top rows highlighted`;
+  const _od = rows.filter(j=>isOverdue(j)).length;
+  const _act = rows.length - _od;
+  document.getElementById('listHint').textContent = _od
+    ? `${_act} open · ${_od} past start date · ranked by Heat within each section`
+    : `${rows.length} jobs · ranked by Heat · top rows highlighted`;
   document.getElementById('subtitle').innerHTML = (()=>{
     const u = UPDATED || '—';
     const m = String(u).match(/^(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2}(?::\d{2})?)\s*(.*)$/);
