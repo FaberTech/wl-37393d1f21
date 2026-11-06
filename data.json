@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05 16:36:46 PT",
+ "updated_at": "2026-11-05 16:38:31 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -680,6 +680,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-06T12:45:00Z",
    "next_start_local": "2026-11-06 06:45"
+  },
+  {
+   "request_id": "132542",
+   "heat": 44,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90695?request_id=132542",
+   "company": "Kalamoir Construction Inc – Craigs Way Station",
+   "trade": "SK",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "2",
+   "hours": "134.4",
+   "value": "1752.30",
+   "slots": "6",
+   "why": "new logo; tier 2; 97 matches",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1793925435892149",
+   "funnel": "97 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-05 17:38 PT",
+   "fill_filled": 0,
+   "fill_total": 6,
+   "fill": "0/6",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-05 17:38:31 PT",
+   "scored_at": "2026-11-05 17:38:31 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -712,5 +745,5 @@
  },
  "funnels_updated_at": "2026-11-05 16:36:46 PT",
  "fill_updated_at": "2026-11-05 16:36:46 PT",
- "updated": "2026-11-05 23:23:07 UTC"
+ "updated": "2026-11-06 00:38:31 UTC"
 }
