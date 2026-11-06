@@ -680,11 +680,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-09T15:00:00Z",
    "next_start_local": "2026-11-09 07:00"
+  },
+  {
+   "request_id": "132577",
+   "heat": 51,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90711?request_id=132577",
+   "company": "Redhawk Earthworks",
+   "trade": "General Labour",
+   "market": "Dallas TX",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "0.5",
+   "value": "188.80",
+   "slots": "1",
+   "why": "Metabase hours 0.5 tier 2 value $188.80 · high risk · same-day last-min",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1793975271738339",
+   "funnel": "56/0/0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-06 07:32 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-06 07:32:44 PT",
+   "scored_at": "2026-11-06 07:32:44 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 13,
- "filled_today_date": "2026-11-05",
+ "filled_today": 0,
+ "filled_today_date": "2026-11-06",
  "weekly_fulfilment": {
   "fulfilled": 409,
   "denominator": 412,
@@ -711,5 +744,6 @@
   "groups": 428
  },
  "funnels_updated_at": "2026-11-05 21:00:14 PT",
- "fill_updated_at": "2026-11-05 21:00:14 PT"
+ "fill_updated_at": "2026-11-05 21:00:14 PT",
+ "updated": "2026-11-06 14:32:44 UTC"
 }
