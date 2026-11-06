@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06 08:02:07 PT",
+ "updated_at": "2026-11-06 08:02:36 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -713,6 +713,39 @@
    "fill_pending": false,
    "hours_as_of": "2026-11-06 07:32:44 PT",
    "scored_at": "2026-11-06 07:32:44 PT"
+  },
+  {
+   "request_id": "132588",
+   "heat": 41,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90722?request_id=132588",
+   "company": "Essence Properties – Jericho Park",
+   "trade": "Telehandler Operator",
+   "market": "Vancouver",
+   "sales": "Demi",
+   "tier": "2",
+   "hours": "70.9",
+   "value": "6642.19",
+   "slots": "1",
+   "why": "Heat 41 Act (Metabase hours 70.9 tier 2 value $6642.19 over 15 working days, 1 slot, funnel 23/0/0, autofill on, fill 0/1, status 2 Matched)",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1793980841328559?thread_ts=1793980798.618129&cid=G3SUU809L",
+   "funnel": "23 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-06 09:02 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-06 09:02:36 PT",
+   "scored_at": "2026-11-06 09:02:36 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -745,5 +778,5 @@
  },
  "funnels_updated_at": "2026-11-05 21:00:14 PT",
  "fill_updated_at": "2026-11-05 21:00:14 PT",
- "updated": "2026-11-06 16:02:07 UTC"
+ "updated": "2026-11-06 16:02:36 UTC"
 }
