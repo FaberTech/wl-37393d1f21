@@ -921,7 +921,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div><div class="pn-later"><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 2</button><button type="button" class="pn-btn" disabled title="Coming later">Apply Protocol 3</button></div></td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div>${(PIN_UI&&j.pinned)?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
