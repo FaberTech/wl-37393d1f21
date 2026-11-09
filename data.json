@@ -640,6 +640,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-11T15:00:00Z",
    "next_start_local": "2026-11-11 08:00"
+  },
+  {
+   "request_id": "132807",
+   "heat": 100,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90859?request_id=132807",
+   "company": "Royop Developments – Township Road",
+   "trade": "General Labour",
+   "market": "Calgary AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "2.2h",
+   "value": "06.50",
+   "slots": "2",
+   "why": "tier 5 · 2 slots · 2.2h · replacement ≤18h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1794248313998499?thread_ts=1794248313.998499&cid=C071SU4EHBK",
+   "funnel": "4004 / 2 / 2",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-09 11:21 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-09 11:21:31 PT",
+   "scored_at": "2026-11-09 11:21:31 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -671,5 +704,6 @@
   "groups": 438
  },
  "funnels_updated_at": "2026-11-09 10:21:24 PT",
- "fill_updated_at": "2026-11-09 10:21:24 PT"
+ "fill_updated_at": "2026-11-09 10:21:24 PT",
+ "updated": "2026-11-09 18:21:31 UTC"
 }
