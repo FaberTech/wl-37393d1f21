@@ -597,6 +597,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-11T15:00:00Z",
    "next_start_local": "2026-11-11 08:00"
+  },
+  {
+   "request_id": "132777",
+   "heat": 45,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90844?request_id=132777",
+   "company": "Redhawk Earthworks – Roanoke parking garage",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Linda",
+   "tier": "2",
+   "hours": "20.8h",
+   "value": "$1,840.80",
+   "slots": "2",
+   "why": "tier 2 · 2 slots · 20.8h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1794241567266929?thread_ts=1794241567.266929&cid=G01H65R64AH",
+   "funnel": "53 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-09 09:28 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-09 09:28:04 PT",
+   "scored_at": "2026-11-09 09:28:04 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -629,5 +662,5 @@
  },
  "funnels_updated_at": "2026-11-09 08:18:59 PT",
  "fill_updated_at": "2026-11-09 08:18:59 PT",
- "updated": "2026-11-09 15:55:30 UTC"
+ "updated": "2026-11-09 16:28:04 UTC"
 }
