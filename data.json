@@ -684,6 +684,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-11T15:00:00Z",
    "next_start_local": "2026-11-11 08:00"
+  },
+  {
+   "request_id": "132809",
+   "heat": 96,
+   "heat_exact": true,
+   "band": "Immediate",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90860?request_id=132809",
+   "company": "Hopewell – Attainable Homes Calgary - The Park at Radisson Heights",
+   "trade": "General Labour",
+   "market": "Calgary AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "1.5h",
+   "value": "$236.00",
+   "slots": "2",
+   "why": "tier 5 · 2 slots · 1.5h · replacement ≤18h",
+   "intervention": "Protocol 1",
+   "flags": "urgent",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1794248969983519?thread_ts=1794248969.983519&cid=C071SU4EHBK",
+   "funnel": "5481 / 2 / 1",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-09 11:31 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-09 11:31:12 PT",
+   "scored_at": "2026-11-09 11:31:12 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -716,5 +749,5 @@
  },
  "funnels_updated_at": "2026-11-09 10:29:05 PT",
  "fill_updated_at": "2026-11-09 10:29:05 PT",
- "updated": "2026-11-09 18:21:53 UTC"
+ "updated": "2026-11-09 18:31:12 UTC"
 }
