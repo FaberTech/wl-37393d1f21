@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09 10:21:24 PT",
+ "updated_at": "2026-11-09 10:21:34 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -655,7 +655,7 @@
    "sales": "Gabbie",
    "tier": "5",
    "hours": "2.2h",
-   "value": "06.50",
+   "value": "$206.50",
    "slots": "2",
    "why": "tier 5 · 2 slots · 2.2h · replacement ≤18h · new logo",
    "intervention": "Protocol 1",
@@ -671,8 +671,8 @@
    "fill_total": 2,
    "fill": "0/2",
    "fill_pending": false,
-   "hours_as_of": "2026-11-09 11:21:31 PT",
-   "scored_at": "2026-11-09 11:21:31 PT"
+   "hours_as_of": "2026-11-09 11:21:53 PT",
+   "scored_at": "2026-11-09 11:21:53 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -705,5 +705,5 @@
  },
  "funnels_updated_at": "2026-11-09 10:21:24 PT",
  "fill_updated_at": "2026-11-09 10:21:24 PT",
- "updated": "2026-11-09 18:21:31 UTC"
+ "updated": "2026-11-09 18:21:53 UTC"
 }
