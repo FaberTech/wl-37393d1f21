@@ -594,11 +594,44 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-10T13:30:00Z",
    "next_start_local": "2026-11-10 07:30"
+  },
+  {
+   "request_id": "132753",
+   "heat": 73,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90830?request_id=132753",
+   "company": "Authers Building Group – ESC",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Teagan",
+   "tier": "2",
+   "hours": "1.5h",
+   "value": "python3 /workspace/priority-dashboard/upsert_scored_job.py \\\n  --request-id 132753 \\\n  --heat 73 \\\n  --band Urgent \\\n  --link \"https://betadash.faberconnect.com/#/requests/view-group/90830?request_id=132753\" \\\n  --company \"Authers Building Group – ESC\" \\\n  --trade \"General Labour\" \\\n  --market \"Dallas\" \\\n  --sales Teagan \\\n  --author Teagan \\\n  --tier 2 \\\n  --hours \"1.5h\" \\\n  --value \"$165.20\" \\\n  --slots 1 \\\n  --why \"tier 2 · 1 slot · 1.5h · replacement ≤18h\" \\\n  --intervention \"Protocol 1\" \\\n  --slack \"https://faber.slack.com/archives/G01H65R64AH/p1794231038053759\" \\\n  --funnel \"54 / 0 / 0\" \\\n  --replacement \\\n  --autofill on \\\n  --fill \"0/1\" \\\n  --filled 0 \\\n  --total-slots 165.20",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 1.5h · replacement ≤18h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faber.slack.com/archives/G01H65R64AH/p1794231038053759",
+   "funnel": "54 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-09 06:33 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-09 06:33:09 PT",
+   "scored_at": "2026-11-09 06:33:09 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 12,
- "filled_today_date": "2026-11-08",
+ "filled_today": 0,
+ "filled_today_date": "2026-11-09",
  "weekly_fulfilment": {
   "fulfilled": 523,
   "denominator": 536,
@@ -625,5 +658,6 @@
   "groups": 434
  },
  "funnels_updated_at": "2026-11-08 20:59:34 PT",
- "fill_updated_at": "2026-11-08 20:59:34 PT"
+ "fill_updated_at": "2026-11-08 20:59:34 PT",
+ "updated": "2026-11-09 13:33:09 UTC"
 }
