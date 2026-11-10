@@ -598,6 +598,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-11T12:30:00Z",
    "next_start_local": "2026-11-11 06:30"
+  },
+  {
+   "request_id": "132915",
+   "heat": 77,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90931?request_id=132915",
+   "company": "Priestly Demolition Inc. – (South Gate Hudson’s Bay) - PCL",
+   "trade": "General Labour",
+   "market": "Edmonton, AB",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "307.5h",
+   "value": "83,502.50",
+   "slots": "20",
+   "why": "tier 5 · 20 slots · 307.5h · high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/C0923DK97A8/p1794335382445039?thread_ts=1792778036.320489&cid=C0923DK97A8",
+   "funnel": "3175 / 22 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-10 11:32 PT",
+   "fill_filled": 0,
+   "fill_total": 20,
+   "fill": "0/20",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-10 11:32:31 PT",
+   "scored_at": "2026-11-10 11:32:31 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -629,5 +662,6 @@
   "groups": 448
  },
  "funnels_updated_at": "2026-11-10 10:25:40 PT",
- "fill_updated_at": "2026-11-10 10:25:40 PT"
+ "fill_updated_at": "2026-11-10 10:25:40 PT",
+ "updated": "2026-11-10 18:32:31 UTC"
 }
