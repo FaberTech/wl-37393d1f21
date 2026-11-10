@@ -555,6 +555,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-30T14:00:00Z",
    "next_start_local": "2026-11-30 07:00"
+  },
+  {
+   "request_id": "132907",
+   "heat": 61,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90926?request_id=132907",
+   "company": "Skiles Group – Methodist Dallas",
+   "trade": "General Labour",
+   "market": "Dallas, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "20.1h",
+   "value": "8,905.60",
+   "slots": "3",
+   "why": "tier 2 · 3 slots · 20.1h · risk",
+   "intervention": "Protocol 1",
+   "flags": "risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1794327664520639?thread_ts=1794327664.520639&cid=G01H65R64AH",
+   "funnel": "38 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-10 09:22 PT",
+   "fill_filled": 0,
+   "fill_total": 3,
+   "fill": "0/3",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-10 09:22:34 PT",
+   "scored_at": "2026-11-10 09:22:34 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -587,5 +620,5 @@
  },
  "funnels_updated_at": "2026-11-10 08:19:05 PT",
  "fill_updated_at": "2026-11-10 08:19:05 PT",
- "updated": "2026-11-10 15:03:02 UTC"
+ "updated": "2026-11-10 16:22:34 UTC"
 }
