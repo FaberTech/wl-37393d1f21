@@ -638,6 +638,39 @@
    "next_start_at": "2026-11-11T12:45:00Z",
    "next_start_local": "2026-11-11 06:45",
    "overdue_since": "2026-11-10 12:42:46 PT"
+  },
+  {
+   "request_id": "132976",
+   "heat": 52,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90961?request_id=132976",
+   "company": "Anthem Properties – King & Park",
+   "trade": "CSO",
+   "market": "Vancouver, BC",
+   "sales": "Stephen",
+   "tier": "2",
+   "hours": "639.9h",
+   "value": "python3 /workspace/priority-dashboard/upsert_scored_job.py \\\n  --request-id 132976 \\\n  --heat 52 \\\n  --band Act \\\n  --link \"https://betadash.faberconnect.com/#/requests/view-group/90961?request_id=132976\" \\\n  --company \"Anthem Properties – King & Park\" \\\n  --trade \"CSO\" \\\n  --market \"Vancouver, BC\" \\\n  --sales \"Stephen\" \\\n  --author \"Stephen\" \\\n  --tier 2 \\\n  --hours \"639.9h\" \\\n  --value \"$13,820.63\" \\\n  --slots 1 \\\n  --why \"tier 2 · 1 slot · 639.9h · new logo\" \\\n  --intervention \"Protocol 1\" \\\n  --slack \"https://faberconnect.slack.com/archives/G3SUU809L/p1794350208253749?thread_ts=1794350208.253749&cid=G3SUU809L\" \\\n  --flags \"new\" \\\n  --funnel \"38 / 1 / 0\" \\\n  --autofill \"off\" \\\n  --fill \"0/1\" \\\n  --filled 0 \\\n  --total-slots 1\necho \"UPSERT_EXIT:$?\"\npython3 /workspace/priority-dashboard/apply_open_only_filter.py\necho \"FILTER_EXIT:$?\"3,820.63",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 639.9h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1794350208253749?thread_ts=1794350208.253749&cid=G3SUU809L",
+   "funnel": "38 / 1 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-10 15:38 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-10 15:38:38 PT",
+   "scored_at": "2026-11-10 15:38:38 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -669,5 +702,6 @@
   "groups": 451
  },
  "funnels_updated_at": "2026-11-10 14:32:07 PT",
- "fill_updated_at": "2026-11-10 14:32:07 PT"
+ "fill_updated_at": "2026-11-10 14:32:07 PT",
+ "updated": "2026-11-10 22:38:38 UTC"
 }
