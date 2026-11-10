@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10 05:13:55 PT",
+ "updated_at": "2026-11-10 05:14:15 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -510,6 +510,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-30T14:00:00Z",
    "next_start_local": "2026-11-30 07:00"
+  },
+  {
+   "request_id": "132889",
+   "heat": 79,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90912?request_id=132889",
+   "company": "Axiom Builders",
+   "trade": "Machine Operator",
+   "market": "Vancouver BC",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "2.1",
+   "value": "450.00",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 2.1h · replacement ≤18h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "#workers_van",
+   "funnel": "6 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-10 06:26 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-10 06:26:01 PT",
+   "scored_at": "2026-11-10 06:26:01 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -542,5 +575,5 @@
  },
  "funnels_updated_at": "2026-11-10 05:13:55 PT",
  "fill_updated_at": "2026-11-10 05:13:55 PT",
- "updated": "2026-11-10 13:14:11 UTC"
+ "updated": "2026-11-10 13:26:01 UTC"
 }
