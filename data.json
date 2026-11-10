@@ -597,9 +597,9 @@
   },
   {
    "request_id": "132938",
-   "heat": 56,
-   "heat_exact": false,
-   "band": "Act",
+   "heat": 60,
+   "heat_exact": true,
+   "band": "Urgent",
    "source": "Sales intake",
    "status": "Open",
    "link": "https://betadash.faberconnect.com/#/requests/view-group/90935?request_id=132938",
@@ -609,7 +609,7 @@
    "sales": "Linda",
    "tier": "2",
    "hours": "-6.9h",
-   "value": "$35.09",
+   "value": "$635.09",
    "slots": "1",
    "why": "tier 2 · 1 slot · -6.9h · risk",
    "intervention": "Protocol 1",
@@ -625,8 +625,8 @@
    "fill_total": 1,
    "fill": "0/1",
    "fill_pending": false,
-   "hours_as_of": "2026-11-10 12:42:46 PT",
-   "scored_at": "2026-11-10 12:42:43 PT",
+   "hours_as_of": "2026-11-10 12:43:33 PT",
+   "scored_at": "2026-11-10 12:43:33 PT",
    "overdue_since": "2026-11-10 12:42:46 PT"
   }
  ],
@@ -660,5 +660,5 @@
  },
  "funnels_updated_at": "2026-11-10 11:26:52 PT",
  "fill_updated_at": "2026-11-10 11:26:52 PT",
- "updated": "2026-11-10 19:42:43 UTC"
+ "updated": "2026-11-10 19:43:33 UTC"
 }
