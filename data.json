@@ -513,7 +513,7 @@
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 0,
+ "filled_today": 1,
  "filled_today_date": "2026-11-10",
  "weekly_fulfilment": {
   "fulfilled": 147,
@@ -541,5 +541,6 @@
   "groups": 441
  },
  "funnels_updated_at": "2026-11-10 05:13:55 PT",
- "fill_updated_at": "2026-11-10 05:13:55 PT"
+ "fill_updated_at": "2026-11-10 05:13:55 PT",
+ "updated": "2026-11-10 13:14:11 UTC"
 }
