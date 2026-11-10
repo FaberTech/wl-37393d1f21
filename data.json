@@ -638,6 +638,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-10T12:45:00Z",
    "next_start_local": "2026-11-10 06:45"
+  },
+  {
+   "request_id": "132940",
+   "heat": 56,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90936?request_id=132940",
+   "company": "Orrmoniz",
+   "trade": "General Carpenter",
+   "market": "Vancouver BC",
+   "sales": "Talia",
+   "tier": "2",
+   "hours": "43.6",
+   "value": "13005.00",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 43.6h · risk",
+   "intervention": "Protocol 1",
+   "flags": "R",
+   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1794340479421219",
+   "funnel": "9 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-10 12:56 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-10 12:56:27 PT",
+   "scored_at": "2026-11-10 12:56:27 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -670,5 +703,5 @@
  },
  "funnels_updated_at": "2026-11-10 11:51:16 PT",
  "fill_updated_at": "2026-11-10 11:51:16 PT",
- "updated": "2026-11-10 19:43:33 UTC"
+ "updated": "2026-11-10 19:56:27 UTC"
 }
