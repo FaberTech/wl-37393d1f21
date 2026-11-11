@@ -598,8 +598,8 @@
   },
   {
    "request_id": "133023",
-   "heat": 41,
-   "heat_exact": false,
+   "heat": 43,
+   "heat_exact": true,
    "band": "Act",
    "source": "Sales intake",
    "status": "Open",
@@ -610,7 +610,7 @@
    "sales": "Linda",
    "tier": "6",
    "hours": "16.6h",
-   "value": "$83.80",
+   "value": "$483.80",
    "slots": "1",
    "why": "tier 6 · 1 slot · 16.6h · high risk",
    "intervention": "Protocol 1",
@@ -626,8 +626,8 @@
    "fill_total": 1,
    "fill": "0/1",
    "fill_pending": false,
-   "hours_as_of": "2026-11-11 13:12:09 PT",
-   "scored_at": "2026-11-11 13:12:09 PT"
+   "hours_as_of": "2026-11-11 13:12:49 PT",
+   "scored_at": "2026-11-11 13:12:49 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -660,5 +660,5 @@
  },
  "funnels_updated_at": "2026-11-11 12:00:53 PT",
  "fill_updated_at": "2026-11-11 12:00:53 PT",
- "updated": "2026-11-11 20:12:09 UTC"
+ "updated": "2026-11-11 20:12:49 UTC"
 }
