@@ -595,6 +595,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-12-07T14:30:00Z",
    "next_start_local": "2026-12-07 06:30"
+  },
+  {
+   "request_id": "133023",
+   "heat": 43,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90990?request_id=133023",
+   "company": "Satterfield & Pontikes Construction – Klein Tools",
+   "trade": "General Labour",
+   "market": "Mansfield, TX",
+   "sales": "Linda",
+   "tier": "6",
+   "hours": "16.6h",
+   "value": "83.80",
+   "slots": "1",
+   "why": "tier 6 · 1 slot · 16.6h · high risk",
+   "intervention": "Protocol 1",
+   "flags": "high risk",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1794427806988949?thread_ts=1794427806.988949&cid=G01H65R64AH",
+   "funnel": "2 / 0 / 0",
+   "replacement": false,
+   "autofill": "off",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-11 13:12 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-11 13:12:09 PT",
+   "scored_at": "2026-11-11 13:12:09 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -627,5 +660,5 @@
  },
  "funnels_updated_at": "2026-11-11 12:00:53 PT",
  "fill_updated_at": "2026-11-11 12:00:53 PT",
- "updated": "2026-11-11 12:34:46 UTC"
+ "updated": "2026-11-11 20:12:09 UTC"
 }
