@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10 16:14:26 PT",
+ "updated_at": "2026-11-10 16:14:54 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -594,43 +594,10 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-12-07T14:30:00Z",
    "next_start_local": "2026-12-07 06:30"
-  },
-  {
-   "request_id": "132991",
-   "heat": 14,
-   "heat_exact": false,
-   "band": "Watch",
-   "source": "Sales intake",
-   "status": "Open",
-   "link": "https://betadash.faberconnect.com/#/requests/view-group/90970?request_id=132991",
-   "company": "Urban One Builders – Atlas",
-   "trade": "Flagger",
-   "market": "Surrey, BC",
-   "sales": "Juliana",
-   "tier": "2",
-   "hours": "84.8h",
-   "value": "$614.32",
-   "slots": "0",
-   "why": "tier 2 · 84.8h",
-   "intervention": "Protocol 1",
-   "flags": "",
-   "slack": "https://faberconnect.slack.com/archives/G3SUU809L/p1794355916093029?thread_ts=1794353748.165989&cid=G3SUU809L",
-   "funnel": "34 / 3 / 3",
-   "replacement": false,
-   "autofill": "on",
-   "note": "scored via @score · live rescore v2.3",
-   "scored_via": "@score",
-   "watchlist_posted_at": "2026-11-10 17:14 PT",
-   "fill_filled": 3,
-   "fill_total": 3,
-   "fill": "3/3",
-   "fill_pending": false,
-   "hours_as_of": "2026-11-10 17:14:23 PT",
-   "scored_at": "2026-11-10 17:14:22 PT"
   }
  ],
  "filter_rule": "open_only_v1",
- "filled_today": 10,
+ "filled_today": 11,
  "filled_today_date": "2026-11-10",
  "weekly_fulfilment": {
   "fulfilled": 224,
