@@ -550,6 +550,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-12-07T14:30:00Z",
    "next_start_local": "2026-12-07 06:30"
+  },
+  {
+   "request_id": "133002",
+   "heat": 73,
+   "heat_exact": true,
+   "band": "Urgent",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/90979?request_id=133002",
+   "company": "Crossland – Joshua High School",
+   "trade": "General Labour",
+   "market": "Joshua, TX",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "1.4h",
+   "value": "177.00",
+   "slots": "1",
+   "why": "tier 2 · 1 slot · 1.4h · replacement ≤18h",
+   "intervention": "Protocol 1",
+   "flags": "",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1794400340887099?thread_ts=1794400340.887099&cid=G01H65R64AH",
+   "funnel": "58 / 0 / 0",
+   "replacement": true,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-11 05:34 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-11 05:34:46 PT",
+   "scored_at": "2026-11-11 05:34:46 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -581,5 +614,6 @@
   "groups": 453
  },
  "funnels_updated_at": "2026-11-11 02:25:44 PT",
- "fill_updated_at": "2026-11-11 02:25:44 PT"
+ "fill_updated_at": "2026-11-11 02:25:44 PT",
+ "updated": "2026-11-11 12:34:46 UTC"
 }
