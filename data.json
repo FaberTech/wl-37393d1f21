@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-12 09:03:41 PT",
+ "updated_at": "2026-11-12 09:04:00 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -595,6 +595,39 @@
    "start_source": "metabase original_start_date",
    "next_start_at": "2026-11-16T13:00:00Z",
    "next_start_local": "2026-11-16 07:00"
+  },
+  {
+   "request_id": "133084",
+   "heat": 54,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/91029?request_id=133084",
+   "company": "Royop Developments – 268 Cayley Rd SE",
+   "trade": "Concrete Finisher",
+   "market": "Calgary",
+   "sales": "Gabbie",
+   "tier": "5",
+   "hours": "93.4",
+   "value": "877.71",
+   "slots": "1",
+   "why": "tier 5 · 1 slot · 93.4h · new logo",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/C071SU4EHBK/p1794502915080709?thread_ts=1794502915.080709&cid=C071SU4EHBK",
+   "funnel": "40 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-12 10:03 PT",
+   "fill_filled": 0,
+   "fill_total": 1,
+   "fill": "0/1",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-12 10:03:56 PT",
+   "scored_at": "2026-11-12 10:03:56 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -627,5 +660,5 @@
  },
  "funnels_updated_at": "2026-11-12 08:57:52 PT",
  "fill_updated_at": "2026-11-12 08:57:52 PT",
- "updated": "2026-11-12 15:54:48 UTC"
+ "updated": "2026-11-12 17:03:56 UTC"
 }
