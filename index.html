@@ -1131,7 +1131,7 @@ setInterval(()=>load(true),60000);
 <style>
   .p1-btn { background:#1d2b4a; color:#cfe0ff; border:1px solid #35548f; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
   .p1-btn:hover { background:#27406e; }
-  .p1-btn.applied { background:#4a1212; color:#ff9b9b; border:1px solid #e05a5a; cursor:default; }
+  .p1-btn.applied { text-decoration:none; display:inline-block; background:#4a1212; color:#ff9b9b; border:1px solid #e05a5a; cursor:pointer; }
   .p1-btn.applied:hover { background:#5a1818; }
   .pn-later { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
   .pn-btn { background:#141a26; color:#7d8aa5; border:1px dashed #2f3d5c; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; white-space:nowrap; cursor:default; }
@@ -1170,7 +1170,7 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
       if(cell.dataset.p1state===want) return;
       cell.dataset.p1state=want;
       cell.innerHTML = s
-        ? `<button type="button" class="p1-btn applied" data-rid="${e(rid)}" title="Sent ${e(s.at||'')} · updates are in #protocol-one">Protocol 1 Applied · Watch Slack</button>`
+        ? `<a class="p1-btn applied" href="${e(s.slack_url||'https://faberconnect.slack.com/archives/C0CJ3HTFLF2')}" target="_blank" rel="noopener" data-rid="${e(rid)}" title="Sent ${e(s.at||'')} · open the #protocol-one thread">Protocol 1 Applied</a>`
         : `<button type="button" class="p1-btn" data-rid="${e(rid)}">Apply Protocol 1</button>`;
     });
   }
@@ -1239,7 +1239,7 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   }
   document.addEventListener('click',ev=>{
     const applied=ev.target.closest && ev.target.closest('.p1-btn.applied');
-    if(applied){ ev.preventDefault(); ev.stopPropagation(); openAppliedNote(applied.dataset.rid); return; }
+    if(applied){ ev.stopPropagation(); return; }
     const b=ev.target.closest && ev.target.closest('.p1-btn');
     if(b){ ev.preventDefault(); ev.stopPropagation(); open(b.dataset.rid); }
   }, true);
