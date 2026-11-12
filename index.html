@@ -1131,6 +1131,8 @@ setInterval(()=>load(true),60000);
 <style>
   .p1-btn { background:#1d2b4a; color:#cfe0ff; border:1px solid #35548f; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
   .p1-btn:hover { background:#27406e; }
+  .p1-btn.applied { background:#4a1212; color:#ff9b9b; border:1px solid #e05a5a; cursor:default; }
+  .p1-btn.applied:hover { background:#5a1818; }
   .pn-later { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
   .pn-btn { background:#141a26; color:#7d8aa5; border:1px dashed #2f3d5c; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; white-space:nowrap; cursor:default; }
   .p1-sent { font-size:11px; color:#7ee2a8; font-weight:700; white-space:nowrap; }
@@ -1168,7 +1170,7 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
       if(cell.dataset.p1state===want) return;
       cell.dataset.p1state=want;
       cell.innerHTML = s
-        ? `<div class="p1-sent" title="Protocol 1 sent; locked ${P1.lock_hours}h">P1 sent ${e(shortTime(s.at))} PT · ${e(s.count)}</div>`
+        ? `<button type="button" class="p1-btn applied" data-rid="${e(rid)}" title="Sent ${e(s.at||'')} · updates are in #protocol-one">Protocol 1 Applied · Watch Slack</button>`
         : `<button type="button" class="p1-btn" data-rid="${e(rid)}">Apply Protocol 1</button>`;
     });
   }
@@ -1216,12 +1218,31 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
       pin.value='';
       if(!r.ok){ go.disabled=false; document.getElementById('p1-res').innerHTML=`<span class="err">${e(r.error||'Failed')}</span>`; return; }
       document.getElementById('p1-res').innerHTML = r.mode==='live'
-        ? `<span class="ok">Sent to ${e(r.sent_n)} workers${r.failed_n?` (${e(r.failed_n)} failed)`:''}.</span>`
+        ? `<span class="ok">Sent to ${e(r.sent_n)} workers${r.failed_n?` (${e(r.failed_n)} failed)`:''}. Updates are in #protocol-one.</span>`
         : `<span class="ok">Dry run OK: ${e(r.audience_n)} workers would get it. Nothing was sent.</span>`;
+      if(r.mode==='live' && (r.sent_n||0)>0){
+        P1.sent = Object.assign({}, P1.sent, {[String(rid)]:{at:r.at, at_epoch:r.at_epoch, count:r.sent_n}});
+        document.querySelectorAll('.p1-cell').forEach(c=>{ delete c.dataset.p1state; });
+        decorate();
+      }
       loadStatus();
     };
   }
-  document.addEventListener('click',ev=>{ const b=ev.target.closest && ev.target.closest('.p1-btn'); if(b){ ev.preventDefault(); ev.stopPropagation(); open(b.dataset.rid); } }, true);
+  function openAppliedNote(rid){
+    const s=lockedInfo(rid);
+    $m.classList.add('open');
+    $b.innerHTML=`<h3>Protocol 1 Applied · ${e(rid)}</h3>
+      <p>Sent ${e(s && s.at ? s.at : '')}${s && s.count!=null?` · ${e(s.count)} workers`:''}.</p>
+      <p>Updates are in #protocol-one.</p>
+      <div class="row"><button id="p1-x">Close</button></div>`;
+    document.getElementById('p1-x').onclick=close;
+  }
+  document.addEventListener('click',ev=>{
+    const applied=ev.target.closest && ev.target.closest('.p1-btn.applied');
+    if(applied){ ev.preventDefault(); ev.stopPropagation(); openAppliedNote(applied.dataset.rid); return; }
+    const b=ev.target.closest && ev.target.closest('.p1-btn');
+    if(b){ ev.preventDefault(); ev.stopPropagation(); open(b.dataset.rid); }
+  }, true);
   new MutationObserver(()=>decorate()).observe(document.body,{childList:true,subtree:true});
   loadStatus(); setInterval(loadStatus, 60000);
 })();
