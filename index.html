@@ -285,6 +285,61 @@
     border-bottom:1px solid rgba(220,38,38,.40); box-shadow:inset 4px 0 0 #dc2626;
   }
   tr.overdue-end td { padding:0; height:4px; background:transparent; border-bottom:none; }
+
+  /* Per-column filters (Haz 2026-11-12): dark navy + mint, under the header row */
+  .filter-count { color:var(--muted); font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .filter-count.active { color:#5eead4; }
+  button.clear-filters {
+    border:1px solid #35548f; background:#0b1324; color:#cfe0ff;
+    border-radius:10px; padding:7px 12px; font-weight:700; font-size:12px; cursor:pointer;
+  }
+  button.clear-filters:hover { border-color:#5eead4; color:#5eead4; background:#102033; }
+  button.clear-filters:disabled { opacity:.45; cursor:default; border-color:#2a3245; color:#7d8aa5; }
+  tr.col-filters th {
+    text-transform:none; letter-spacing:0; font-weight:500; font-size:11px;
+    padding:4px 6px 8px; vertical-align:top; white-space:normal;
+    background:#05080f; border-bottom:1px solid #1f2a3d; color:#8b95a8;
+  }
+  tr.col-filters th.cf-skip { padding:4px 6px; }
+  .cf-stack { display:flex; flex-direction:column; gap:4px; min-width:72px; }
+  .cf-input {
+    width:100%; min-width:0; box-sizing:border-box;
+    border:1px solid #35548f; background:#0b1324; color:#e8eaed;
+    border-radius:6px; padding:3px 6px; font-size:11px; font-weight:500;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .cf-input::placeholder { color:#6b7385; }
+  .cf-input:hover { border-color:#4a6fa8; }
+  .cf-input:focus {
+    outline:none; border-color:#5eead4;
+    box-shadow:0 0 0 2px rgba(94,234,212,.25); background:#102033;
+  }
+  .cf-input.has, .cf-ms-btn.has { border-color:#5eead4; color:#5eead4; }
+  .cf-ms { position:relative; min-width:0; }
+  .cf-ms-btn {
+    width:100%; min-width:0; box-sizing:border-box; text-align:left;
+    border:1px solid #35548f; background:#0b1324; color:#cfe0ff;
+    border-radius:6px; padding:3px 18px 3px 6px; font-size:11px; font-weight:650;
+    cursor:pointer; position:relative; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .cf-ms-btn:hover { border-color:#4a6fa8; }
+  .cf-ms-btn:after {
+    content:'▾'; position:absolute; right:5px; top:50%; transform:translateY(-50%);
+    font-size:9px; color:#7d8aa5; pointer-events:none;
+  }
+  .cf-ms-btn.has:after { color:#5eead4; }
+  .cf-ms-menu {
+    display:none; background:#0b1324; border:1px solid #35548f; border-radius:8px;
+    padding:6px 0; max-height:260px; overflow:auto; box-shadow:0 8px 24px rgba(0,0,0,.55);
+    min-width:140px; z-index:8000;
+  }
+  .cf-ms-menu.open { display:block; }
+  .cf-ms-menu label {
+    display:flex; align-items:center; gap:6px; padding:4px 10px;
+    font-size:12px; font-weight:600; color:#e8eaed; cursor:pointer; white-space:nowrap;
+  }
+  .cf-ms-menu label:hover { background:rgba(94,234,212,.10); }
+  .cf-ms-menu input { accent-color:#5eead4; margin:0; }
 </style>
 </head>
 <body>
@@ -314,18 +369,39 @@
     <div class="section-h">
       <div class="hint" id="listHint">Ranked by Heat · past-start jobs in their own section at the bottom · Slack threads + editable team notes</div>
       <div class="filters">
-        <select id="sales"><option value="">All sales reps</option></select>
-        <select id="band"><option value="">All bands</option><option>Immediate</option><option>Urgent</option><option>Act</option><option>Watch</option></select>
-        <select id="tier"><option value="">All tiers</option></select>
-        <select id="status"><option value="active" selected>Active (Open + Acked)</option><option value="">All statuses</option><option>Open</option><option>Acked</option><option>Filled</option></select>
-        <select id="source"><option value="">All sources</option><option value="Sales">Slack by Sales</option><option value="System">System</option><option value="Sales/System">Slack/System</option></select>
-        <input id="q" placeholder="Filter company / city / trade / comment…"/>
+        <span class="filter-count" id="filterCount">showing — of —</span>
+        <button type="button" class="clear-filters" id="clearFilters" disabled>Clear filters</button>
       </div>
     </div>
     <div class="scroll"><table><thead>
       <tr>
         <th>#</th><th>Heat</th><th>Tier / Status</th><th>Rep</th><th>Source</th><th>Request</th><th>Timing</th><th>Starts</th><th>Value</th><th>Funnel</th><th>Fill</th><th>Intervention</th><th>Posted</th><th>Company</th>
         <th>City</th><th>Trade</th><th>Comments</th>
+      </tr>
+      <tr class="col-filters" id="colFilters">
+        <th class="cf-skip"></th>
+        <th><div class="cf-stack">
+          <div class="cf-ms" data-key="heatBands" data-placeholder="All bands"></div>
+          <input class="cf-input" data-key="heatOp" placeholder=">60" aria-label="Heat number filter" autocomplete="off">
+        </div></th>
+        <th><div class="cf-stack">
+          <div class="cf-ms" data-key="tiers" data-placeholder="All tiers"></div>
+          <div class="cf-ms" data-key="statuses" data-placeholder="All statuses"></div>
+        </div></th>
+        <th><div class="cf-ms" data-key="reps" data-placeholder="All reps"></div></th>
+        <th><div class="cf-ms" data-key="sources" data-placeholder="All sources"></div></th>
+        <th><input class="cf-input" data-key="request" placeholder="contains…" aria-label="Request filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="timingOp" placeholder="e.g. <0" aria-label="Timing filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="starts" placeholder="Nov 12 or 11/1–11/12" aria-label="Starts date filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="valueOp" placeholder="e.g. >10000" aria-label="Value filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="funnel" placeholder="contains…" aria-label="Funnel filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="fillOp" placeholder=">0 or 0/1" aria-label="Fill filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="intervention" placeholder="contains…" aria-label="Intervention filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="posted" placeholder="Nov 12 or 11/1–11/12" aria-label="Posted date filter" autocomplete="off"></th>
+        <th><input class="cf-input" data-key="company" placeholder="contains…" aria-label="Company filter" autocomplete="off"></th>
+        <th><div class="cf-ms" data-key="cities" data-placeholder="All cities"></div></th>
+        <th><div class="cf-ms" data-key="trades" data-placeholder="All trades"></div></th>
+        <th><input class="cf-input" data-key="comments" placeholder="contains…" aria-label="Comments filter" autocomplete="off"></th>
       </tr>
     </thead><tbody id="list"></tbody></table></div>
   </section>
@@ -929,50 +1005,391 @@ function rowHtml(j, rank, active){
     <td class="comments">${commentsCell(j)}</td>
   </tr>`;
 }
-function fillTierOptions(){
-  const sel=document.getElementById('tier');
-  if(!sel) return;
-  const cur=sel.value;
-  const tiers=[...new Set(JOBS.map(j=>String(j.tier??'').trim()).filter(x=>x && x!=='—' && /^\d+$/.test(x)))].sort((a,b)=>Number(a)-Number(b));
-  sel.innerHTML='<option value="">All tiers</option>'+tiers.map(n=>`<option value="${n}">Tier ${n}</option>`).join('');
-  if([...sel.options].some(o=>o.value===cur)) sel.value=cur;
+const COL_FILTER_KEY='wlColFilters_v1';
+const HEAT_BANDS=['Immediate','Urgent','Act','Watch'];
+const SOURCE_OPTS=[{value:'Sales',label:'Slack by Sales'},{value:'System',label:'System'},{value:'Sales/System',label:'Slack/System'}];
+const STATUS_BASE=['Open','Acked','Fulfilled'];
+const COL_FILTER_ARRAYS=['heatBands','tiers','statuses','reps','sources','cities','trades'];
+const COL_FILTER_TEXTS=['heatOp','request','timingOp','starts','valueOp','funnel','fillOp','intervention','posted','company','comments'];
+function emptyColFilters(){
+  const o={};
+  COL_FILTER_ARRAYS.forEach(k=>o[k]=[]);
+  COL_FILTER_TEXTS.forEach(k=>o[k]='');
+  return o;
 }
-function fillSalesOptions(){
-  const sel=document.getElementById('sales');
-  const cur=sel.value;
-  const names=[...new Set(JOBS.map(j=>formatRepName((j.sales||'').trim())).filter(s=>s && s!=='—' && s.toLowerCase()!=='unknown'))].sort((a,b)=>a.localeCompare(b));
-  sel.innerHTML='<option value="">All sales reps</option>'+names.map(n=>`<option value="${n.replace(/"/g,'&quot;')}">${n}</option>`).join('');
+function normalizeColFilters(raw){
+  const e=emptyColFilters(), o=(raw&&typeof raw==='object')?raw:{};
+  COL_FILTER_ARRAYS.forEach(k=>{
+    let v=o[k];
+    if(!Array.isArray(v)) v=v? [v] : [];
+    e[k]=[...new Set(v.map(x=>String(x)).filter(Boolean))];
+  });
   // Migrate old "House Account - City" filter value → House Account
-  const want = /^house\s*account\b/i.test(cur) ? 'House Account' : cur;
-  if([...sel.options].some(o=>o.value===want)) sel.value=want;
-  else if([...sel.options].some(o=>o.value===cur)) sel.value=cur;
+  e.reps=e.reps.map(n=>/^house\s*account\b/i.test(n)?'House Account':n);
+  e.reps=[...new Set(e.reps)];
+  COL_FILTER_TEXTS.forEach(k=>{ e[k]=o[k]==null?'':String(o[k]); });
+  return e;
+}
+function loadColFilters(){
+  try{ return normalizeColFilters(JSON.parse(localStorage.getItem(COL_FILTER_KEY)||'{}')); }
+  catch(_){ return emptyColFilters(); }
+}
+let COL_FILTERS=loadColFilters();
+function filtersActive(f){
+  f=f||COL_FILTERS;
+  if(COL_FILTER_ARRAYS.some(k=>(f[k]||[]).length)) return true;
+  return COL_FILTER_TEXTS.some(k=>String(f[k]||'').trim());
+}
+function saveColFilters(){
+  try{
+    if(!filtersActive()) localStorage.removeItem(COL_FILTER_KEY);
+    else localStorage.setItem(COL_FILTER_KEY, JSON.stringify(COL_FILTERS));
+  }catch(_){}
+}
+function parseNumFilter(s){
+  s=String(s||'').trim().replace(/[$,]/g,'').replace(/[−–]/g,'-').replace(/\s+/g,'');
+  if(!s) return null;
+  let m=s.match(/^(-?\d+(?:\.\d+)?)(?:\.\.|-|to)(-?\d+(?:\.\d+)?)$/i);
+  if(m) return {op:'range', a:Number(m[1]), b:Number(m[2])};
+  m=s.match(/^(>=|<=|==|=|>|<)(-?\d+(?:\.\d+)?)$/);
+  if(m) return {op:m[1]==='=='?'=':m[1], n:Number(m[2])};
+  m=s.match(/^(-?\d+(?:\.\d+)?)$/);
+  if(m) return {op:'=', n:Number(m[1])};
+  return {op:'invalid'};
+}
+function matchNum(val, spec){
+  if(!spec) return true;
+  if(spec.op==='invalid') return true; // don't hide rows while the user is mid-typing
+  if(val==null || !Number.isFinite(val)) return false;
+  if(spec.op==='range'){ const lo=Math.min(spec.a,spec.b), hi=Math.max(spec.a,spec.b); return val>=lo && val<=hi; }
+  if(spec.op==='>=') return val>=spec.n;
+  if(spec.op==='<=') return val<=spec.n;
+  if(spec.op==='>') return val>spec.n;
+  if(spec.op==='<') return val<spec.n;
+  if(spec.op==='=') return Math.abs(val-spec.n)<1e-9;
+  return true;
+}
+function parseLooseDate(s, yearHint){
+  const t=String(s||'').trim();
+  if(!t) return null;
+  const year=yearHint || new Date().getFullYear();
+  let m=t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if(m) return {y:+m[1], mo:+m[2], d:+m[3]};
+  m=t.match(/^(\d{1,2})[\/.\-](\d{1,2})(?:[\/.\-](\d{2,4}))?$/);
+  if(m){
+    let y=m[3]? +m[3] : year;
+    if(y<100) y+=2000;
+    return {y, mo:+m[1], d:+m[2]};
+  }
+  m=t.match(/^(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:,?\s*(\d{4}))?$/i);
+  if(m){
+    const months={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+    const mo=months[m[1].slice(0,3).toLowerCase()];
+    return {y:m[3]? +m[3] : year, mo, d:+m[2]};
+  }
+  return null;
+}
+function ymdFromDate(d){
+  if(!d || Number.isNaN(d.getTime())) return null;
+  const parts=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/Vancouver', year:'numeric', month:'2-digit', day:'2-digit'}).formatToParts(d).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));
+  return {y:+parts.year, mo:+parts.month, d:+parts.day};
+}
+function ymdVal(x){ return x.y*10000 + x.mo*100 + x.d; }
+function parseDateFilter(s, yearHint){
+  const raw=String(s||'').trim();
+  if(!raw) return null;
+  const slash=raw.match(/^(\d{1,2}[\/.]\d{1,2}(?:[\/.]\d{2,4})?)\s*[-–—]\s*(\d{1,2}[\/.]\d{1,2}(?:[\/.]\d{2,4})?)$/);
+  const iso=raw.match(/^(\d{4}-\d{1,2}-\d{1,2})\s*[-–—]\s*(\d{4}-\d{1,2}-\d{1,2})$/);
+  let parts=null;
+  if(slash) parts=[slash[1], slash[2]];
+  else if(iso) parts=[iso[1], iso[2]];
+  else {
+    const split=raw.replace(/[—]/g,'–').split(/\s*(?:\.\.|–|to)\s*|\s+-\s+/i);
+    if(split.length===2) parts=split;
+  }
+  if(parts){
+    const a=parseLooseDate(parts[0], yearHint), b=parseLooseDate(parts[1], yearHint);
+    if(a&&b) return {kind:'range', a, b};
+  }
+  const one=parseLooseDate(raw, yearHint);
+  if(one) return {kind:'range', a:one, b:one};
+  return {kind:'contains', q:raw.toLowerCase()};
+}
+function matchDateFilter(spec, dateObj, texts){
+  if(!spec) return true;
+  if(spec.kind==='contains'){
+    return (texts||[]).some(t=>String(t||'').toLowerCase().includes(spec.q));
+  }
+  const ymd=ymdFromDate(dateObj);
+  if(!ymd) return false;
+  const v=ymdVal(ymd), a=ymdVal(spec.a), b=ymdVal(spec.b);
+  return v>=Math.min(a,b) && v<=Math.max(a,b);
+}
+function jobStatusLabel(j){
+  const t=(j&&j.status)||'Open';
+  if(/fill/i.test(t)){
+    const ft=Number(j.fill_total||0), ff=Number(j.fill_filled||0);
+    if(ft && ff<ft) return 'Open';
+    return 'Fulfilled';
+  }
+  if(/ack/i.test(t)) return 'Acked';
+  return t;
+}
+function jobLiveHours(j){
+  const start=jobStartDate(j);
+  if(start) return (start.getTime()-Date.now())/3600000;
+  return parseHoursNum(j&&j.hours);
+}
+function jobFillNums(j){
+  let f=j.fill_filled, t=j.fill_total;
+  if((f==null||t==null) && j.fill){
+    const m=String(j.fill).match(/^\s*(\d+)\s*\/\s*(\d+)\s*$/);
+    if(m){ f=m[1]; t=m[2]; }
+  }
+  if(f==null||t==null||f===''||t==='') return null;
+  return {f:Number(f), t:Number(t), s:`${f}/${t}`};
+}
+function jobCommentsText(j){
+  const c=(Array.isArray(j.comments)?j.comments:[]).map(x=>`${x.author||''} ${x.text||''}`).join(' ');
+  return `${c} ${j.team_note||''} ${j.note||''}`;
+}
+function jobMatchesSource(j, selected){
+  if(!selected.length) return true;
+  const s=j.source||'';
+  return selected.some(v=>{
+    if(v==='Sales') return /sales/i.test(s);
+    if(v==='System') return /system/i.test(s);
+    if(v==='Sales/System') return /sales/i.test(s) && /system/i.test(s);
+    const lab=sourceLabel(j).label;
+    return lab===v || String(s)===v;
+  });
+}
+function jobPassesFilters(j){
+  const f=COL_FILTERS;
+  if(f.heatBands.length && !f.heatBands.includes(j.band)) return false;
+  if(!matchNum(j.heat==null||j.heat===''?null:Number(j.heat), parseNumFilter(f.heatOp))) return false;
+  if(f.tiers.length && !f.tiers.includes(String(j.tier||'').trim())) return false;
+  if(f.statuses.length){
+    const st=jobStatusLabel(j);
+    const kind=openKind(j);
+    if(!f.statuses.includes(st) && !(kind && f.statuses.includes(kind))) return false;
+  }
+  if(f.reps.length && !f.reps.includes(formatRepName((j.sales||'').trim()))) return false;
+  if(!jobMatchesSource(j, f.sources)) return false;
+  if(f.request.trim()){
+    const q=f.request.trim().toLowerCase().replace(/^#/,'');
+    if(!String(j.request_id||'').toLowerCase().includes(q)) return false;
+  }
+  if(!matchNum(jobLiveHours(j), parseNumFilter(f.timingOp))) return false;
+  if(f.starts.trim()){
+    const start=jobStartDate(j);
+    const year=start? start.getFullYear() : (new Date()).getFullYear();
+    const texts=[startsCell(j), j.start_local, j.start_at, j.next_start_local, j.next_start_at];
+    if(!matchDateFilter(parseDateFilter(f.starts, year), start, texts)) return false;
+  }
+  if(f.valueOp.trim()){
+    const raw=String(j.value||'').trim();
+    const n=(raw && raw!=='—' && /[0-9]/.test(raw) && !/^see\s*dash$/i.test(raw)) ? Number(String(raw).replace(/[^0-9.]/g,'')) : null;
+    if(!matchNum(Number.isFinite(n)?n:null, parseNumFilter(f.valueOp))) return false;
+  }
+  if(f.funnel.trim()){
+    const q=f.funnel.trim().toLowerCase();
+    const shown=funnelFmt(j.funnel)||'';
+    if(!`${shown} ${j.funnel||''}`.toLowerCase().includes(q)) return false;
+  }
+  if(f.fillOp.trim()){
+    const q=f.fillOp.trim();
+    const fill=jobFillNums(j);
+    if(q.includes('/') || /pending/i.test(q)){
+      const hay=(fill?fill.s:'pending').toLowerCase();
+      if(!hay.includes(q.toLowerCase())) return false;
+    } else if(!matchNum(fill?fill.f:null, parseNumFilter(q))) return false;
+  }
+  if(f.intervention.trim()){
+    const q=f.intervention.trim().toLowerCase();
+    if(!String(j.intervention||'').toLowerCase().includes(q)) return false;
+  }
+  if(f.posted.trim()){
+    const raw=j.watchlist_posted_at||j.posted_at||j.time||'';
+    const d=parseVancouverWall(raw);
+    const year=d? d.getFullYear() : (new Date()).getFullYear();
+    const texts=[postedCell(j), raw];
+    if(!matchDateFilter(parseDateFilter(f.posted, year), d, texts)) return false;
+  }
+  if(f.company.trim() && !String(j.company||'').toLowerCase().includes(f.company.trim().toLowerCase())) return false;
+  if(f.cities.length){
+    const city=formatCity(j.market);
+    if(!f.cities.includes(city)) return false;
+  }
+  if(f.trades.length && !f.trades.includes(String(j.trade||'').trim())) return false;
+  if(f.comments.trim()){
+    const q=f.comments.trim().toLowerCase();
+    if(!jobCommentsText(j).toLowerCase().includes(q)) return false;
+  }
+  return true;
+}
+function uniqueSorted(vals, cmp){
+  const out=[...new Set(vals.filter(v=>v && v!=='—'))];
+  out.sort(cmp||((a,b)=>String(a).localeCompare(String(b), undefined, {numeric:true, sensitivity:'base'})));
+  return out;
+}
+function msOptionsFor(key){
+  if(key==='heatBands') return HEAT_BANDS.map(v=>({value:v,label:v}));
+  if(key==='sources') return SOURCE_OPTS.map(o=>({value:o.value,label:o.label}));
+  if(key==='tiers') return uniqueSorted(JOBS.map(j=>String(j.tier??'').trim()).filter(x=>x && x!=='—' && /^\d+$/.test(x)), (a,b)=>Number(a)-Number(b)).map(v=>({value:v,label:'Tier '+v}));
+  if(key==='statuses'){
+    const kinds=uniqueSorted(JOBS.map(j=>openKind(j)));
+    const present=new Set(JOBS.map(j=>jobStatusLabel(j)));
+    const stats=STATUS_BASE.filter(s=>present.has(s) || s==='Open' || s==='Acked' || s==='Fulfilled');
+    return [...stats, ...kinds].map(v=>({value:v,label:v}));
+  }
+  if(key==='reps') return uniqueSorted(JOBS.map(j=>formatRepName((j.sales||'').trim())).filter(s=>s.toLowerCase()!=='unknown')).map(v=>({value:v,label:v}));
+  if(key==='cities') return uniqueSorted(JOBS.map(j=>formatCity(j.market))).map(v=>({value:v,label:v}));
+  if(key==='trades') return uniqueSorted(JOBS.map(j=>String(j.trade||'').trim())).map(v=>({value:v,label:v}));
+  return [];
+}
+function closeAllMs(){
+  document.querySelectorAll('.cf-ms-menu.open').forEach(m=>{
+    m.classList.remove('open');
+    const host=document.querySelector(`.cf-ms[data-key="${m.dataset.key}"]`);
+    if(host && m.parentNode!==host) host.appendChild(m);
+  });
+}
+function positionMsMenu(menu, btn){
+  const r=btn.getBoundingClientRect();
+  const w=Math.max(r.width, 160);
+  let left=r.left;
+  if(left+w>window.innerWidth-8) left=Math.max(8, window.innerWidth-w-8);
+  menu.style.position='fixed';
+  menu.style.left=left+'px';
+  menu.style.top=(r.bottom+4)+'px';
+  menu.style.minWidth=w+'px';
+  menu.style.zIndex='8000';
+}
+function labelMs(key){
+  const host=document.querySelector(`.cf-ms[data-key="${key}"]`);
+  if(!host) return;
+  const btn=host.querySelector('.cf-ms-btn');
+  const selected=COL_FILTERS[key]||[];
+  const opts=msOptionsFor(key);
+  const labOf=v=>{
+    const o=opts.find(x=>x.value===v);
+    return o?o.label:v;
+  };
+  const ph=host.dataset.placeholder||'All';
+  btn.classList.toggle('has', selected.length>0);
+  if(!selected.length) btn.textContent=ph;
+  else if(selected.length===1) btn.textContent=labOf(selected[0]);
+  else btn.textContent=selected.length+' selected';
+}
+function renderMsMenu(key){
+  const host=document.querySelector(`.cf-ms[data-key="${key}"]`);
+  if(!host) return;
+  let menu=document.querySelector(`.cf-ms-menu[data-key="${key}"]`) || host.querySelector('.cf-ms-menu');
+  if(!menu){ menu=document.createElement('div'); menu.className='cf-ms-menu'; menu.dataset.key=key; host.appendChild(menu); }
+  const selected=new Set(COL_FILTERS[key]||[]);
+  const opts=msOptionsFor(key);
+  const have=new Set(opts.map(o=>o.value));
+  (COL_FILTERS[key]||[]).forEach(v=>{ if(!have.has(v)) opts.push({value:v,label:v}); });
+  menu.innerHTML=opts.map(o=>`<label><input type="checkbox" value="${esc(o.value)}"${selected.has(o.value)?' checked':''}> ${esc(o.label)}</label>`).join('') || '<label class="muted">No values</label>';
+  labelMs(key);
+}
+function fillColFilterOptions(){
+  ['heatBands','tiers','statuses','reps','sources','cities','trades'].forEach(renderMsMenu);
+}
+function fillTierOptions(){ fillColFilterOptions(); }
+function fillSalesOptions(){ fillColFilterOptions(); }
+function syncFilterInputsFromState(){
+  document.querySelectorAll('#colFilters .cf-input').forEach(inp=>{
+    const k=inp.dataset.key; if(!k) return;
+    if(document.activeElement===inp) return;
+    inp.value=COL_FILTERS[k]||'';
+    inp.classList.toggle('has', !!(inp.value||'').trim());
+  });
+  COL_FILTER_ARRAYS.forEach(labelMs);
+}
+function applyFiltersFromUi(){
+  document.querySelectorAll('#colFilters .cf-input').forEach(inp=>{
+    const k=inp.dataset.key; if(!k) return;
+    COL_FILTERS[k]=inp.value||'';
+    inp.classList.toggle('has', !!(inp.value||'').trim());
+  });
+  saveColFilters();
+  render();
+}
+function clearColFilters(){
+  closeAllMs();
+  COL_FILTERS=emptyColFilters();
+  saveColFilters();
+  document.querySelectorAll('#colFilters .cf-input').forEach(inp=>{ inp.value=''; inp.classList.remove('has'); });
+  fillColFilterOptions();
+  render();
+}
+function updateFilterCount(shown, total){
+  const el=document.getElementById('filterCount');
+  if(el){
+    el.textContent=`showing ${shown} of ${total}`;
+    el.classList.toggle('active', filtersActive() || shown!==total);
+  }
+  const btn=document.getElementById('clearFilters');
+  if(btn) btn.disabled=!filtersActive();
+}
+function initColFilters(){
+  document.querySelectorAll('#colFilters .cf-ms').forEach(host=>{
+    if(host.querySelector('.cf-ms-btn')) return;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='cf-ms-btn';
+    btn.setAttribute('aria-haspopup','listbox');
+    btn.textContent=host.dataset.placeholder||'All';
+    const menu=document.createElement('div');
+    menu.className='cf-ms-menu';
+    menu.dataset.key=host.dataset.key;
+    host.appendChild(btn);
+    host.appendChild(menu);
+    btn.addEventListener('click', ev=>{
+      ev.preventDefault(); ev.stopPropagation();
+      const open=menu.classList.contains('open');
+      closeAllMs();
+      if(open) return;
+      document.body.appendChild(menu);
+      menu.classList.add('open');
+      positionMsMenu(menu, btn);
+    });
+    menu.addEventListener('change', ev=>{
+      const t=ev.target;
+      if(!t || t.type!=='checkbox') return;
+      const on=[...menu.querySelectorAll('input[type=checkbox]:checked')].map(i=>i.value);
+      COL_FILTERS[host.dataset.key]=on;
+      labelMs(host.dataset.key);
+      saveColFilters();
+      render();
+    });
+    menu.addEventListener('click', ev=>ev.stopPropagation());
+  });
+  document.querySelectorAll('#colFilters .cf-input').forEach(inp=>{
+    inp.addEventListener('input', applyFiltersFromUi);
+    inp.addEventListener('change', applyFiltersFromUi);
+    inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter') ev.preventDefault(); });
+  });
+  const clear=document.getElementById('clearFilters');
+  if(clear) clear.addEventListener('click', clearColFilters);
+  document.addEventListener('click', ev=>{
+    if(ev.target.closest && ev.target.closest('.cf-ms-menu, .cf-ms')) return;
+    closeAllMs();
+  });
+  document.addEventListener('keydown', ev=>{
+    if(ev.key==='Escape' && document.querySelector('.cf-ms-menu.open')){ ev.stopPropagation(); closeAllMs(); }
+  }, true);
+  const sc=document.querySelector('.scroll');
+  if(sc) sc.addEventListener('scroll', closeAllMs, {passive:true});
+  window.addEventListener('scroll', closeAllMs, {passive:true});
+  window.addEventListener('resize', closeAllMs);
+  fillColFilterOptions();
+  syncFilterInputsFromState();
 }
 function sortedFiltered(){
-  const q=(document.getElementById('q').value||'').toLowerCase();
-  const band=document.getElementById('band').value;
-  const status=document.getElementById('status').value;
-  const sales=document.getElementById('sales').value;
-  const tier=document.getElementById('tier')?document.getElementById('tier').value:'';
-  const source=document.getElementById('source')?document.getElementById('source').value:'';
-  let rows=JOBS.filter(j=>{
-    if(band && j.band!==band) return false;
-    if(status==='active'||status==='Active'){ if(j.status!=='Open' && j.status!=='Acked' && !(PIN_UI&&j.pinned)) return false; }
-    else if(status && j.status!==status) return false;
-    if(tier && String(j.tier||'')!==tier) return false;
-    // Source filter: Slack, System, or merged Slack/System only
-    if(source==='Sales'){
-      if(!/sales/i.test(j.source||'')) return false;
-    } else if(source==='System'){
-      if(!/system/i.test(j.source||'')) return false;
-    } else if(source==='Sales/System'){
-      const s=j.source||'';
-      if(!(/sales/i.test(s) && /system/i.test(s))) return false;
-    }
-    if(sales && formatRepName((j.sales||'').trim())!==sales) return false;
-    if(!q) return true;
-    const ctext=(Array.isArray(j.comments)?j.comments:[]).map(c=>`${c.author||''} ${c.text||''}`).join(' ')+' '+(j.team_note||'')+' '+(j.note||'');
-    return [j.company,j.sales,j.market,j.trade,j.intervention,j.request_id,j.band,j.note,ctext].join(' ').toLowerCase().includes(q);
-  });
+  let rows=JOBS.filter(jobPassesFilters);
   rows.sort((a,b)=>{
     if(PIN_UI && !!a.pinned!==!!b.pinned) return a.pinned?-1:1;  // pinned client rows always on top
     const ha=a.heat==null?-1:a.heat, hb=b.heat==null?-1:b.heat;
@@ -1064,6 +1481,7 @@ function render(){
     if(t){ t.focus(); try{ t.setSelectionRange(_focus.s,_focus.e); }catch(_){} } }
   const _od = rows.filter(j=>isOverdue(j)).length;
   const _act = rows.length - _od;
+  updateFilterCount(rows.length, JOBS.length);
   document.getElementById('listHint').textContent = _od
     ? `${_act} open · ${_od} past start date · ranked by Heat within each section`
     : `${rows.length} jobs · ranked by Heat · top rows highlighted`;
@@ -1116,10 +1534,7 @@ async function triggerRefresh({blocking=true}={}){
   lastFp='';
   await load(false);
 }
-['q','band','status','sales','tier','source'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', render);
-  document.getElementById(id).addEventListener('change', render);
-});
+initColFilters();
 document.getElementById('refreshBtn').onclick=()=>triggerRefresh({blocking:true});
 // Hard refresh / first visit: same full force pipeline as the corner button
 load(false).then(()=>triggerRefresh({blocking:true}));
