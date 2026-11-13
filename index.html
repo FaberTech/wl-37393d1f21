@@ -1548,6 +1548,7 @@ setInterval(()=>load(true),60000);
   .p1-btn:hover { background:#27406e; }
   .p1-btn.applied { text-decoration:none; display:inline-block; background:#4a1212; color:#ff9b9b; border:1px solid #e05a5a; cursor:pointer; }
   .p1-btn.applied:hover { background:#5a1818; }
+  .p1-btn.sending { background:#3b2f0b; color:#ffd36e; border:1px solid #8a6d1c; }
   .pn-later { display:flex; flex-direction:column; gap:4px; margin-top:4px; }
   .pn-btn { background:#141a26; color:#7d8aa5; border:1px dashed #2f3d5c; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; white-space:nowrap; cursor:default; }
   .p1-sent { font-size:11px; color:#7ee2a8; font-weight:700; white-space:nowrap; }
@@ -1572,7 +1573,7 @@ setInterval(()=>load(true),60000);
 <script>
 const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py rewrites this to the ngrok API for the GitHub Pages copy
 (function(){
-  let P1 = { live:false, lock_hours:12, sent:{} };
+  let P1 = { live:false, lock_hours:12, sent:{}, inflight:{} };
   const $m = document.getElementById('p1-modal'), $b = document.getElementById('p1-box');
   const e = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function shortTime(at){ const m=/(\d{2}):(\d{2}):\d{2}/.exec(at||''); if(!m) return at||''; let h=+m[1]; const ap=h<12?'am':'pm'; h=h%12||12; return `${h}:${m[2]}${ap}`; }
@@ -1580,11 +1581,13 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   function decorate(){
     document.querySelectorAll('.p1-cell').forEach(cell=>{
       const rid=cell.dataset.rid; if(!rid) return;
-      const s=lockedInfo(rid);
-      const want = s ? `sent:${s.at_epoch}` : 'btn';
+      const s=lockedInfo(rid), inf=(P1.inflight||{})[String(rid)];
+      const want = s ? `sent:${s.at_epoch}` : (inf ? `inflight:${inf.job_id}:${inf.sent}` : 'btn');
       if(cell.dataset.p1state===want) return;
       cell.dataset.p1state=want;
-      cell.innerHTML = s
+      cell.innerHTML = (!s && inf)
+        ? `<button type="button" class="p1-btn sending" data-rid="${e(rid)}" title="Protocol 1 is sending now">Sending… ${e(inf.sent||0)}/${e(inf.total??'?')}</button>`
+        : s
         ? `<a class="p1-btn applied" href="${e(s.slack_url||'https://faberconnect.slack.com/archives/C0CJ3HTFLF2')}" target="_blank" rel="noopener" data-rid="${e(rid)}" title="Sent ${e(s.at||'')} · open the #protocol-one thread">Protocol 1 Applied</a>`
         : `<button type="button" class="p1-btn" data-rid="${e(rid)}">Apply Protocol 1</button>`;
     });
@@ -1592,6 +1595,42 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   async function loadStatus(){
     try{ const r=await fetch(P1_BASE+'/api/protocol1/status?ts='+Date.now(),{cache:'no-store'}); if(r.ok){ P1=await r.json(); } }catch(_){}
     document.querySelectorAll('.p1-cell').forEach(c=>{ delete c.dataset.p1state; }); decorate();
+  }
+  async function getProgress(rid){
+    try{ const r=await fetch(P1_BASE+'/api/protocol1/progress?request_id='+encodeURIComponent(rid)+'&ts='+Date.now(),{cache:'no-store'}); return await r.json(); }catch(_){ return null; }
+  }
+  // Polls the background send; never re-enables Send for this job.
+  function watchProgress(rid, jobId){
+    const out=()=>document.getElementById('p1-res');
+    let misses=0;
+    const tick=async()=>{
+      const p=await getProgress(rid);
+      if(!out()) return;   // modal closed; status refresh keeps the row button current
+      if(!p || !p.ok || (jobId && p.job_id && p.job_id!==jobId)){ if(++misses<200) setTimeout(tick,2000); return; }
+      misses=0;
+      if(!p.done){
+        out().innerHTML = p.total ? `<span class="muted">Sending… <b>${e(p.sent||0)}</b> of <b>${e(p.total)}</b>${p.failed?` (${e(p.failed)} failed)`:''}. You can close this window; sending continues.</span>`
+                                  : `<span class="muted">Preparing audience…</span>`;
+        setTimeout(tick,1500); return;
+      }
+      if(p.error && !p.send_ok){ out().innerHTML=`<span class="err">${e(p.error)}</span>${p.sent?` <span class="muted">(${e(p.sent)} sent before it stopped)</span>`:''}`; }
+      else if(p.mode==='live'){ out().innerHTML=`<span class="ok">Sent to ${e(p.sent)} workers${p.failed?` (${e(p.failed)} failed)`:''}. Updates are in #protocol-one.</span>`; }
+      else { out().innerHTML=`<span class="ok">Dry run OK: ${e(p.audience_n)} workers would get it. Nothing was sent.</span>`; }
+      if(p.mode==='live' && (p.sent||0)>0){
+        P1.sent = Object.assign({}, P1.sent, {[String(rid)]:{at:p.at, at_epoch:p.at_epoch, count:p.sent}});
+      }
+      loadStatus();
+    };
+    tick();
+  }
+  function openSending(rid){
+    $m.classList.add('open');
+    $b.innerHTML=`<h3>Protocol 1 · ${e(rid)} <span class="mode live">SENDING</span></h3>
+      <p>A send for this job is already running. It can't be sent again.</p>
+      <div id="p1-res" style="margin-top:10px"><span class="muted">Checking progress…</span></div>
+      <div class="row"><button id="p1-x">Close</button></div>`;
+    document.getElementById('p1-x').onclick=close;
+    watchProgress(rid, null);
   }
   async function post(body){
     const r=await fetch(P1_BASE+'/api/protocol1',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify(body)});
@@ -1601,6 +1640,8 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   $m.addEventListener('click',ev=>{ if(ev.target===$m) close(); });
   document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && $m.classList.contains('open')) close(); });
   async function open(rid){
+    const pg=await getProgress(rid);
+    if(pg && pg.ok && pg.running){ openSending(rid); return; }
     $m.classList.add('open');
     $b.innerHTML=`<h3>Apply Protocol 1 · ${e(rid)}</h3><div class="muted">Loading audience and preview…</div>`;
     const d=await post({action:'preview', request_id:rid});
@@ -1628,19 +1669,21 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
     const go=document.getElementById('p1-go');
     go.onclick=async()=>{
       if(P1.require_pin!==false && !/^\d{6}$/.test(pin.value)){ document.getElementById('p1-res').innerHTML='<span class="err">Enter the 6-digit ops PIN.</span>'; return; }
-      go.disabled=true; document.getElementById('p1-res').innerHTML='<span class="muted">Working…</span>';
-      const r=await post({action:'send', request_id:rid, pin:pin.value, actor:'Watch list'});
+      if(go.dataset.clicked) return;
+      go.dataset.clicked='1'; go.disabled=true; pin.disabled=true;
+      document.getElementById('p1-res').innerHTML='<span class="muted">Starting…</span>';
+      let r;
+      try{ r=await post({action:'send', request_id:rid, pin:pin.value, actor:'Watch list'}); }
+      catch(_){ r=null; }
       pin.value='';
-      if(!r.ok){ go.disabled=false; document.getElementById('p1-res').innerHTML=`<span class="err">${e(r.error||'Failed')}</span>`; return; }
-      document.getElementById('p1-res').innerHTML = r.mode==='live'
-        ? `<span class="ok">Sent to ${e(r.sent_n)} workers${r.failed_n?` (${e(r.failed_n)} failed)`:''}. Updates are in #protocol-one.</span>`
-        : `<span class="ok">Dry run OK: ${e(r.audience_n)} workers would get it. Nothing was sent.</span>`;
-      if(r.mode==='live' && (r.sent_n||0)>0){
-        P1.sent = Object.assign({}, P1.sent, {[String(rid)]:{at:r.at, at_epoch:r.at_epoch, count:r.sent_n}});
-        document.querySelectorAll('.p1-cell').forEach(c=>{ delete c.dataset.p1state; });
-        decorate();
+      if(!r){ document.getElementById('p1-res').innerHTML='<span class="muted">Connection dropped. Checking whether the send started…</span>'; watchProgress(rid, null); return; }
+      if(!r.ok){
+        if(r.error_code==='pin'){ delete go.dataset.clicked; go.disabled=false; pin.disabled=false; }  // nothing started: let them retype the PIN
+        document.getElementById('p1-res').innerHTML=`<span class="err">${e(r.error||'Failed')}</span>`; return;
       }
+      document.getElementById('p1-x').textContent='Close';
       loadStatus();
+      watchProgress(rid, r.job_id);
     };
   }
   function openAppliedNote(rid){
@@ -1655,11 +1698,14 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   document.addEventListener('click',ev=>{
     const applied=ev.target.closest && ev.target.closest('.p1-btn.applied');
     if(applied){ ev.stopPropagation(); return; }
+    const sb=ev.target.closest && ev.target.closest('.p1-btn.sending');
+    if(sb){ ev.preventDefault(); ev.stopPropagation(); openSending(sb.dataset.rid); return; }
     const b=ev.target.closest && ev.target.closest('.p1-btn');
     if(b){ ev.preventDefault(); ev.stopPropagation(); open(b.dataset.rid); }
   }, true);
   new MutationObserver(()=>decorate()).observe(document.body,{childList:true,subtree:true});
   loadStatus(); setInterval(loadStatus, 60000);
+  setInterval(()=>{ if(Object.keys(P1.inflight||{}).length) loadStatus(); }, 5000);  // keep "Sending… x/N" fresh
 })();
 </script>
 <!-- protocol1:end -->
