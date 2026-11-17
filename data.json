@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17 09:12:16 PT",
+ "updated_at": "2026-11-17 09:12:46 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -33,7 +33,10 @@
    "fill": "0/8",
    "fill_pending": false,
    "hours_as_of": "2026-11-17 10:12:16 PT",
-   "scored_at": "2026-11-17 10:12:16 PT"
+   "scored_at": "2026-11-17 10:12:16 PT",
+   "betadash_status": "Matched",
+   "betadash_status_id": 2,
+   "code_request_status_id": 2
   },
   {
    "ts": "1790644691.743789",
@@ -477,7 +480,10 @@
    "fill": "0/6",
    "fill_pending": false,
    "hours_as_of": "2026-11-17 10:12:16 PT",
-   "scored_at": "2026-11-17 10:12:16 PT"
+   "scored_at": "2026-11-17 10:12:16 PT",
+   "betadash_status": "Matched",
+   "betadash_status_id": 2,
+   "code_request_status_id": 2
   },
   {
    "request_id": "133249",
