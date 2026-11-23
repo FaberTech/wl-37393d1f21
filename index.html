@@ -981,7 +981,7 @@ function rowHtml(j, rank, active){
     ? `<span class="tier" title="Tier">${esc(tierNum)}</span>`
     : `<span class="tier na" title="Tier">—</span>`;
   return `<tr class="${active?'active':''}${(PIN_UI&&j.pinned)?' pinned':''}">
-    <td class="rank">${rank}</td>
+    <td class="rank">${rank}${j.request_id?`<div><button type="button" class="wl-del-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}" title="Delete this job from the Watch list" aria-label="Delete job ${esc(String(j.request_id))}">🗑</button></div>`:''}</td>
     <td class="heat-cell">${heatCell(j)}</td>
     <td><div class="tier-status">${tierHtml}${statusBadge(j)}</div></td>
     <td>${repBadge(j.sales)}</td>
@@ -997,7 +997,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div></td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div>${j.request_id?`<div class="ask-cell" data-rid="${esc(String(j.request_id))}"><button type="button" class="ask-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}">Ask Winning Team</button></div>`:''}</td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div>${(PIN_UI&&j.pinned)?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
@@ -1709,5 +1709,93 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
 })();
 </script>
 <!-- protocol1:end -->
+<!-- wl-actions:start (per-row Delete + Ask Winning Team; server: /api/delete, /api/ask_team in serve_watchlist.py) -->
+<style>
+  .wl-del-btn { margin-top:4px; background:transparent; border:1px solid #3a2530; color:#e57b8a; border-radius:6px; padding:1px 5px; font-size:11px; line-height:1.4; cursor:pointer; opacity:.7; }
+  .wl-del-btn:hover { opacity:1; background:#3a1520; }
+  .wl-del-btn:disabled { opacity:.4; cursor:default; }
+  .ask-cell { margin-top:4px; display:none; }
+  body.ask-on .ask-cell { display:block; }
+  .ask-btn { background:#14301f; color:#9be3b8; border:1px solid #2f7a4d; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .ask-btn:hover { background:#1b4029; }
+  .ask-btn:disabled { opacity:.6; cursor:default; }
+  .ask-btn.sent { background:#102a1a; color:#7ee2a8; border-style:dashed; }
+  .ask-btn.err { background:#3a1520; color:#ff9b9b; border-color:#7a2f3d; }
+  .wl-toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); background:#3a1520; color:#ffd0d6; border:1px solid #7a2f3d; border-radius:10px; padding:8px 14px; font-size:13px; z-index:10000; display:none; max-width:90vw; }
+  .wl-toast.ok { background:#102a1a; color:#bff0d0; border-color:#2f7a4d; }
+</style>
+<div class="wl-toast" id="wlToast" role="status"></div>
+<script>
+(function(){
+  const BASE = (typeof P1_BASE==='string') ? P1_BASE : '';  // '' locally; ngrok on the Pages copy (build_pages.py)
+  const $t = document.getElementById('wlToast'); let tt=null;
+  function toast(msg, ok){ $t.textContent=msg; $t.className='wl-toast'+(ok?' ok':''); $t.style.display='block'; clearTimeout(tt); tt=setTimeout(()=>{$t.style.display='none';}, ok?3500:7000); }
+  async function post(path, body){
+    const c=new AbortController(); const t=setTimeout(()=>c.abort(),30000);
+    try{
+      const r=await fetch(BASE+path,{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify(body),signal:c.signal});
+      let d=null; try{ d=await r.json(); }catch(_){}
+      if(!r.ok || !d || !d.ok) throw new Error((d&&d.error)||('HTTP '+r.status));
+      return d;
+    } finally { clearTimeout(t); }
+  }
+  // ---- Delete
+  async function del(btn){
+    const rid=btn.dataset.rid, co=btn.dataset.company||'';
+    if(!confirm(`Delete request #${rid}${co?' ('+co+')':''} from the Watch list?\n\nIt stays off the list through every sync. Only a new @score on it brings it back.`)) return;
+    btn.disabled=true;
+    try{
+      await post('/api/delete',{request_id:rid, actor:'Team'});
+      JOBS = (JOBS||[]).filter(j=>String(j.request_id||'').trim()!==rid);
+      try{ lastFp=''; }catch(_){}
+      render();
+      toast(`Deleted #${rid} from the Watch list.`, true);
+    }catch(e){
+      btn.disabled=false;
+      toast(`Could not delete #${rid}: ${e.message||e}. The row was kept.`, false);
+    }
+  }
+  // ---- Ask Winning Team (one click = one message; server also debounces)
+  let ASK = { enabled:false, asks:{} }; const busy = new Set();
+  function decorateAsk(){
+    document.body.classList.toggle('ask-on', !!ASK.enabled);
+    document.querySelectorAll('.ask-btn').forEach(b=>{
+      const a=(ASK.asks||{})[b.dataset.rid];
+      if(busy.has(b.dataset.rid)) return;
+      if(a && (a.status==='sent' || a.status==='queued')){
+        b.disabled=true; b.classList.add('sent');
+        b.textContent = a.status==='sent' ? 'Sent ✓' : 'Queued…';
+        b.title = a.status==='sent' ? `Sent ${a.sent_at||''}` : `Queued ${a.queued_at||''}; posting to ${ASK.channel_name||'the channel'}`;
+      }
+    });
+  }
+  async function loadAsk(){
+    try{ const r=await fetch(BASE+'/api/ask_team/status?ts='+Date.now(),{cache:'no-store'}); if(r.ok){ ASK=await r.json(); } }catch(_){}
+    decorateAsk();
+  }
+  async function ask(btn){
+    const rid=btn.dataset.rid, co=btn.dataset.company||'';
+    if(busy.has(rid) || btn.disabled) return;
+    if(!confirm(`Ask the Winning Team (${ASK.channel_name||'Slack'}) for an update on request #${rid}${co?' ('+co+')':''}?\n\nThis posts one Slack message.`)) return;
+    busy.add(rid); btn.disabled=true; btn.classList.remove('err'); btn.textContent='Sending…';
+    try{
+      const d=await post('/api/ask_team',{request_id:rid, actor:'Team'});
+      ASK.asks=ASK.asks||{}; ASK.asks[rid]={status:d.status||'queued', queued_at:d.queued_at, sent_at:d.sent_at};
+      busy.delete(rid); decorateAsk();
+      toast(d.duplicate?`Already asked about #${rid} a moment ago.`:`Asked the Winning Team about #${rid}.`, true);
+    }catch(e){
+      busy.delete(rid); btn.disabled=false; btn.classList.add('err'); btn.textContent='Ask Winning Team';
+      toast(`Could not ask about #${rid}: ${e.message||e}`, false);
+    }
+  }
+  document.addEventListener('click', ev=>{
+    const d=ev.target.closest && ev.target.closest('.wl-del-btn'); if(d){ ev.preventDefault(); del(d); return; }
+    const a=ev.target.closest && ev.target.closest('.ask-btn'); if(a){ ev.preventDefault(); ask(a); }
+  });
+  new MutationObserver(()=>decorateAsk()).observe(document.getElementById('list'),{childList:true});
+  loadAsk(); setInterval(loadAsk, 30000);
+})();
+</script>
+<!-- wl-actions:end -->
 </body>
 </html>
