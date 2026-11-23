@@ -997,7 +997,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div>${j.request_id?`<div class="ask-cell" data-rid="${esc(String(j.request_id))}"><button type="button" class="ask-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}">Ask Winning Team</button></div>`:''}</td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div>${j.request_id?`<div class="ask-cell" data-rid="${esc(String(j.request_id))}"><button type="button" class="ask-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}">Ask Team Winning</button></div>`:''}</td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div>${(PIN_UI&&j.pinned)?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
@@ -1716,8 +1716,8 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   .wl-del-btn:disabled { opacity:.4; cursor:default; }
   .ask-cell { margin-top:4px; display:none; }
   body.ask-on .ask-cell { display:block; }
-  .ask-btn { background:#14301f; color:#9be3b8; border:1px solid #2f7a4d; border-radius:8px; padding:4px 8px; font-size:11px; font-weight:700; cursor:pointer; white-space:nowrap; }
-  .ask-btn:hover { background:#1b4029; }
+  .ask-btn { background:transparent; color:#cbd5e1; border:1px solid #3a4150; border-radius:6px; padding:2px 7px; font-size:11px; font-weight:600; opacity:.85; cursor:pointer; white-space:nowrap; }
+  .ask-btn:hover { opacity:1; background:#1f2733; }
   .ask-btn:disabled { opacity:.6; cursor:default; }
   .ask-btn.sent { background:#102a1a; color:#7ee2a8; border-style:dashed; }
   .ask-btn.err { background:#3a1520; color:#ff9b9b; border-color:#7a2f3d; }
@@ -1776,15 +1776,14 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   async function ask(btn){
     const rid=btn.dataset.rid, co=btn.dataset.company||'';
     if(busy.has(rid) || btn.disabled) return;
-    if(!confirm(`Ask the Winning Team (${ASK.channel_name||'Slack'}) for an update on request #${rid}${co?' ('+co+')':''}?\n\nThis posts one Slack message.`)) return;
     busy.add(rid); btn.disabled=true; btn.classList.remove('err'); btn.textContent='Sending…';
     try{
       const d=await post('/api/ask_team',{request_id:rid, actor:'Team'});
       ASK.asks=ASK.asks||{}; ASK.asks[rid]={status:d.status||'queued', queued_at:d.queued_at, sent_at:d.sent_at};
       busy.delete(rid); decorateAsk();
-      toast(d.duplicate?`Already asked about #${rid} a moment ago.`:`Asked the Winning Team about #${rid}.`, true);
+      toast(d.duplicate?`Already asked about #${rid} in the last 30 minutes.`:`Queued, posting shortly (#${rid}).`, true);
     }catch(e){
-      busy.delete(rid); btn.disabled=false; btn.classList.add('err'); btn.textContent='Ask Winning Team';
+      busy.delete(rid); btn.disabled=false; btn.classList.add('err'); btn.textContent='Ask Team Winning';
       toast(`Could not ask about #${rid}: ${e.message||e}`, false);
     }
   }

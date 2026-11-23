@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23 12:36:29 PT",
+ "updated_at": "2026-11-23 12:36:30 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -85,7 +85,10 @@
    "start_local": "2026-11-23 08:00",
    "start_tz": "America/Edmonton",
    "start_source": "metabase original_start_date",
-   "overdue_since": "2026-11-23 07:00:00 PT"
+   "overdue_since": "2026-11-23 07:00:00 PT",
+   "team_note": "Indeed ad was created. Calling plumbers",
+   "team_note_at": "2026-11-23 13:37 PT",
+   "team_note_author": "Team"
   },
   {
    "request_id": "133415",
