@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23 15:57:38 PT",
+ "updated_at": "2026-11-23 15:58:19 PT",
  "channel": "#unfilled-intervention",
  "jobs": [
   {
@@ -993,6 +993,39 @@
    "team_note": "Moved to Dec 4",
    "team_note_at": "2026-11-23 16:51 PT",
    "team_note_author": "Team"
+  },
+  {
+   "request_id": "134330",
+   "heat": 53,
+   "heat_exact": true,
+   "band": "Act",
+   "source": "Sales intake",
+   "status": "Open",
+   "link": "https://betadash.faberconnect.com/#/requests/view-group/91794?request_id=134330",
+   "company": "Skiles Group",
+   "trade": "General Labour",
+   "market": "Dallas",
+   "sales": "Samantha",
+   "tier": "2",
+   "hours": "12.5",
+   "value": "1276.80",
+   "slots": "2",
+   "why": "—",
+   "intervention": "Protocol 1",
+   "flags": "new",
+   "slack": "https://faberconnect.slack.com/archives/G01H65R64AH/p1795478261737019",
+   "funnel": "49 / 0 / 0",
+   "replacement": false,
+   "autofill": "on",
+   "note": "scored via @score",
+   "scored_via": "@score",
+   "watchlist_posted_at": "2026-11-23 16:58 PT",
+   "fill_filled": 0,
+   "fill_total": 2,
+   "fill": "0/2",
+   "fill_pending": false,
+   "hours_as_of": "2026-11-23 16:58:19 PT",
+   "scored_at": "2026-11-23 16:58:19 PT"
   }
  ],
  "filter_rule": "open_only_v1",
@@ -1024,5 +1057,6 @@
   "groups": 536
  },
  "funnels_updated_at": "2026-11-23 15:57:38 PT",
- "fill_updated_at": "2026-11-23 15:57:38 PT"
+ "fill_updated_at": "2026-11-23 15:57:38 PT",
+ "updated": "2026-11-23 23:58:19 UTC"
 }
