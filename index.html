@@ -981,7 +981,7 @@ function rowHtml(j, rank, active){
     ? `<span class="tier" title="Tier">${esc(tierNum)}</span>`
     : `<span class="tier na" title="Tier">—</span>`;
   return `<tr class="${active?'active':''}${(PIN_UI&&j.pinned)?' pinned':''}">
-    <td class="rank">${rank}${j.request_id?`<div><button type="button" class="wl-del-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}" title="Delete this job from the Watch list" aria-label="Delete job ${esc(String(j.request_id))}">🗑</button></div>`:''}</td>
+    <td class="rank">${rank}${j.request_id?`<div><button type="button" class="wl-del-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}" title="Delete this job from the Watch list" aria-label="Delete job ${esc(String(j.request_id))}">🗑</button></div><div><button type="button" class="ask-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}" title="Ask Team Winning for an update" aria-label="Ask Team Winning for an update on job ${esc(String(j.request_id))}">💬</button></div>`:''}</td>
     <td class="heat-cell">${heatCell(j)}</td>
     <td><div class="tier-status">${tierHtml}${statusBadge(j)}</div></td>
     <td>${repBadge(j.sales)}</td>
@@ -997,7 +997,7 @@ function rowHtml(j, rank, active){
       return `<div class="nums">${f}</div><div class="lbl">matched / applied / accepts</div>`;
     })()}</td>
     <td class="fill">${fillCell(j)}</td>
-    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div>${j.request_id?`<div class="ask-cell" data-rid="${esc(String(j.request_id))}"><button type="button" class="ask-btn" data-rid="${esc(String(j.request_id))}" data-company="${esc(String(j.company||''))}">Ask Team Winning</button></div>`:''}</td>
+    <td><div class="intervention p1-cell" data-rid="${esc(String(j.request_id||''))}"><button type="button" class="p1-btn" data-rid="${esc(String(j.request_id||''))}">Apply Protocol 1</button></div></td>
     <td class="posted muted">${postedCell(j)}</td>
     <td><div>${j.company||'—'}</div>${(PIN_UI&&j.pinned)?`<div><span class="pin-tag" title="Pinned client: stays at the top and on the list even after it fills">📌 ${esc(j.pinned_label||'Pinned')}</span></div>`:''}<div class="muted">${jobTraits(j)||''}</div></td>
     <td title="${esc(formatCity(j.market))}">${formatCity(j.market)}</td>
@@ -1715,12 +1715,10 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   .wl-del-btn:hover { opacity:1; background:transparent; }
   .wl-del-btn:disabled { opacity:.4; cursor:default; }
   .ask-cell { margin-top:4px; display:none; }
-  body.ask-on .ask-cell { display:block; }
-  .ask-btn { background:transparent; color:#cbd5e1; border:1px solid #3a4150; border-radius:6px; padding:2px 7px; font-size:11px; font-weight:600; opacity:.85; cursor:pointer; white-space:nowrap; }
-  .ask-btn:hover { opacity:1; background:#1f2733; }
-  .ask-btn:disabled { opacity:.6; cursor:default; }
-  .ask-btn.sent { background:#102a1a; color:#7ee2a8; border-style:dashed; }
-  .ask-btn.err { background:#3a1520; color:#ff9b9b; border-color:#7a2f3d; }
+  .ask-btn { margin-top:4px; background:transparent; border:none; color:#fff; border-radius:0; padding:1px 5px; font-size:13px; line-height:1.4; cursor:pointer; opacity:.6; filter:grayscale(1) brightness(10); }
+  .ask-btn:hover { opacity:1; background:transparent; }
+  .ask-btn:disabled { opacity:.4; cursor:default; }
+  .ask-btn.sent { opacity:.4; }
   .wl-toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); background:#3a1520; color:#ffd0d6; border:1px solid #7a2f3d; border-radius:10px; padding:8px 14px; font-size:13px; z-index:10000; display:none; max-width:90vw; }
   .wl-toast.ok { background:#102a1a; color:#bff0d0; border-color:#2f7a4d; }
 </style>
@@ -1758,14 +1756,13 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   // ---- Ask Winning Team (one click = one message; server also debounces)
   let ASK = { enabled:false, asks:{} }; const busy = new Set();
   function decorateAsk(){
-    document.body.classList.toggle('ask-on', !!ASK.enabled);
+    document.querySelectorAll('.ask-btn').forEach(b=>{ b.style.display=ASK.enabled?'':'none'; });
     document.querySelectorAll('.ask-btn').forEach(b=>{
       const a=(ASK.asks||{})[b.dataset.rid];
       if(busy.has(b.dataset.rid)) return;
       if(a && (a.status==='sent' || a.status==='queued')){
         b.disabled=true; b.classList.add('sent');
-        b.textContent = a.status==='sent' ? 'Sent ✓' : 'Queued…';
-        b.title = a.status==='sent' ? `Sent ${a.sent_at||''}` : `Queued ${a.queued_at||''}; posting to ${ASK.channel_name||'the channel'}`;
+                b.title = a.status==='sent' ? `Sent ${a.sent_at||''}` : `Queued ${a.queued_at||''}; posting shortly`;
       }
     });
   }
@@ -1776,14 +1773,14 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
   async function ask(btn){
     const rid=btn.dataset.rid, co=btn.dataset.company||'';
     if(busy.has(rid) || btn.disabled) return;
-    busy.add(rid); btn.disabled=true; btn.classList.remove('err'); btn.textContent='Sending…';
+    busy.add(rid); btn.disabled=true; btn.classList.remove('err'); 
     try{
       const d=await post('/api/ask_team',{request_id:rid, actor:'Team'});
       ASK.asks=ASK.asks||{}; ASK.asks[rid]={status:d.status||'queued', queued_at:d.queued_at, sent_at:d.sent_at};
       busy.delete(rid); decorateAsk();
       toast(d.duplicate?`Already asked about #${rid} in the last 30 minutes.`:`Queued, posting shortly (#${rid}).`, true);
     }catch(e){
-      busy.delete(rid); btn.disabled=false; btn.classList.add('err'); btn.textContent='Ask Team Winning';
+      busy.delete(rid); btn.disabled=false; btn.classList.add('err');
       toast(`Could not ask about #${rid}: ${e.message||e}`, false);
     }
   }
