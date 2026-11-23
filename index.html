@@ -1761,7 +1761,7 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
       const a=(ASK.asks||{})[b.dataset.rid];
       if(busy.has(b.dataset.rid)) return;
       if(a && (a.status==='sent' || a.status==='queued')){
-        b.disabled=true; b.classList.add('sent');
+        b.disabled=false; b.classList.add('sent');
                 b.title = a.status==='sent' ? `Sent ${a.sent_at||''}` : `Queued ${a.queued_at||''}; posting shortly`;
       }
     });
@@ -1777,8 +1777,8 @@ const P1_BASE="https://festive-tux-italics.ngrok-free.dev";  // build_pages.py r
     try{
       const d=await post('/api/ask_team',{request_id:rid, actor:'Team'});
       ASK.asks=ASK.asks||{}; ASK.asks[rid]={status:d.status||'queued', queued_at:d.queued_at, sent_at:d.sent_at};
-      busy.delete(rid); decorateAsk();
-      toast(d.duplicate?`Already asked about #${rid} in the last 30 minutes.`:`Queued, posting shortly (#${rid}).`, true);
+      busy.delete(rid); btn.disabled=false; decorateAsk();
+      toast(`Queued, posting shortly (#${rid}).`, true);
     }catch(e){
       busy.delete(rid); btn.disabled=false; btn.classList.add('err');
       toast(`Could not ask about #${rid}: ${e.message||e}`, false);
